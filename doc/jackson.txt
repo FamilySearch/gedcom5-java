@@ -1,0 +1,38 @@
+NOTES ON USING JACKSON
+
+It's possible to use jackson instead of gson, but gson is more convenient, because
+jackson uses getter methods instead of fields, and we have a number of convenience
+getter functions that we would have to tell jackson to ignore.
+
+Here's a simple code snippet demonstrating jackson:
+
+  ObjectMapper mapper = new ObjectMapper();
+  mapper.configure(SerializationConfig.Feature.INDENT_OUTPUT, true);
+        .configure(SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
+  SimpleModule myModule = new SimpleModule("MyModule", new Version(1, 0, 0, null))
+               .addDeserializer(Extensions.class, new ExtensionsDeserializer());
+  mapper.registerModule(myModule);
+  String json = mapper.writeValueAsString(gedcom);
+  Gedcom gedcom = mapper.readValue(json, Gedcom.class);
+
+public class ExtensionsDeserializer extends JsonDeserializer {
+    @Override
+    @SuppressWarnings("unchecked")
+    public Object deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
+        ObjectNode root = (ObjectNode) mapper.readTree(jsonParser);
+        Extensions extensions = new Extensions();
+        Iterator<Map.Entry<String, JsonNode>> iter = root.getFields();
+        while (iter.hasNext()) {
+            Map.Entry<String,JsonNode> entry = iter.next();
+            Class clazz = ...
+            if (clazz != null) {
+                extensions.put(key, mapper.readValue(entry.getValue(), clazz));
+            }
+            else {
+                extensions.put(key, entry.getValue());
+            }
+        }
+        return extensions;
+    }
+}
