@@ -21,7 +21,7 @@ package org.folg.gedcom.model;
  * Date: 12/27/11
  * 
  * omit: Linked objects, Reference number, Rin
- * add: File, primary, type, scrapbook
+ * add: File, primary, type, scrapbook, slideshow
  */
 public class Media extends NoteContainer {
    private String id = null;
@@ -34,6 +34,7 @@ public class Media extends NoteContainer {
    private String _prim = null;
    private String _type = null;
    private String _scbk = null;
+   private String _sshow = null;
 
    public String getId() {
       return id;
@@ -113,6 +114,14 @@ public class Media extends NoteContainer {
 
    public void setScrapbook(String scbk) {
       this._scbk = scbk;
+   }
+
+   public String getSlideShow() {
+      return _sshow;
+   }
+
+   public void setSlideShow(String sshow) {
+      this._sshow = sshow;
    }
 
    public void accept(Visitor visitor) {

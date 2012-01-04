@@ -21,7 +21,7 @@ package org.folg.gedcom.model;
  * Date: 12/29/11
  * 
  * omit: data
- * add: media type, type, uid, paren, italic, date
+ * add: media type, call number, type, uid, paren, italic, date
  */
 public class Source extends MediaContainer {
    private String id = null;
@@ -35,6 +35,7 @@ public class Source extends MediaContainer {
    private String rin = null;
    private Change chan = null;
    private String medi = null;
+   private String caln = null;
    private String _type = null;
    private String typeTag = null;
    private String _uid = null;
@@ -125,6 +126,14 @@ public class Source extends MediaContainer {
 
    public void setChange(Change chan) {
       this.chan = chan;
+   }
+
+   public String getCallNumber() {
+      return caln;
+   }
+
+   public void setCallNumber(String caln) {
+      this.caln = caln;
    }
 
    public String getMediaType() {

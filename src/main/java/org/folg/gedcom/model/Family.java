@@ -24,7 +24,7 @@ import java.util.List;
  * User: Dallan
  * Date: 12/27/11
  *
- * omit: Submitter, >1 Reference, Reference type
+ * omit: Submitter, Reference type
  * add: Uid
  */
 public class Family extends PersonFamilyCommonContainer {

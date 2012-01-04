@@ -69,7 +69,10 @@ public class GedcomAnalyzer implements ErrorHandler {
 
    public void warning(String message, int lineNumber) {
       warnings.add(message);
+//      if (message.indexOf("GED INDI ANCI") >= 0 ||
+//          message.indexOf("GED INDI DESI") >= 0) {
 //         logger.info(file.getName()+" "+message+" @ "+lineNumber);
+//      }
    }
 
    public void error(String message, int lineNumber) {
@@ -87,14 +90,16 @@ public class GedcomAnalyzer implements ErrorHandler {
 
       try {
          parser.parseGedcom(gedcomFile);
-         if (warnings.size() > 0) {
+         if (warnings.size() > 0 || errors.size() > 0) {
             cntWarnings++;
          }
          if (errors.size() > 0) {
             cntErrors++;
          }
-         for (String warning : warnings) {
-            ccWarnings.add(warning);
+         if (warnings.size() == 1 && errors.size() == 0) {
+            for (String warning : warnings) {
+               ccWarnings.add(warning);
+            }
          }
          for (String error : errors) {
             ccErrors.add(error);

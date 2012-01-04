@@ -24,17 +24,22 @@ import java.util.List;
  * User: Dallan
  * Date: 12/25/11
  *
- * omit: Submitter, >1 Reference, Reference type, Association, Restriction, anci, desi
- * add: Uid, Address, phone, title (is a Name)
+ * omit: Submitter, Reference type, Restriction, >1 anci, >1 desi
+ * add: Uid, Address, phone, email, title (is a Name)
  * change: alia from xref to Name
  */
 public class Person extends PersonFamilyCommonContainer {
    private List<Name> names = null;
    private List<ParentFamilyRef> famc = null;
    private List<SpouseFamilyRef> fams = null;
+   private List<Association> assos = null;
+   private String anci = null;
+   private String desi = null;
+   private String rfn = null;
    private Address addr = null;
    private String phon = null;
-   private String rfn = null;
+   private String email = null;
+   private String emailTag = null;
    // TODO add living flag
    // TODO add getUniqueIdentifier convenience function
    // TODO add getAllNames convenience function, which breaks out Name.aka and Name.marriedName into separate names, giving each its own type
@@ -113,6 +118,45 @@ public class Person extends PersonFamilyCommonContainer {
       fams.add(spouseFamilyRef);
    }
 
+   public List<Association> getAssociations() {
+      return assos != null ? assos : Collections.<Association>emptyList();
+   }
+
+   public void setAssociations(List<Association> assos) {
+      this.assos = assos;
+   }
+
+   public void addAssociation(Association asso) {
+      if (assos == null) {
+         assos = new ArrayList<Association>();
+      }
+      assos.add(asso);
+   }
+
+   public String getAncestorInterestSubmitterRef() {
+      return anci;
+   }
+
+   public void setAncestorInterestSubmitterRef(String anci) {
+      this.anci = anci;
+   }
+
+   public String getDescendantInterestSubmitterRef() {
+      return desi;
+   }
+
+   public void setDescendantInterestSubmitterRef(String desi) {
+      this.desi = desi;
+   }
+
+   public String getRecordFileNumber() {
+      return rfn;
+   }
+
+   public void setRecordFileNumber(String rfn) {
+      this.rfn = rfn;
+   }
+
    public Address getAddress() {
       return addr;
    }
@@ -129,12 +173,20 @@ public class Person extends PersonFamilyCommonContainer {
       this.phon = phon;
    }
 
-   public String getRecordFileNumber() {
-      return rfn;
+   public String getEmail() {
+      return email;
    }
 
-   public void setRecordFileNumber(String rfn) {
-      this.rfn = rfn;
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String getEmailTag() {
+      return emailTag;
+   }
+
+   public void setEmailTag(String emailTag) {
+      this.emailTag = emailTag;
    }
 
    public void accept(Visitor visitor) {
@@ -147,6 +199,9 @@ public class Person extends PersonFamilyCommonContainer {
       }
       for (SpouseFamilyRef spouseFamilyRef : getSpouseFamilyRefs()) {
          spouseFamilyRef.accept(visitor);
+      }
+      for (Association association : getAssociations()) {
+         association.accept(visitor);
       }
       if (addr != null) {
          addr.accept(visitor);

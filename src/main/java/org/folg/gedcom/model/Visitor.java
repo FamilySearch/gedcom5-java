@@ -22,6 +22,7 @@ package org.folg.gedcom.model;
  */
 public class Visitor {
    public void visit(Address address) {}
+   public void visit(Association association) {}
    public void visit(Change change) {}
    public void visit(CharacterSet characterSet) {}
    public void visit(ChildRef childRef) {}

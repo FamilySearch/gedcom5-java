@@ -18,6 +18,7 @@ package org.folg.gedcom.parser;
 
 import org.folg.gedcom.model.ExtensionContainer;
 
+import javax.management.RuntimeErrorException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -73,7 +74,21 @@ public class FieldRef {
    }
 
    public void appendValue(String value) throws NoSuchMethodException {
-      String currentValue = getValue();
-      setValue((currentValue == null ? "" : currentValue) + value);
+      try {
+         String currentValue = getValue();
+         setValue((currentValue == null ? "" : currentValue) + value);
+      } catch (NoSuchMethodException e) {
+         // try "add"
+         try {
+            Method method = target.getClass().getMethod("add"+name, String.class);
+            method.invoke(target, value);
+         } catch (InvocationTargetException e1) {
+            e1.printStackTrace();
+            throw new RuntimeException(e);
+         } catch (IllegalAccessException e1) {
+            e1.printStackTrace();
+            throw new RuntimeException(e);
+         }
+      }
    }
 }

@@ -19,10 +19,13 @@ package org.folg.gedcom.model;
 /**
  * User: Dallan
  * Date: 12/27/11
+ *
+ * omit: submitter, famf, temp, ance, rin
  */
 public class Submission extends ExtensionContainer {
    private String id = null;
    private String desc = null;
+   private String ordi = null;
 
    public String getId() {
       return id;
@@ -38,6 +41,14 @@ public class Submission extends ExtensionContainer {
 
    public void setDescription(String desc) {
       this.desc = desc;
+   }
+
+   public String getOrdinanceFlag() {
+      return ordi;
+   }
+
+   public void setOrdinanceFlag(String ordi) {
+      this.ordi = ordi;
    }
 
    public void accept(Visitor visitor) {

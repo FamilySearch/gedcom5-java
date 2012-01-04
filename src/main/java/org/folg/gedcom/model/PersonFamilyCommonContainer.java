@@ -28,7 +28,7 @@ public abstract class PersonFamilyCommonContainer extends SourceCitationContaine
    private String id = null;
    private List<EventFact> eventsFacts = null;
    private List<LdsOrdinance> ldsOrdinances = null;
-   private String refn = null;
+   private List<String> refns = null;
    private String rin = null;
    private Change chan = null;
    private String _uid = null;
@@ -72,12 +72,19 @@ public abstract class PersonFamilyCommonContainer extends SourceCitationContaine
       ldsOrdinances.add(ldsOrdinance);
    }
 
-   public String getReferenceNumber() {
-      return refn;
+   public List<String> getReferenceNumbers() {
+      return refns != null ? refns : Collections.<String>emptyList();
    }
 
-   public void setReferenceNumber(String refn) {
-      this.refn = refn;
+   public void setReferenceNumbers(List<String> refns) {
+      this.refns = refns;
+   }
+
+   public void addReferenceNumber(String refn) {
+      if (refns == null) {
+         refns = new ArrayList<String>();
+      }
+      refns.add(refn);
    }
 
    public String getRin() {

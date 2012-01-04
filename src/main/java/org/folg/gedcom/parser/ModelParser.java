@@ -73,10 +73,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
    
    public static enum Tag {
-      ABBR, ADDR, ADR1, ADR2, _AKA, ALIA, AUTH,
+      ABBR, ADDR, ADR1, ADR2, _AKA, ALIA, ANCI, ASSO, AUTH,
       BLOB,
       CALN, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
-      DATA, DATE, DESC, DEST,
+      DATA, DATE, DESC, DESI, DEST,
       EMAIL, _EMAIL, _EML,
       FAM, FAMC, FAMS, _FILE, FILE, FORM, _FREL,
       GED, GEDC, GIVN,
@@ -85,11 +85,11 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       LANG,
       _MARRNM, _MARNM, MEDI, _MREL,
       NAME, _NAME, NICK, NOTE, NPFX, NSFX,
-      OBJE,
+      OBJE, ORDI,
       PAGE, _PAREN, PEDI, PHON, POST, PLAC, _PREF, _PRIM, _PRIMARY, PUBL,
       QUAY,
       REFN, REPO, RFN, RIN, 
-      _SCBK, SOUR, SPFX, STAE, STAT, SUBM, SUBN, SURN,
+      _SCBK, SOUR, SPFX, _SSHOW, STAE, STAT, SUBM, SUBN, SURN,
       TEMP, TEXT, TIME, TITL, TRLR, TYPE, _TYPE,
       UID, _UID, _URL,
       VERS,
@@ -106,7 +106,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       String id = atts.getValue("ID");
       String ref = atts.getValue("REF");
       Object tos = objectStack.size() > 0 ? objectStack.peek() : null;
-      Object obj;
+      Object obj = null;
       
       try { 
          Tag tag = Tag.valueOf(tagNameUpper);
@@ -128,6 +128,12 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case ALIA:
                obj = handleAlia(tos, ref);
+               break;
+            case ANCI:
+               obj = handleAnci(tos, ref);
+               break;
+            case ASSO:
+               obj = handleAsso(tos, ref);
                break;
             case AUTH:
                obj = handleAuth(tos);
@@ -173,6 +179,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case DESC:
                obj = handleDesc(tos);
+               break;
+            case DESI:
+               obj = handleDesi(tos, ref);
                break;
             case DEST:
                obj = handleDest(tos);
@@ -254,6 +263,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             case OBJE:
                obj = handleObje(tos, id, ref);
                break;
+            case ORDI:
+               obj = handleOrdi(tos);
+               break;
             case PAGE:
                obj = handlePage(tos);
                break;
@@ -305,6 +317,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case SPFX:
                obj = handleSpfx(tos);
+               break;
+            case _SSHOW:
+               obj = handleSshow(tos);
                break;
             case STAE:
                obj = handleStae(tos);
@@ -371,7 +386,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                throw new SAXParseException("handler not found for tag: "+tag.name(), locator);
          }
       } catch (IllegalArgumentException e) {
-         // handle event / fact tags
+         // handle events/facts below
+      }
+      if (obj == null) {
          obj = handleEventFact(tos, tagName, tagNameUpper);
       }
 
@@ -468,6 +485,26 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   private Object handleAnci(Object tos, String ref) {
+      if (tos instanceof Person && ((Person)tos).getAncestorInterestSubmitterRef() == null && ref != null) {
+         ((Person)tos).setAncestorInterestSubmitterRef(ref);
+         return new FieldRef(tos, "AncestorInterestSubmitterRef");
+      }
+      return null;
+   }
+
+   private Object handleAsso(Object tos, String ref) {
+      if (tos instanceof Person) {
+         Association association = new Association();
+         if (ref != null) {
+            association.setRef(ref);
+         }
+         ((Person)tos).addAssociation(association);
+         return association;
+      }
+      return null;
+   }
+
    private Object handleAuth(Object tos) {
       if (tos instanceof Source && ((Source)tos).getAuthor() == null) {
          return new FieldRef(tos, "Author");
@@ -483,7 +520,8 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    private Object handleCaln(Object tos) {
-      if (tos instanceof RepositoryRef && ((RepositoryRef)tos).getCallNumber() == null) {
+      if ((tos instanceof RepositoryRef && ((RepositoryRef)tos).getCallNumber() == null) ||
+          (tos instanceof Source && ((Source)tos).getCallNumber() == null)) {
          return new FieldRef(tos, "CallNumber");
       }
       return null;
@@ -630,6 +668,14 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   private Object handleDesi(Object tos, String ref) {
+      if (tos instanceof Person && ((Person)tos).getDescendantInterestSubmitterRef() == null && ref != null) {
+         ((Person)tos).setDescendantInterestSubmitterRef(ref);
+         return new FieldRef(tos, "DescendantInterestSubmitterRef");
+      }
+      return null;
+   }
+
    private Object handleDest(Object tos) {
       if (tos instanceof Header && ((Header)tos).getDestination() == null) {
          return new FieldRef(tos, "Destination");
@@ -639,9 +685,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    private Object handleEmail(Object tos, String tagName) {
       if ((tos instanceof Submitter && ((Submitter)tos).getEmail() == null) ||
+          (tos instanceof Person && ((Person)tos).getEmail() == null) ||
           (tos instanceof Repository && ((Repository)tos).getEmail() == null)) {
          if (tos instanceof Submitter) {
             ((Submitter)tos).setEmailTag(tagName);
+         }
+         else if (tos instanceof Person) {
+            ((Person)tos).setEmailTag(tagName);
          }
          else {
             ((Repository)tos).setEmailTag(tagName);
@@ -927,6 +977,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   private Object handleOrdi(Object tos) {
+      if (tos instanceof Submission && ((Submission)tos).getOrdinanceFlag() == null) {
+         return new FieldRef(tos, "OrdinanceFlag");
+      }
+      return null;
+   }
+
    private Object handlePage(Object tos) {
       if (tos instanceof SourceCitation && ((SourceCitation)tos).getPage() == null) {
          return new FieldRef(tos, "Page");
@@ -1002,8 +1059,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    private Object handleRefn(Object tos) {
-      if ((tos instanceof PersonFamilyCommonContainer && ((PersonFamilyCommonContainer)tos).getReferenceNumber() == null) ||
-          (tos instanceof Source && ((Source)tos).getReferenceNumber() == null)) {
+      if (tos instanceof PersonFamilyCommonContainer) {
+         return new FieldRef(tos, "ReferenceNumber");
+      }
+      else if (tos instanceof Source && ((Source)tos).getReferenceNumber() == null) {
          return new FieldRef(tos, "ReferenceNumber");
       }
       return null;
@@ -1102,6 +1161,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private Object handleSpfx(Object tos) {
       if (tos instanceof Name && ((Name)tos).getSurnamePrefix() == null) {
          return new FieldRef(tos, "SurnamePrefix");
+      }
+      return null;
+   }
+
+   private Object handleSshow(Object tos) {
+      if (tos instanceof Media && ((Media)tos).getSlideShow() == null) {
+         return new FieldRef(tos, "SlideShow");
       }
       return null;
    }
