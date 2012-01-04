@@ -33,6 +33,10 @@ public class Association extends ExtensionContainer {
       this.ref = ref;
    }
 
+   public Person getPerson(Gedcom gedcom) {
+      return gedcom.getPerson(ref);
+   }
+
    public String getType() {
       return type;
    }

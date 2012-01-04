@@ -1,0 +1,66 @@
+<class-diagram version="1.0.6" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Submitter" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/Submitter.java" binary="false">    
+    <position height="-1" width="-1" x="322" y="58"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Address" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/Address.java" binary="false">    
+    <position height="176" width="103" x="101" y="206"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Change" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/Change.java" binary="false">    
+    <position height="64" width="103" x="390" y="180"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.DateTime" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/DateTime.java" binary="false">    
+    <position height="-1" width="-1" x="442" y="330"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <association id="5">    
+    <bendpoint x="159" y="159"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="6" name="addr"/>      
+      <multiplicity id="7" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="8">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="9" name="date"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <bendpoint x="442" y="150"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="chan"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="false" package="false" protected="false" private="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

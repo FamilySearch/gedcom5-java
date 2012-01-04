@@ -17,12 +17,10 @@
 package org.folg.gedcom.parser;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import org.folg.gedcom.model.Extensions;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

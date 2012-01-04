@@ -96,10 +96,8 @@ public class GedcomAnalyzer implements ErrorHandler {
          if (errors.size() > 0) {
             cntErrors++;
          }
-         if (warnings.size() == 1 && errors.size() == 0) {
-            for (String warning : warnings) {
-               ccWarnings.add(warning);
-            }
+         for (String warning : warnings) {
+            ccWarnings.add(warning);
          }
          for (String error : errors) {
             ccErrors.add(error);

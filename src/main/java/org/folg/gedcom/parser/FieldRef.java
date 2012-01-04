@@ -16,9 +16,6 @@
 
 package org.folg.gedcom.parser;
 
-import org.folg.gedcom.model.ExtensionContainer;
-
-import javax.management.RuntimeErrorException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
