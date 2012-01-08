@@ -190,23 +190,24 @@ public class Person extends PersonFamilyCommonContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      for (Name name : getNames()) {
-         name.accept(visitor);
+      if (visitor.visit(this)) {
+         for (Name name : getNames()) {
+            name.accept(visitor);
+         }
+         for (ParentFamilyRef parentFamilyRef : getParentFamilyRefs()) {
+            parentFamilyRef.accept(visitor);
+         }
+         for (SpouseFamilyRef spouseFamilyRef : getSpouseFamilyRefs()) {
+            spouseFamilyRef.accept(visitor);
+         }
+         for (Association association : getAssociations()) {
+            association.accept(visitor);
+         }
+         if (addr != null) {
+            addr.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      for (ParentFamilyRef parentFamilyRef : getParentFamilyRefs()) {
-         parentFamilyRef.accept(visitor);
-      }
-      for (SpouseFamilyRef spouseFamilyRef : getSpouseFamilyRefs()) {
-         spouseFamilyRef.accept(visitor);
-      }
-      for (Association association : getAssociations()) {
-         association.accept(visitor);
-      }
-      if (addr != null) {
-         addr.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

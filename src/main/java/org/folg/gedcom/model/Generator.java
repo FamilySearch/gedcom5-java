@@ -68,14 +68,15 @@ public class Generator extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (corp != null) {
-         corp.accept(visitor);
+      if (visitor.visit(this)) {
+         if (corp != null) {
+            corp.accept(visitor);
+         }
+         if (data != null) {
+            data.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      if (data != null) {
-         data.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

@@ -19,38 +19,41 @@ package org.folg.gedcom.model;
 /**
  * User: Dallan
  * Date: 12/25/11
+ * 
+ *  If you override these functions, return false if you don't want to visit an object's children
  */
 public class Visitor {
-   public void visit(Address address) {}
-   public void visit(Association association) {}
-   public void visit(Change change) {}
-   public void visit(CharacterSet characterSet) {}
-   public void visit(ChildRef childRef) {}
-   public void visit(DateTime dateTime) {}
-   public void visit(EventFact eventFact) {}
-   public void visit(String extensionKey, Object extension) {}
-   public void visit(Family family) {}
-   public void visit(SpouseRef spouseRef, boolean isHusband) {}
-   public void visit(SpouseFamilyRef spouseFamilyRef) {}
-   public void visit(Gedcom gedcom) {}
-   public void visit(GedcomVersion gedcomVersion) {}
-   public void visit(Generator generator) {}
-   public void visit(GeneratorCorporation generatorCorporation) {}
-   public void visit(GeneratorData generatorData) {}
-   public void visit(Header header) {}
-   public void visit(LdsOrdinance ldsOrdinance) {}
-   public void visit(Media media) {}
-   public void visit(Name name) {}
-   public void visit(Note note) {}
-   public void visit(NoteRef noteRef) {}
-   public void visit(ParentFamilyRef parentFamilyRef) {}
-   public void visit(ParentRelationship parentRelationship, boolean isFather) {}
-   public void visit(Person person) {}
-   public void visit(Repository repository) {}
-   public void visit(RepositoryRef repositoryRef) {}
-   public void visit(Source source) {}
-   public void visit(SourceCitation sourceCitation) {}
-   public void visit(Submission submission) {}
-   public void visit(Submitter submitter) {}
+   public boolean visit(Address address) {return true;}
+   public boolean visit(Association association) {return true;}
+   public boolean visit(Change change) {return true;}
+   public boolean visit(CharacterSet characterSet) {return true;}
+   public boolean visit(ChildRef childRef) {return true;}
+   public boolean visit(DateTime dateTime) {return true;}
+   public boolean visit(EventFact eventFact) {return true;}
+   public boolean visit(String extensionKey, Object extension) {return true;}
+   public boolean visit(Family family) {return true;}
+   public boolean visit(Gedcom gedcom) {return true;}
+   public boolean visit(GedcomVersion gedcomVersion) {return true;}
+   public boolean visit(Generator generator) {return true;}
+   public boolean visit(GeneratorCorporation generatorCorporation) {return true;}
+   public boolean visit(GeneratorData generatorData) {return true;}
+   public boolean visit(Header header) {return true;}
+   public boolean visit(LdsOrdinance ldsOrdinance) {return true;}
+   public boolean visit(Media media) {return true;}
+   public boolean visit(MediaRef mediaRef) {return true;}
+   public boolean visit(Name name) {return true;}
+   public boolean visit(Note note) {return true;}
+   public boolean visit(NoteRef noteRef) {return true;}
+   public boolean visit(ParentFamilyRef parentFamilyRef) {return true;}
+   public boolean visit(ParentRelationship parentRelationship, boolean isFather) {return true;}
+   public boolean visit(Person person) {return true;}
+   public boolean visit(Repository repository) {return true;}
+   public boolean visit(RepositoryRef repositoryRef) {return true;}
+   public boolean visit(Source source) {return true;}
+   public boolean visit(SourceCitation sourceCitation) {return true;}
+   public boolean visit(SpouseRef spouseRef, boolean isHusband) {return true;}
+   public boolean visit(SpouseFamilyRef spouseFamilyRef) {return true;}
+   public boolean visit(Submission submission) {return true;}
+   public boolean visit(Submitter submitter) {return true;}
    public void endVisit(ExtensionContainer obj) {}
 }

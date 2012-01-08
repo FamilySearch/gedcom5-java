@@ -10,7 +10,7 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Media" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/Media.java" binary="false">    
-    <position height="-1" width="-1" x="927" y="352"/>    
+    <position height="-1" width="-1" x="995" y="309"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Note" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/Note.java" binary="false">    
-    <position height="-1" width="-1" x="1130" y="625"/>    
+    <position height="-1" width="-1" x="1114" y="624"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
@@ -83,21 +83,13 @@
   </class>  
   <class id="11" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.SourceCitation" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/SourceCitation.java" binary="false">    
-    <position height="-1" width="-1" x="710" y="508"/>    
+    <position height="-1" width="-1" x="735" y="280"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="12" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.MediaContainer" project="gedcom-new" 
-    file="/gedcom-new/src/main/java/org/folg/gedcom/model/MediaContainer.java" binary="false">    
-    <position height="-1" width="-1" x="926" y="136"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="false" package="false" protected="false" private="false"/>    
-    </display>  
-  </class>  
-  <class id="13" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.PersonFamilyCommonContainer" 
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.PersonFamilyCommonContainer" 
     project="gedcom-new" file="/gedcom-new/src/main/java/org/folg/gedcom/model/PersonFamilyCommonContainer.java" 
     binary="false">    
     <position height="-1" width="-1" x="403" y="142"/>    
@@ -106,7 +98,7 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="14" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Family" project="gedcom-new" 
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Family" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/Family.java" binary="false">    
     <position height="-1" width="-1" x="61" y="142"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -114,7 +106,7 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="15" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.SpouseRef" project="gedcom-new" 
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.SpouseRef" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/SpouseRef.java" binary="false">    
     <position height="-1" width="-1" x="49" y="291"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -122,7 +114,7 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="16" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.ChildRef" project="gedcom-new" 
+  <class id="15" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.ChildRef" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/ChildRef.java" binary="false">    
     <position height="-1" width="-1" x="-88" y="287"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -130,7 +122,7 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="17" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.ParentRelationship" 
+  <class id="16" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.ParentRelationship" 
     project="gedcom-new" file="/gedcom-new/src/main/java/org/folg/gedcom/model/ParentRelationship.java" binary="false">    
     <position height="-1" width="-1" x="-72" y="437"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -138,7 +130,7 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="18" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Person" project="gedcom-new" 
+  <class id="17" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Person" project="gedcom-new" 
     file="/gedcom-new/src/main/java/org/folg/gedcom/model/Person.java" binary="false">    
     <position height="-1" width="-1" x="49" y="592"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -146,182 +138,223 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="20">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="21" name="media"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="24" name="sourceCitations"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="27">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="28" name="chan"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="31">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="32" name="sourceCitations"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <bendpoint x="35" y="226"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="35" name="wifeRefs"/>      
-      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="38">    
-    <bendpoint x="-10" y="378"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="39" name="_mrel"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="42" name="childRefs"/>      
-      <multiplicity id="43" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="12"/>    
+  <class id="18" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.Source" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/Source.java" binary="false">    
+    <position height="-1" width="-1" x="735" y="572"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="19" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.MediaContainer" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/MediaContainer.java" binary="false">    
+    <position height="-1" width="-1" x="935" y="134"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="20" corner="BOTTOM_RIGHT" language="java" name="org.folg.gedcom.model.MediaRef" project="gedcom-new" 
+    file="/gedcom-new/src/main/java/org/folg/gedcom/model/MediaRef.java" binary="false">    
+    <position height="-1" width="-1" x="867" y="264"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="45">    
+  <association id="22">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="46" name="noteRefs"/>      
-      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="48">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <association id="49">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="50" name="eventsFacts"/>      
-      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="53" name="date"/>      
-      <multiplicity id="54" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="56" name="addr"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <association id="59">    
-    <bendpoint x="126" y="235"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="60" name="husbandRefs"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="63" name="notes"/>      
-      <multiplicity id="64" minimum="0" maximum="2147483647"/>    
+      <attribute id="23" name="notes"/>      
+      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="65">    
+  <association id="25">    
+    <bendpoint x="126" y="235"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="26" name="husbandRefs"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="29" name="chan"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="32" name="noteRefs"/>      
+      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <association id="38">    
+    <bendpoint x="930" y="539"/>    
     <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="39" name="sourceCitations"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="42">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="43" name="date"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="48">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="49" name="addr"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <bendpoint x="-123" y="386"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="52" name="_frel"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="55" name="ldsOrdinances"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="58">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="59" name="media"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="62" name="childRefs"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <association id="65">    
+    <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="66" name="sourceCitations"/>      
       <multiplicity id="67" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="68">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="70">    
-    <end type="SOURCE" refId="13"/>    
+  <association id="68">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="69" name="mediaRefs"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
-  <association id="71">    
-    <bendpoint x="-123" y="386"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="72" name="_frel"/>      
-      <multiplicity id="73" minimum="0" maximum="1"/>    
+  <association id="72">    
+    <bendpoint x="-10" y="378"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="73" name="_mrel"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="74">    
+  <association id="75">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="76" name="sourceCitations"/>      
+      <multiplicity id="77" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="78">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="79">    
+    <bendpoint x="35" y="226"/>    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="75" name="ldsOrdinances"/>      
-      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
+      <attribute id="80" name="wifeRefs"/>      
+      <multiplicity id="81" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="77">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
+  <association id="82">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="83" name="eventsFacts"/>      
+      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="false" package="false" protected="false" private="false"/>  

@@ -42,8 +42,9 @@ public class DateTime extends ExtensionContainer {
 
    @Override
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
+      if (visitor.visit(this)) {
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
+      }
    }
 }

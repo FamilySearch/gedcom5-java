@@ -125,11 +125,12 @@ public class Media extends NoteContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (chan != null) {
-         chan.accept(visitor);
+      if (visitor.visit(this)) {
+         if (chan != null) {
+            chan.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

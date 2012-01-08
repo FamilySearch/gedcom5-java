@@ -31,11 +31,11 @@ public class SourceCitation extends MediaContainer {
    private String text = null;
    private String quay = null;
 
-   public String getSourceRef() {
+   public String getRef() {
       return ref;
    }
 
-   public void setSourceRef(String ref) {
+   public void setRef(String ref) {
       this.ref = ref;
    }
 
@@ -92,8 +92,9 @@ public class SourceCitation extends MediaContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
+      if (visitor.visit(this)) {
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
+      }
    }
 }

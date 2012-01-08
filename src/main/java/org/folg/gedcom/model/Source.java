@@ -201,14 +201,15 @@ public class Source extends MediaContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (repo != null) {
-         repo.accept(visitor);
+      if (visitor.visit(this)) {
+         if (repo != null) {
+            repo.accept(visitor);
+         }
+         if (chan != null) {
+            chan.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      if (chan != null) {
-         chan.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

@@ -32,11 +32,12 @@ public class Change extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (date != null) {
-         date.accept(visitor);
+      if (visitor.visit(this)) {
+         if (date != null) {
+            date.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

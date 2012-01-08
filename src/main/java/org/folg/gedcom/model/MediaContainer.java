@@ -25,7 +25,7 @@ import java.util.List;
  * Date: 12/30/11
  */
 public abstract class MediaContainer extends NoteContainer {
-   private List<String> mediaRefs = null;
+   private List<MediaRef> mediaRefs = null;
    private List<Media> media = null;
 
    /**
@@ -35,8 +35,8 @@ public abstract class MediaContainer extends NoteContainer {
     */
    public List<Media> getAllMedia(Gedcom gedcom) {
       List<Media> media = new ArrayList<Media>();
-      for (String mediaRef : getMediaRefs()) {
-         Media m = gedcom.getMedia(mediaRef);
+      for (MediaRef mediaRef : getMediaRefs()) {
+         Media m = mediaRef.getMedia(gedcom);
          if (m != null) {
             media.add(m);
          }
@@ -45,17 +45,17 @@ public abstract class MediaContainer extends NoteContainer {
       return media;
    }
 
-   public List<String> getMediaRefs() {
-      return mediaRefs != null ? mediaRefs : Collections.<String>emptyList();
+   public List<MediaRef> getMediaRefs() {
+      return mediaRefs != null ? mediaRefs : Collections.<MediaRef>emptyList();
    }
 
-   public void setMediaRefs(List<String> mediaRefs) {
+   public void setMediaRefs(List<MediaRef> mediaRefs) {
       this.mediaRefs = mediaRefs;
    }
 
-   public void addMediaRef(String mediaRef) {
+   public void addMediaRef(MediaRef mediaRef) {
       if (mediaRefs == null) {
-         mediaRefs = new ArrayList<String>();
+         mediaRefs = new ArrayList<MediaRef>();
       }
       mediaRefs.add(mediaRef);
    }
@@ -76,6 +76,9 @@ public abstract class MediaContainer extends NoteContainer {
    }
 
    public void visitContainedObjects(Visitor visitor) {
+      for (MediaRef mediaRef : getMediaRefs()) {
+         mediaRef.accept(visitor);
+      }
       for (Media m : getMedia()) {
          m.accept(visitor);
       }

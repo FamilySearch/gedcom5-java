@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 import java.net.URL;
 
+import com.sun.deploy.net.proxy.StaticProxyManager;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
@@ -111,95 +112,99 @@ public class GedcomParser implements XMLReader, Locator {
       // We will only try to read the first 100 lines of
       // the file attempting to get the char encoding.
       String line;
-      String encoding = "";
-      String generatorName = "";
-      String generatorVersion = "";
+      String generatorName = null;
+      String encoding = null;
+      String version = null;
       for (int i = 0; i < 100; i++) {
          line = in.readLine();
          if (line != null) {
             String [] split = line.trim().split("\\s+", 3);
             if (split.length == 3) {
-               if (generatorName.length() == 0 &&
+               if (generatorName == null &&
                        split[0].equals("1") &&
                        split[1].equals("SOUR")) {
                   generatorName = split[2];
-               } else if (generatorName.length() > 0 &&
-                       generatorVersion.length() == 0 &&
-                       split[0].equals("2") &&
-                       split[1].equals("VER")) {
-                  generatorVersion = split[2];
                }
                else if (split[0].equals("1") &&
                        (split[1].equals("CHAR") || split[1].equals("CHARACTER"))) {
                   // get encoding
                   encoding = split[2].toUpperCase();
-
-                  // correct incorrectly-assigned encoding values
-                  if (generatorName.equals("GeneWeb") && encoding.equals("ASCII")) {
-                     // GeneWeb ASCII -> Cp1252 (ANSI)
-                     encoding = "Cp1252";
-                  }
-                  else if (generatorName.equals("Geni.com") && encoding.equals("UNICODE")) {
-                     // Geni.com UNICODE -> UTF-8
-                     encoding = "UTF-8";
-                  }
-                  else if (generatorName.equals("Geni.com") && encoding.equals("ANSEL")) {
-                     // Geni.com ANSEL -> UTF-8
-                     encoding = "UTF-8";
-                  }
-                  else if (generatorName.equals("GENJ") && encoding.equals("UNICODE")) {
-                     // GENJ UNICODE -> UTF-8
-                     encoding = "UTF-8";
-                  }
-
-                  // make encoding value java-friendly
-                  else if (encoding.equals("ASCII")) { // ASCII followed by VERS MacOS Roman is MACINTOSH
-                     line = in.readLine();
-                     if (line != null) {
-                        split = line.trim().split("\\s+", 3);
-                        if (split.length == 3 && split[0].equals("2") && split[1].equals("VERS")) {
-                           String version = split[2];
-                           if (version.equals("MacOS Roman")) {
-                              encoding = "x-MacRoman";
-                           }
-                        }
+                  // look for version
+                  line = in.readLine();
+                  if (line != null) {
+                     split = line.trim().split("\\s+", 3);
+                     if (split.length == 3 && split[0].equals("2") && split[1].equals("VERS")) {
+                        version = split[2];
                      }
                   }
-                  else if (encoding.equals("ATARIST_ASCII")) {
-                     encoding = "ASCII";
-                  }
-                  else if (encoding.equals("MACROMAN") || encoding.equals("MACINTOSH")) {
-                     encoding = "x-MacRoman";
-                  }
-                  else if (encoding.equals("ANSI") || encoding.equals("IBM WINDOWS")) {
-                     encoding = "Cp1252";
-                  }
-                  else if (encoding.equals("WINDOWS-874")) {
-                     encoding = "Cp874";
-                  }
-                  else if (encoding.equals("WINDOWS-1251")) {
-                     encoding = "Cp1251";
-                  }
-                  else if (encoding.equals("WINDOWS-1254")) {
-                     encoding = "Cp1254";
-                  }
-                  else if (encoding.equals("IBMPC") || encoding.equals("IBM DOS")) {
-                     encoding = "Cp850";
-                  }
-                  else if (encoding.equals("UNICODE")) {
-                     encoding = "UTF-16";
-                  }
-                  else if (encoding.equals("UTF-16BE")) {
-                     encoding = "UnicodeBigUnmarked";
-                  }
-
-                  break;
                }
             }
          }
+         if (generatorName != null && encoding != null) {
+            break; // got what we need
+         }
+      }
+      in.close();
+
+      return getJavaCharsetName(generatorName, encoding, version);
+   }
+
+   public static String getJavaCharsetName(String generatorName, String encoding, String version) {
+      // correct incorrectly-assigned encoding values
+      if ("GeneWeb".equals(generatorName) && "ASCII".equals(encoding)) {
+         // GeneWeb ASCII -> Cp1252 (ANSI)
+         encoding = "Cp1252";
+      }
+      else if ("Geni.com".equals(generatorName) && "UNICODE".equals(encoding)) {
+         // Geni.com UNICODE -> UTF-8
+         encoding = "UTF-8";
+      }
+      else if ("Geni.com".equals(generatorName) && "ANSEL".equals(encoding)) {
+         // Geni.com ANSEL -> UTF-8
+         encoding = "UTF-8";
+      }
+      else if ("GENJ".equals(generatorName) && "UNICODE".equals(encoding)) {
+         // GENJ UNICODE -> UTF-8
+         encoding = "UTF-8";
       }
 
-      in.close();
+      // make encoding value java-friendly
+      else if ("ASCII".equals(encoding)) { // ASCII followed by VERS MacOS Roman is MACINTOSH
+         if (version.equals("MacOS Roman")) {
+            encoding = "x-MacRoman";
+         }
+      }
+      else if ("ATARIST_ASCII".equals(encoding)) {
+         encoding = "ASCII";
+      }
+      else if ("MACROMAN".equals(encoding) || "MACINTOSH".equals(encoding)) {
+         encoding = "x-MacRoman";
+      }
+      else if ("ANSI".equals(encoding) || "IBM WINDOWS".equals(encoding)) {
+         encoding = "Cp1252";
+      }
+      else if ("WINDOWS-874".equals(encoding)) {
+         encoding = "Cp874";
+      }
+      else if ("WINDOWS-1251".equals(encoding)) {
+         encoding = "Cp1251";
+      }
+      else if ("WINDOWS-1254".equals(encoding)) {
+         encoding = "Cp1254";
+      }
+      else if ("IBMPC".equals(encoding) || "IBM DOS".equals(encoding)) {
+         encoding = "Cp850";
+      }
+      else if ("UNICODE".equals(encoding)) {
+         encoding = "UTF-16";
+      }
+      else if ("UTF-16BE".equals(encoding)) {
+         encoding = "UnicodeBigUnmarked";
+      }
+      else if (encoding == null) {
+         encoding = ""; // not found
+      }
+
       return encoding;
    }
 

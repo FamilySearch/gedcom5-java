@@ -43,14 +43,15 @@ public class ChildRef extends SpouseRef {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (_frel != null) {
-         _frel.accept(visitor, true);
+      if (visitor.visit(this)) {
+         if (_frel != null) {
+            _frel.accept(visitor, true);
+         }
+         if (_mrel != null) {
+            _mrel.accept(visitor, false);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      if (_mrel != null) {
-         _mrel.accept(visitor, false);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

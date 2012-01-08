@@ -62,11 +62,12 @@ public class NoteRef extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      for (SourceCitation sourceCitation : getSourceCitations()) {
-         sourceCitation.accept(visitor);
+      if (visitor.visit(this)) {
+         for (SourceCitation sourceCitation : getSourceCitations()) {
+            sourceCitation.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

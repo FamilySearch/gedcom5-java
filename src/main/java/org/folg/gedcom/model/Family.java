@@ -123,17 +123,18 @@ public class Family extends PersonFamilyCommonContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      for (SpouseRef husband : getHusbandRefs()) {
-         husband.accept(visitor, true);
+      if (visitor.visit(this)) {
+         for (SpouseRef husband : getHusbandRefs()) {
+            husband.accept(visitor, true);
+         }
+         for (SpouseRef wife : getWifeRefs()) {
+            wife.accept(visitor, false);
+         }
+         for (ChildRef childRef : getChildRefs()) {
+            childRef.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      for (SpouseRef wife : getWifeRefs()) {
-         wife.accept(visitor, false);
-      }
-      for (ChildRef childRef : getChildRefs()) {
-         childRef.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

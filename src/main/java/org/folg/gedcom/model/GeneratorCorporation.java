@@ -70,11 +70,12 @@ public class GeneratorCorporation extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (addr != null) {
-         addr.accept(visitor);
+      if (visitor.visit(this)) {
+         if (addr != null) {
+            addr.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

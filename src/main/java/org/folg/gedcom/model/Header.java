@@ -149,26 +149,27 @@ public class Header extends NoteContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (sour != null) {
-         sour.accept(visitor);
+      if (visitor.visit(this)) {
+         if (sour != null) {
+            sour.accept(visitor);
+         }
+         if (date != null) {
+            date.accept(visitor);
+         }
+         if (subm != null) {
+            subm.accept(visitor);
+         }
+         if (subn != null) {
+            subn.accept(visitor);
+         }
+         if (gedc != null) {
+            gedc.accept(visitor);
+         }
+         if (charset != null) {
+            charset.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      if (date != null) {
-         date.accept(visitor);
-      }
-      if (subm != null) {
-         subm.accept(visitor);
-      }
-      if (subn != null) {
-         subn.accept(visitor);
-      }
-      if (gedc != null) {
-         gedc.accept(visitor);
-      }
-      if (charset != null) {
-         charset.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

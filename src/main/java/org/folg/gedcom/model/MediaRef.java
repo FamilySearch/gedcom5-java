@@ -18,12 +18,10 @@ package org.folg.gedcom.model;
 
 /**
  * User: dallan
- * Date: 1/3/12
+ * Date: 1/7/12
  */
-public class Association extends ExtensionContainer {
+public class MediaRef extends ExtensionContainer {
    private String ref = null;
-   private String type = null;
-   private String rela = null;
 
    public String getRef() {
       return ref;
@@ -33,24 +31,13 @@ public class Association extends ExtensionContainer {
       this.ref = ref;
    }
 
-   public Person getPerson(Gedcom gedcom) {
-      return gedcom.getPerson(ref);
-   }
-
-   public String getType() {
-      return type;
-   }
-
-   public void setType(String type) {
-      this.type = type;
-   }
-
-   public String getRelation() {
-      return rela;
-   }
-
-   public void setRelation(String rela) {
-      this.rela = rela;
+   /**
+    * Convenience function to dereference media
+    * @param gedcom Gedcom
+    * @return referenced media
+    */
+   public Media getMedia(Gedcom gedcom) {
+      return gedcom.getMedia(ref);
    }
 
    public void accept(Visitor visitor) {

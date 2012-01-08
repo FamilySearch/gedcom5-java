@@ -244,35 +244,36 @@ public class Gedcom extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (head != null) {
-         visitor.visit(head);
+      if (visitor.visit(this)) {
+         if (head != null) {
+            head.accept(visitor);
+         }
+         if (subm != null) {
+            subm.accept(visitor);
+         }
+         if (subn != null) {
+            subn.accept(visitor);
+         }
+         for (Person person : getPeople()) {
+            person.accept(visitor);
+         }
+         for (Family family : getFamilies()) {
+            family.accept(visitor);
+         }
+         for (Media media : getMedia()) {
+            media.accept(visitor);
+         }
+         for (Note note : getNotes()) {
+            note.accept(visitor);
+         }
+         for (Source source : getSources()) {
+            source.accept(visitor);
+         }
+         for (Repository repository : getRepositories()) {
+            repository.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      if (subm != null) {
-         visitor.visit(subm);
-      }
-      if (subn != null) {
-         visitor.visit(subn);
-      }
-      for (Person person : getPeople()) {
-         person.accept(visitor);
-      }
-      for (Family family : getFamilies()) {
-         family.accept(visitor);
-      }
-      for (Media media : getMedia()) {
-         media.accept(visitor);
-      }
-      for (Note note : getNotes()) {
-         note.accept(visitor);
-      }
-      for (Source source : getSources()) {
-         source.accept(visitor);
-      }
-      for (Repository repository : getRepositories()) {
-         repository.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

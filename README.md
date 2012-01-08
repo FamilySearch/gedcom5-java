@@ -52,8 +52,8 @@ A new proposed object model could use this project to convert existing GEDCOM fi
 to the new model by first converting them to the de facto object model, then
 transforming the objects into the proposed object model.
 
-For more information about the object model, see the
-[wiki](https://github.com/DallanQ/Gedcom/wiki).
+For more information about the object model,
+'''[see the wiki](https://github.com/DallanQ/Gedcom/wiki)'''.
 
 Extendible
 ----------
@@ -88,7 +88,8 @@ any loss of information for the vast majority of GEDCOM files.
 The round-trip capability allows anyone to create programs that read gedcom files,
 do interesting things like generate warnings for suspicious dates in the GEDCOM,
 allow the user to correct the warnings, and save the information back as a GEDCOM
-file without loss of information from the original GEDCOM for nearly all GEDCOMs.
+file without loss of information from the original GEDCOM for the vast majority of
+GEDCOM files.
 
 Roadmap
 -------

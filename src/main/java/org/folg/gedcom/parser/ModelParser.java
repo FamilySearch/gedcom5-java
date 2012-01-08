@@ -962,8 +962,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             return media;
          }
          else {
-            ((MediaContainer)tos).addMediaRef(ref);
-            return new Object(); // placeholder
+            MediaRef mediaRef = new MediaRef();
+            mediaRef.setRef(ref);
+            ((MediaContainer)tos).addMediaRef(mediaRef);
+            return mediaRef;
          }
       }
       else if (tos instanceof Gedcom) {
@@ -1128,7 +1130,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                 ((FieldRef)tos).getFieldName().equals("Value"))) {
          SourceCitation sourceCitation = new SourceCitation();
          if (ref != null) {
-            sourceCitation.setSourceRef(ref);
+            sourceCitation.setRef(ref);
          }
          if (tos instanceof SourceCitationContainer) {
             ((SourceCitationContainer)tos).addSourceCitation(sourceCitation);

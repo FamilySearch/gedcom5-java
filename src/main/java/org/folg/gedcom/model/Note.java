@@ -91,14 +91,15 @@ public class Note extends ExtensionContainer {
    }
 
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      if (chan != null) {
-         chan.accept(visitor);
+      if (visitor.visit(this)) {
+         if (chan != null) {
+            chan.accept(visitor);
+         }
+         for (SourceCitation sourceCitation : getSourceCitations()) {
+            sourceCitation.accept(visitor);
+         }
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
       }
-      for (SourceCitation sourceCitation : getSourceCitations()) {
-         sourceCitation.accept(visitor);
-      }
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
    }
 }

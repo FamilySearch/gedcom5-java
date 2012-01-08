@@ -299,8 +299,9 @@ public class EventFact extends SourceCitationContainer {
 
    @Override
    public void accept(Visitor visitor) {
-      visitor.visit(this);
-      this.visitContainedObjects(visitor);
-      visitor.endVisit(this);
+      if (visitor.visit(this)) {
+         this.visitContainedObjects(visitor);
+         visitor.endVisit(this);
+      }
    }
 }

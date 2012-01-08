@@ -38,8 +38,9 @@ public class ParentRelationship extends SourceCitationContainer {
    }
    
    public void accept(Visitor visitor, boolean isFather) {
-      visitor.visit(this, isFather);
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
+      if (visitor.visit(this, isFather)) {
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
+      }
    }
 }

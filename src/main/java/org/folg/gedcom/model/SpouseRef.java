@@ -59,8 +59,9 @@ public class SpouseRef extends ExtensionContainer {
     * @param isHusband false for wife; ChildRef overrides this method
     */
    public void accept(Visitor visitor, boolean isHusband) {
-      visitor.visit(this, isHusband);
-      super.visitContainedObjects(visitor);
-      visitor.endVisit(this);
+      if (visitor.visit(this, isHusband)) {
+         super.visitContainedObjects(visitor);
+         visitor.endVisit(this);
+      }
    }
 }
