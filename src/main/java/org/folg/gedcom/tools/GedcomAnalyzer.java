@@ -69,10 +69,6 @@ public class GedcomAnalyzer implements ErrorHandler {
 
    public void warning(String message, int lineNumber) {
       warnings.add(message);
-//      if (message.indexOf("GED INDI ANCI") >= 0 ||
-//          message.indexOf("GED INDI DESI") >= 0) {
-//         logger.info(file.getName()+" "+message+" @ "+lineNumber);
-//      }
    }
 
    public void error(String message, int lineNumber) {

@@ -4,7 +4,6 @@ import java.util.*;
 import java.io.*;
 import java.net.URL;
 
-import com.sun.deploy.net.proxy.StaticProxyManager;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
@@ -103,12 +102,12 @@ public class GedcomParser implements XMLReader, Locator {
       return errorHandler;
    }
 
-   public static String getCharEncoding(InputStream is) throws IOException {
+   public static String readCharsetName(InputStream is) throws IOException {
       BufferedReader in = new BufferedReader(new InputStreamReader(is));
-      return getCharEncoding(in);
+      return readCharsetName(in);
    }
 
-   private static String getCharEncoding(BufferedReader in) throws IOException {
+   private static String readCharsetName(BufferedReader in) throws IOException {
       // We will only try to read the first 100 lines of
       // the file attempting to get the char encoding.
       String line;
@@ -146,10 +145,10 @@ public class GedcomParser implements XMLReader, Locator {
       }
       in.close();
 
-      return getJavaCharsetName(generatorName, encoding, version);
+      return getCharsetName(generatorName, encoding, version);
    }
 
-   public static String getJavaCharsetName(String generatorName, String encoding, String version) {
+   public static String getCharsetName(String generatorName, String encoding, String version) {
       // correct incorrectly-assigned encoding values
       if ("GeneWeb".equals(generatorName) && "ASCII".equals(encoding)) {
          // GeneWeb ASCII -> Cp1252 (ANSI)
@@ -170,7 +169,7 @@ public class GedcomParser implements XMLReader, Locator {
 
       // make encoding value java-friendly
       else if ("ASCII".equals(encoding)) { // ASCII followed by VERS MacOS Roman is MACINTOSH
-         if (version.equals("MacOS Roman")) {
+         if ("MacOS Roman".equals(version)) {
             encoding = "x-MacRoman";
          }
       }
@@ -210,13 +209,13 @@ public class GedcomParser implements XMLReader, Locator {
 
    private BufferedReader getBufferedReader(String systemId) throws IOException, SAXException {
       InputStream in = (new URL(systemId)).openStream();
-      String charEncoding = getCharEncoding(in);
+      String charEncoding = readCharsetName(in);
       in.close();
 
       if (charEncoding.length() == 0) {
          // Let's try again with a UTF-16 reader.
          BufferedReader br = new BufferedReader(new InputStreamReader((new URL(systemId)).openStream(), "UTF-16"));
-         charEncoding = getCharEncoding(br);
+         charEncoding = readCharsetName(br);
          br.close();
          if (charEncoding.equals("UTF-16")) {
             // skip over junk at the beginning of the file

@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 /**
  * User: dallan
  * Date: 1/7/12
+ *
+ * Convert a GEDCOM file or directory to the model and back again
  */
 public class Gedcom2Gedcom {
    private static final Logger logger = Logger.getLogger("org.folg.gedcom.tools");
@@ -26,18 +28,16 @@ public class Gedcom2Gedcom {
 
    private ModelParser parser;
    private GedcomWriter writer;
-   private File file;
 
    public Gedcom2Gedcom() {
       parser = new ModelParser();
       writer = new GedcomWriter();
    }
 
-   public void convertGedcom(File gedcomFile) {
-      this.file = gedcomFile;
+   public void convertGedcom(File file) {
       try {
-         Gedcom gedcom = parser.parseGedcom(gedcomFile);
-         OutputStream out = (gedcomOut != null ? new FileOutputStream(new File(gedcomOut, gedcomFile.getName())) :
+         Gedcom gedcom = parser.parseGedcom(file);
+         OutputStream out = (gedcomOut != null ? new FileOutputStream(new File(gedcomOut, file.getName())) :
                                                  new ByteArrayOutputStream());
          writer.write(gedcom, out);
          if (gedcomOut != null) {

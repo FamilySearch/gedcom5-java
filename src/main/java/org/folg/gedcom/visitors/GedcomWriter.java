@@ -28,6 +28,8 @@ import java.util.Stack;
 /**
  * User: Dallan
  * Date: 12/25/11
+ *
+ * Export a model as GEDCOM
  */
 public class GedcomWriter extends Visitor {
 
@@ -61,7 +63,7 @@ public class GedcomWriter extends Visitor {
       String generator = (header != null && header.getGenerator() != null ? header.getGenerator().getName() : null);
       String encoding = (header != null && header.getCharacterSet() != null ? header.getCharacterSet().getValue() : null);
       String version = (header != null && header.getCharacterSet() != null ? header.getCharacterSet().getVersion() : null);
-      String charset = GedcomParser.getJavaCharsetName(generator, encoding, version);
+      String charset = GedcomParser.getCharsetName(generator, encoding, version);
       if (charset.length() == 0) {
          charset = "UTF-8"; // default
       }

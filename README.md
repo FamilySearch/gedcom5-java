@@ -53,7 +53,7 @@ to the new model by first converting them to the de facto object model, then
 transforming the objects into the proposed object model.
 
 For more information about the object model,
-'''[see the wiki](https://github.com/DallanQ/Gedcom/wiki)'''.
+__[see the wiki](https://github.com/DallanQ/Gedcom/wiki)__.
 
 Extendible
 ----------
@@ -66,17 +66,17 @@ Tools
 
 The project includes three parsers:
 
-* from GEDCOM to the de facto object model: the object model and custom extensions
+* from GEDCOM to the de facto object model (ModelParser): the object model and custom extensions
 can be saved as a json file,
 
 * from GEDCOM to a general tree-based object model that captures _everything_ within
-the GEDCOM file (the tree-based object model can also be saved as a json file),
+the GEDCOM file (TreeParser); the tree-based object model can also be saved as a json file,
 
-* from json to the de facto object model or the tree-based object model,
+* from json to the de facto object model or the tree-based object model (JsonPrser),
 
 as well as a GEDCOM export tool:
 
-* from the de facto object model to GEDCOM (coming soon).
+* from the de facto object model to GEDCOM (GedcomWriter).
 
 Round-trippable
 ---------------
