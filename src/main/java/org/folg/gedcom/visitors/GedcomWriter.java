@@ -333,34 +333,28 @@ public class GedcomWriter extends Visitor {
 
    @Override
    public boolean visit(Name name) {
-      // handle ALIA and TITL names later by putting them under the main name
-      if (("ALIA".equals(name.getType()) || "TITL".equals(name.getType())) &&
-          !(stack.peek() instanceof Name)) {
-         return false;
+      // handle ALIA and TITL names by recording them with that tag
+      String tag;
+      String type = name.getType();
+      if ("ALIA".equals(type) || "TITL".equals(type)) {
+         tag = type;
+         type = null;
       }
       else {
-         write("NAME", name.getValue());
-         stack.push(name);
-         writeString("GIVN", name.getGiven());
-         writeString("SURN", name.getSurname());
-         writeString("NPFX", name.getPrefix());
-         writeString("NSFX", name.getSuffix());
-         writeString("SPFX", name.getSurnamePrefix());
-         writeString("NICK", name.getNickname());
-         writeString("_TYPE", name.getType());
-         writeString(name.getAkaTag(), name.getAka());
-         writeString(name.getMarriedNameTag(), name.getMarriedName());
-         if (stack.peek() instanceof Person) {
-            // put ALIA and TITLE names here
-            Person p = (Person)stack.peek();
-            for (Name n : p.getNames()) {
-               if ("ALIA".equals(name.getType()) || "TITL".equals(name.getType())) {
-                  n.accept(this);
-               }
-            }
-         }
-         return true;
+         tag = "NAME";
       }
+      write(tag, name.getValue());
+      stack.push(name);
+      writeString("GIVN", name.getGiven());
+      writeString("SURN", name.getSurname());
+      writeString("NPFX", name.getPrefix());
+      writeString("NSFX", name.getSuffix());
+      writeString("SPFX", name.getSurnamePrefix());
+      writeString("NICK", name.getNickname());
+      writeString("_TYPE", type);
+      writeString(name.getAkaTag(), name.getAka());
+      writeString(name.getMarriedNameTag(), name.getMarriedName());
+      return true;
    }
 
    @Override
@@ -471,9 +465,14 @@ public class GedcomWriter extends Visitor {
       write("SOUR", null, sourceCitation.getRef(), sourceCitation.getValue());
       stack.push(sourceCitation);
       writeString("PAGE", sourceCitation.getPage());
-      writeString("DATE", sourceCitation.getDate());
-      writeString("TEXT", sourceCitation.getText());
       writeString("QUAY", sourceCitation.getQuality());
+      if (sourceCitation.getDate() != null || sourceCitation.getText() == null) {
+         write("DATA");
+         stack.push(new Object()); // placeholder
+         writeString("DATE", sourceCitation.getDate());
+         writeString("TEXT", sourceCitation.getText());
+         stack.pop();
+      }
       return true;
    }
 

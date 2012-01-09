@@ -25,7 +25,6 @@ import java.util.List;
  * Date: 12/28/11
  */
 public abstract class PersonFamilyCommonContainer extends SourceCitationContainer {
-   private String id = null;
    private List<EventFact> eventsFacts = null;
    private List<LdsOrdinance> ldsOrdinances = null;
    private List<String> refns = null;
@@ -33,14 +32,6 @@ public abstract class PersonFamilyCommonContainer extends SourceCitationContaine
    private Change chan = null;
    private String _uid = null;
    private String uidTag = null;
-
-   public String getId() {
-      return id;
-   }
-
-   public void setId(String id) {
-      this.id = id;
-   }
 
    public List<EventFact> getEventsFacts() {
       return eventsFacts != null ? eventsFacts : Collections.<EventFact>emptyList();

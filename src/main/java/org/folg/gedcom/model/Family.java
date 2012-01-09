@@ -28,9 +28,18 @@ import java.util.List;
  * add: Uid
  */
 public class Family extends PersonFamilyCommonContainer {
+   private String id = null;
    private List<SpouseRef> husbandRefs = null; // may be >1 if not sure which one (presumably one is preferred)
    private List<SpouseRef> wifeRefs = null;    // ditto
    private List<ChildRef> childRefs = null;
+
+   public String getId() {
+      return id;
+   }
+
+   public void setId(String id) {
+      this.id = id;
+   }
 
    private List<Person> getFamilyMembers(Gedcom gedcom, List<? extends SpouseRef> memberRefs, boolean preferredFirst) {
       List<Person> members = new ArrayList<Person>();

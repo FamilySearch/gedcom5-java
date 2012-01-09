@@ -68,10 +68,12 @@ public class GedcomAnalyzer implements ErrorHandler {
    }
 
    public void warning(String message, int lineNumber) {
+      logger.warning(message+" @ "+lineNumber);
       warnings.add(message);
    }
 
    public void error(String message, int lineNumber) {
+      logger.warning(message+" @ "+lineNumber);
       errors.add(message);
    }
 

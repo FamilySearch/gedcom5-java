@@ -40,11 +40,11 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    private String joinTagStack() {
       StringBuilder buf = new StringBuilder();
-      for (String tag : tagStack) {
-         if (buf.length() > 0) {
+      for (int i = 1; i < tagStack.size(); i++) {
+         if (i > 1) {
             buf.append(' ');
          }
-         buf.append(tag);
+         buf.append(tagStack.get(i));
       }
       return buf.toString();
    }
@@ -83,7 +83,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       HEAD, HUSB,
       INDI, _ITALIC,
       LANG,
-      _MARRNM, _MARNM, MEDI, _MREL,
+      _MARRNM, _MAR, _MARNM, MEDI, _MREL,
       NAME, _NAME, NICK, NOTE, NPFX, NSFX,
       OBJE, ORDI,
       PAGE, _PAREN, PEDI, PHON, POST, PLAC, _PREF, _PRIM, _PRIMARY, PUBL,
@@ -236,6 +236,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case _MARRNM:
             case _MARNM:
+            case _MAR:
                obj = handleMarrnm(tos, tagName);
                break;
             case MEDI:
@@ -404,7 +405,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                ((ExtensionContainer)tos).putExtension(GedcomTypeAdapter.MORE_TAGS_EXTENSION_KEY, moreTags);
             }
             moreTags.add((GedcomTag)obj);
-            warning(new SAXParseException("Out of model tag: "+joinTagStack(), locator));
+            warning(new SAXParseException("Tag added as extension: "+joinTagStack(), locator));
          }
          else if (tos instanceof GedcomTag) {
             ((GedcomTag)tos).addChild((GedcomTag)obj);
@@ -1245,7 +1246,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    private Object handleText(Object tos) {
-      if ((tos instanceof SourceCitation && ((SourceCitation)tos).getText() == null) ||
+      if ((tos instanceof SourceCitation) ||
           (tos instanceof Source && ((Source)tos).getText() == null)) {
          return new FieldRef(tos, "Text");
       }

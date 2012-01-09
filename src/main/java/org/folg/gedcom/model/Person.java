@@ -29,6 +29,7 @@ import java.util.List;
  * change: alia from xref to Name
  */
 public class Person extends PersonFamilyCommonContainer {
+   private String id = null;
    private List<Name> names = null;
    private List<ParentFamilyRef> famc = null;
    private List<SpouseFamilyRef> fams = null;
@@ -43,6 +44,14 @@ public class Person extends PersonFamilyCommonContainer {
    // TODO add living flag
    // TODO add getUniqueIdentifier convenience function
    // TODO add getAllNames convenience function, which breaks out Name.aka and Name.marriedName into separate names, giving each its own type
+
+   public String getId() {
+      return id;
+   }
+
+   public void setId(String id) {
+      this.id = id;
+   }
 
    public List<Name> getNames() {
       return names != null ? names : Collections.<Name>emptyList();

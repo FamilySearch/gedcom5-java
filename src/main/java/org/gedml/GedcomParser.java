@@ -312,8 +312,8 @@ public class GedcomParser implements XMLReader, Locator {
                if (!lineParser.parse(line))
                {
                   if (goodLine) {
-                     errorHandler.warning(new SAXParseException("Line does not appear to be standard @" +
-                             this.getLineNumber() + " appending content to the last tag started.", this));
+                     errorHandler.warning(new SAXParseException("Line does not appear to be standard @ " +
+                             this.getLineNumber() + " appending content to the last tag started."+line, this));
                      contentHandler.characters(line.toCharArray(), 0, line.length());
                   } // if we haven't found a good line yet, just skip it
                   if (lineNr > 20 && !goodLine) {
