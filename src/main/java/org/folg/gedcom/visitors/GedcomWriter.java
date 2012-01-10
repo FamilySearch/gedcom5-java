@@ -19,6 +19,7 @@ package org.folg.gedcom.visitors;
 import org.folg.gedcom.model.*;
 import org.folg.gedcom.model.Name;
 import org.folg.gedcom.parser.GedcomTypeAdapter;
+import org.gedml.AnselOutputStreamWriter;
 import org.gedml.GedcomParser;
 
 import java.io.*;
@@ -49,7 +50,14 @@ public class GedcomWriter extends Visitor {
       nestedException = null;
       String charset = getCharsetName(gedcom);
       eol = (charset.equals("x-MacRoman") ? "\r" : "\n");
-      this.out = new BufferedWriter(new OutputStreamWriter(out, charset));
+      OutputStreamWriter writer;
+      if ("ANSEL".equals(charset)) {
+         writer = new AnselOutputStreamWriter(out);
+      }
+      else {
+         writer = new OutputStreamWriter(out, charset);
+      }
+      this.out = new BufferedWriter(writer);
       gedcom.accept(this);
       this.out.write("0 TRLR"+eol);
       this.out.flush();
