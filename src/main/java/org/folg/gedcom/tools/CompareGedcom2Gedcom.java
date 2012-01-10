@@ -32,7 +32,7 @@ public class CompareGedcom2Gedcom {
     private File gedcomOut;
 
 
-    private int totalGedcomTags = 0;
+    private int totalGedcoms = 0;
     private int equalsCount = 0;
     private int notEqualsCount = 0;
 
@@ -78,19 +78,24 @@ public class CompareGedcom2Gedcom {
         Collections.sort(gedcomTags, compareGedcomTags());
         Collections.sort(compareGedcomTags, compareGedcomTags());
 
+        totalGedcoms++;
+
+        // let's count entire gedcoms being equal or not
+        if (gedcomTags.size() != compareGedcomTags.size()) {
+           notEqualsCount++;
+           return;
+        }
         for (int indx = 0; indx < gedcomTags.size(); indx++) {
             GedcomTag gedcomTagOne = gedcomTags.get(indx);
             GedcomTag gedcomTagTwo = gedcomTags.get(indx);
 
-            totalGedcomTags++;
-
-            if (gedcomTagOne.equals(gedcomTagTwo)) {
-                equalsCount++;
-            } else {
+            if (!gedcomTagOne.equals(gedcomTagTwo)) {
                 notEqualsCount++;
+                return;
             }
-
         }
+
+        equalsCount++;
     }
 
 
@@ -98,23 +103,8 @@ public class CompareGedcom2Gedcom {
         return new Comparator<GedcomTag>() {
             @Override
             public int compare(GedcomTag gedcomTagOne, GedcomTag gedcomTagTwo) {
-
-                //the only case so far where the id is null is the head and trlr tag
-                //need to verify if this is a correct assumption?
-                String idOne = gedcomTagOne.getId();
-                String idTwo = gedcomTagTwo.getId();
-                if ((idOne == null) && (idTwo == null)) {
-                    String tagOne = gedcomTagOne.getTag();
-                    String tagTwo = gedcomTagTwo.getTag();
-                    return tagOne.compareTo(tagTwo);
-                }
-
-                if (idOne == null)
-                    return -1;
-                else if (idTwo == null)
-                    return 1;
-                else
-                    return idOne.compareTo(idTwo);
+                // a lot of tags don't have ids, but every tag has a hashcode, so let's use that
+                return new Integer(gedcomTagOne.hashCode()).compareTo(new Integer(gedcomTagTwo.hashCode()));
             }
         };
     }
@@ -128,9 +118,9 @@ public class CompareGedcom2Gedcom {
             convertGedcom(gedcomIn);
         }
 
-        System.out.println("Total Number of Gedcom Tags = " + totalGedcomTags);
-        System.out.println("Number of Tags that are Equal = " + equalsCount);
-        System.out.println("Number of Tags that are NOT Equal = " + notEqualsCount);
+        System.out.println("Total Number of Gedcoms = " + totalGedcoms);
+        System.out.println("Number of Gedcoms that are Equal = " + equalsCount);
+        System.out.println("Number of Gedcoms that are NOT Equal = " + notEqualsCount);
     }
 
     public static void main(String[] args) throws FileNotFoundException {

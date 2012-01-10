@@ -107,14 +107,11 @@ public class GedcomTag {
 
     @Override
     public boolean equals(Object o) {
-        // TODO - compare hash codes for each child against all other children
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         GedcomTag gedcomTag = (GedcomTag) o;
 
-        // children will be tested last by comparing hash codes
-        // if (children != null ? !children.equals(gedcomTag.children) : gedcomTag.children != null) return false;
         if (id != null ? !id.equals(gedcomTag.id) : gedcomTag.id != null)
             return false;
         if (ref != null ? !ref.equals(gedcomTag.ref) : gedcomTag.ref != null)
@@ -139,7 +136,7 @@ public class GedcomTag {
             return false;
 
         ArrayList<Integer> thisHashCodeList = calculateChildrenHashSet(children);
-        ArrayList<Integer> compareHashCodeList = calculateChildrenHashSet(children);
+        ArrayList<Integer> compareHashCodeList = calculateChildrenHashSet(gedcomTag.getChildren());
 
         for (int indx = 0; indx < thisHashCodeList.size(); indx++) {
             Integer thisHashCode = thisHashCodeList.get(indx);
@@ -153,7 +150,6 @@ public class GedcomTag {
 
     @Override
     public int hashCode() {
-        // TODO - sort hash codes for each child when computing hash code
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (tag != null ? tag.hashCode() : 0);
         result = 31 * result + (ref != null ? ref.hashCode() : 0);
