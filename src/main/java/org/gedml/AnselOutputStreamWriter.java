@@ -440,8 +440,8 @@ public class AnselOutputStreamWriter extends OutputStreamWriter
         case 0x1EF7: return 0xE079;  //  small y with hook above
         case 0x1EF8: return 0xE459;  //  capital y with tilde
         case 0x1EF9: return 0xE479;  //  small y with tilde
-        case 0x200C: return 0x8E;  //  zero width non-joiner
-        case 0x200D: return 0x8D;  //  zero width joiner
+        case 0x200C: return 0x8E;    //  zero width non-joiner
+        case 0x200D: return 0x8D;    //  zero width joiner
         case 0x2113: return 0xC1;  //  script small l
         case 0x2117: return 0xC2;  //  sound recording copyright
         case 0x266D: return 0xA9;  //  music flat sign
@@ -456,6 +456,8 @@ public class AnselOutputStreamWriter extends OutputStreamWriter
         case 0x009C: return 0x89;  // non-sort end
         case 0x0027: return 0x92;  // apostrophe
         //case 0x00DF: return 0xC7;  //  eszett symbol
+        case 0x201C: return 0x93;    // left double quotation mark (not in the standard)
+        case 0x201D: return 0x94;    // right double quotation mark (not in the standard)
         case 0x20AC: return 0xC8;  //  euro sign
         case 0x0308: return 0xE8;  //  umlaut, diaeresis
 

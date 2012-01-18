@@ -28,15 +28,14 @@ Additional information found in the GEDCOMs, such as the schema tags mentioned
 above, is represented in the model by extending model objects with the ability to
 store lists of additional tags.
 
-The result is that object model directly represents _all_ of the
-information found in nearly 50% of the GEDCOMs.
-This may not sound like a large percentage, but
-due to the standard not being updated in over 10 years, nearly everyone
-adds their own custom tags. So having a relatively simple object model represent all
+The result is that object model directly represents _all_ of the information found
+in nearly 50% of the GEDCOMs. This may not sound like a large percentage, but
+due to the standard not being updated in over 10 years, nearly everyone adds
+their own custom tags. So having a relatively simple object model represent all
 tags found in nearly 50% of GEDCOMs is an accomplishment.
 
 If we also include the additional tags storable on model objects, the
-model is able to represent all of the information found in 94% of the
+model is able to represent all of the information found in 93% of the
 GEDCOMs submitted to WeRelate.  It's not 100% because GEDCOM data that is
 represented as strings in the model can't be extended with additional tags.
 For example, the gedcom STAT (status) tag is represented as a string in the
@@ -85,7 +84,7 @@ Round-trippable
 
 It is possible to do a round-trip: parse a GEDCOM file into the object model,
 save it to json, read it back from json, and export it back to GEDCOM, without
-any loss of information for the vast majority of GEDCOM files.
+any loss of information for the majority (over 90%) of GEDCOM files.
 
 The round-trip capability allows anyone to create programs that read gedcom files,
 do interesting things like generate warnings for suspicious dates in the GEDCOM,

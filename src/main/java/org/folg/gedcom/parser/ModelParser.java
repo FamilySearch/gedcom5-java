@@ -49,10 +49,12 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return buf.toString();
    }
 
+   @Override
    public void setDocumentLocator(Locator locator) {
       this.locator = locator;
    }
 
+   @Override
    public void startDocument() throws SAXException {
       gedcom = null;
       tagStack = new Stack<String>();
@@ -60,14 +62,17 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       
    }
 
+   @Override
    public void endDocument() throws SAXException {
       // ignore
    }
 
+   @Override
    public void startPrefixMapping(String prefix, String uri) throws SAXException {
       // ignore
    }
 
+   @Override
    public void endPrefixMapping(String prefix) throws SAXException {
       // ignore
    }
@@ -88,7 +93,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       OBJE, ORDI,
       PAGE, _PAREN, PEDI, PHON, POST, PLAC, _PREF, _PRIM, _PRIMARY, PUBL,
       QUAY,
-      REFN, REPO, RFN, RIN, 
+      REFN, RELA, REPO, RFN, RIN,
       _SCBK, SOUR, SPFX, _SSHOW, STAE, STAT, SUBM, SUBN, SURN,
       TEMP, TEXT, TIME, TITL, TRLR, TYPE, _TYPE,
       UID, _UID, _URL,
@@ -300,6 +305,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case REFN:
                obj = handleRefn(tos);
+               break;
+            case RELA:
+               obj = handleRela(tos);
                break;
             case REPO:
                obj = handleRepo(tos, id, ref);
@@ -636,16 +644,44 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          return generatorData;
       }
       else if (tos instanceof SourceCitation) {
+         // what a hack - if we come across a second data tag, set contents to separate
+         if (((SourceCitation)tos).getDataTagContents() == SourceCitation.DataTagContents.DATE ||
+             ((SourceCitation)tos).getDataTagContents() == SourceCitation.DataTagContents.TEXT) {
+            ((SourceCitation)tos).setDataTagContents(SourceCitation.DataTagContents.SEPARATE);
+         }
          return tos; // move data attributes directly onto source citation
       }
       return null;
    }
-                        
+
+   private void setDataTagContents(Object tos, boolean addDate) {
+      // what a hack - everyone uses the DATA tag differently; some people put only DATE under it, others only TEXT, others both
+      // and still others put DATE and TEXT under two separate DATA tags
+      // if the second-from-top-of-stack is also a source citation, then we're skipping a DATA tag and we need to set DataTagContents
+      if (objectStack.size() > 1 && objectStack.get(objectStack.size()-2) instanceof SourceCitation) {
+         SourceCitation.DataTagContents dataTagContents = ((SourceCitation)tos).getDataTagContents();
+         if (dataTagContents == null && addDate) {
+            dataTagContents = SourceCitation.DataTagContents.DATE;
+         }
+         else if (dataTagContents == null && !addDate) {
+            dataTagContents = SourceCitation.DataTagContents.TEXT;
+         }
+         else if (dataTagContents == SourceCitation.DataTagContents.TEXT && addDate ||
+                  dataTagContents == SourceCitation.DataTagContents.DATE && !addDate) {
+            dataTagContents = SourceCitation.DataTagContents.COMBINED;
+         }
+         ((SourceCitation)tos).setDataTagContents(dataTagContents);
+      }
+   }
+
    private Object handleDate(Object tos) {
       if ((tos instanceof GeneratorData && ((GeneratorData)tos).getDate() == null) ||
-          (tos instanceof SourceCitation && ((SourceCitation)tos).getDate() == null) ||
           (tos instanceof Source && ((Source)tos).getDate() == null) ||
           (tos instanceof EventFact && ((EventFact)tos).getDate() == null)) {
+         return new FieldRef(tos, "Date");
+      }
+      else if (tos instanceof SourceCitation && ((SourceCitation)tos).getDate() == null) {
+         setDataTagContents(tos, true);
          return new FieldRef(tos, "Date");
       }
       else if ((tos instanceof Header && ((Header)tos).getDateTime() == null) ||
@@ -704,26 +740,17 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    private Object handleEventFact(Object tos, String tagName, String tagNameUpper) {
       if ((tos instanceof Person && EventFact.PERSONAL_EVENT_FACT_TAGS.contains(tagNameUpper)) ||
-          (tos instanceof Family && EventFact.FAMILY_EVENT_FACT_TAGS.contains(tagNameUpper))) {
+          (tos instanceof Family && EventFact.FAMILY_EVENT_FACT_TAGS.contains(tagNameUpper)) ||
+          (tos instanceof EventFact && "CAUS".equals(tagNameUpper) && ((EventFact)tos).getCause() == null)) {
          EventFact eventFact = new EventFact();
          eventFact.setTag(tagName);
-         ((PersonFamilyCommonContainer)tos).addEventFact(eventFact);
-         return eventFact;
-      }
-      else {
-         // yuck: why do people put sources on caus tags inside deat tags?
-         Object sftos = objectStack.size() >= 2 ? objectStack.get(objectStack.size()-2) : null; // second from top of stack
-         if (tos instanceof EventFact &&
-             ((EventFact)tos).getTag().equals("DEAT") &&
-             tagName.equals("CAUS") &&
-             ((EventFact)tos).getCauseOfDeathTag() == null &&
-             sftos instanceof Person) {
-            EventFact eventFact = new EventFact();
-            eventFact.setTag(tagName);
-            ((EventFact)tos).setCauseOfDeathTag(tagName);
-            ((Person)sftos).addEventFact(eventFact);
-            return eventFact;
+         if (tos instanceof EventFact) {
+            ((EventFact)tos).setCause(eventFact);
          }
+         else {
+            ((PersonFamilyCommonContainer)tos).addEventFact(eventFact);
+         }
+         return eventFact;
       }
       return null;
    }
@@ -880,6 +907,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       else if (tos instanceof FieldRef && ((FieldRef)tos).getTarget() instanceof RepositoryRef &&
                ((FieldRef)tos).getFieldName().equals("CallNumber") &&
                ((RepositoryRef)((FieldRef)tos).getTarget()).getMediaType() == null) {
+         ((RepositoryRef)((FieldRef)tos).getTarget()).setMediUnderCalnTag(true);
          return new FieldRef(((FieldRef)tos).getTarget(), "MediaType");
       }
       return null;
@@ -948,6 +976,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          Note note = new Note();
          if (id != null) {
             note.setId(id);
+         }
+         if (ref != null) {
+            // ref is invalid here, so store it as value - another geni-ism
+            note.setValue("@"+ref+"@");
          }
          ((Gedcom)tos).addNote(note);
          return note;
@@ -1071,8 +1103,15 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   private Object handleRela(Object tos) {
+      if (tos instanceof Association && ((Association)tos).getRelation() == null) {
+         return new FieldRef(tos, "Relation");
+      }
+      return null;
+   }
+
    private Object handleRepo(Object tos, String id, String ref) {
-      if (tos instanceof Source) {
+      if (tos instanceof Source && ((Source)tos).getRepositoryRef() == null) {
          RepositoryRef repositoryRef = new RepositoryRef();
          if (ref != null) {
             repositoryRef.setRef(ref);
@@ -1246,8 +1285,20 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    private Object handleText(Object tos) {
-      if ((tos instanceof SourceCitation) ||
-          (tos instanceof Source && ((Source)tos).getText() == null)) {
+      if (tos instanceof SourceCitation) {
+         setDataTagContents(tos, false);
+         // standard says you should just have 1 TEXT tag, but geni uses multiple text tags in place of CONT tags here
+         String text = ((SourceCitation)tos).getText();
+         if (text != null) {
+            ((SourceCitation)tos).setText(text+"\n");
+         }
+         return new FieldRef(tos, "Text");
+      }
+      else if (tos instanceof Source) {
+         String text = ((Source)tos).getText();
+         if (text != null) {
+            ((Source)tos).setText(text+"\n");
+         }
          return new FieldRef(tos, "Text");
       }
       return null;
@@ -1286,9 +1337,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       if ((tos instanceof Name && ((Name)tos).getType() == null) ||
           (tos instanceof Media && ((Media)tos).getType() == null) ||
           (tos instanceof EventFact && ((EventFact)tos).getType() == null) ||
+          (tos instanceof Association && ((Association)tos).getType() == null) ||
           (tos instanceof Source && ((Source)tos).getType() == null)) {
          if (tos instanceof Source) {
             ((Source)tos).setTypeTag(tagName);
+         }
+         else if (tos instanceof Name) {
+            ((Name)tos).setTypeTag(tagName);
          }
          return new FieldRef(tos, "Type");
       }
@@ -1349,11 +1404,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   @Override
    public void endElement(String uri, String localName, String qName) throws SAXException {
       objectStack.pop();
       tagStack.pop();
    }
 
+   @Override
    public void characters(char[] ch, int start, int length) throws SAXException {
       String value = new String(ch, start, length);
       Object tos = objectStack.size() > 0 ? objectStack.peek() : null;
@@ -1386,18 +1443,22 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       }
    }
 
+   @Override
    public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
       // ignore
    }
 
+   @Override
    public void processingInstruction(String target, String data) throws SAXException {
       // ignore
    }
 
+   @Override
    public void skippedEntity(String name) throws SAXException {
       // ignore
    }
 
+   @Override
    public void warning(SAXParseException exception) throws SAXException {
       if (errorHandler != null) {
          errorHandler.warning(exception.getMessage(), exception.getLineNumber());
@@ -1407,6 +1468,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       }
    }
 
+   @Override
    public void error(SAXParseException exception) throws SAXException {
       if (errorHandler != null) {
          errorHandler.error(exception.getMessage(), exception.getLineNumber());
@@ -1416,6 +1478,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       }
    }
 
+   @Override
    public void fatalError(SAXParseException exception) throws SAXException {
       if (errorHandler != null) {
          errorHandler.fatalError(exception.getMessage(), exception.getLineNumber());

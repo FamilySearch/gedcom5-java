@@ -24,12 +24,16 @@ package org.folg.gedcom.model;
  * add: text and date from data
  */
 public class SourceCitation extends MediaContainer {
+   public static enum DataTagContents {DATE, TEXT, COMBINED, SEPARATE};
+
    private String ref = null;
    private String value = null;
    private String page = null;
    private String date = null;
    private String text = null;
    private String quay = null;
+   // yuck - some gedcom's don't use the data tag, some include write both text and date under the same tag, others use two data tags
+   private DataTagContents dataTagContents = null; // set to null in default case (no data tag) so it isn't saved to json
 
    public String getRef() {
       return ref;
@@ -89,6 +93,14 @@ public class SourceCitation extends MediaContainer {
 
    public void setQuality(String quay) {
       this.quay = quay;
+   }
+
+   public DataTagContents getDataTagContents() {
+      return this.dataTagContents;
+   }
+
+   public void setDataTagContents(DataTagContents dataTagContents) {
+      this.dataTagContents = dataTagContents;
    }
 
    public void accept(Visitor visitor) {

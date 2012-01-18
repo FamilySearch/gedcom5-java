@@ -34,6 +34,7 @@ public class Name extends SourceCitationContainer {
    private String spfx = null;
    private String nick = null;
    private String _type = null;
+   private String typeTag = null;
    private String _aka = null;
    private String akaTag = null;
    private String _marrnm = null;
@@ -133,6 +134,14 @@ public class Name extends SourceCitationContainer {
 
    public void setType(String _type) {
       this._type = _type;
+   }
+
+   public String getTypeTag() {
+      return typeTag;
+   }
+
+   public void setTypeTag(String typeTag) {
+      this.typeTag = typeTag;
    }
 
    public String getAka() {

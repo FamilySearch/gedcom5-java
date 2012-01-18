@@ -29,6 +29,7 @@ public class RepositoryRef extends NoteContainer {
    private String value = null;
    private String caln = null;
    private String medi = null;
+   private String isMediUnderCalnTag = null; // use string instead of boolean so it isn't saved to json when false
 
    public String getRef() {
       return ref;
@@ -64,6 +65,14 @@ public class RepositoryRef extends NoteContainer {
 
    public void setMediaType(String medi) {
       this.medi = medi;
+   }
+
+   public boolean isMediUnderCalnTag() {
+      return this.isMediUnderCalnTag != null;
+   }
+
+   public void setMediUnderCalnTag(boolean mediUnderCalnTag) {
+      this.isMediUnderCalnTag = (mediUnderCalnTag ? "true" : null);
    }
 
    public void accept(Visitor visitor) {

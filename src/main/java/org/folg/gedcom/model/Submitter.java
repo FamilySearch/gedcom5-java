@@ -134,6 +134,12 @@ public class Submitter extends ExtensionContainer {
 
    public void accept(Visitor visitor) {
       if (visitor.visit(this)) {
+         if (addr != null) {
+            addr.accept(visitor);
+         }
+         if (chan != null) {
+            chan.accept(visitor);
+         }
          super.visitContainedObjects(visitor);
          visitor.endVisit(this);
       }

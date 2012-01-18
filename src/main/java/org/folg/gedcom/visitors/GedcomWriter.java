@@ -68,17 +68,17 @@ public class GedcomWriter extends Visitor {
 
    private String getCharsetName(Gedcom gedcom) {
       Header header = gedcom.getHeader();
-      String generator = (header != null && header.getGenerator() != null ? header.getGenerator().getName() : null);
-      String encoding = (header != null && header.getCharacterSet() != null ? header.getCharacterSet().getValue() : null);
+      String generator = (header != null && header.getGenerator() != null ? header.getGenerator().getValue() : null);
+      String charset = (header != null && header.getCharacterSet() != null ? header.getCharacterSet().getValue() : null);
       String version = (header != null && header.getCharacterSet() != null ? header.getCharacterSet().getVersion() : null);
-      String charset = GedcomParser.getCharsetName(generator, encoding, version);
+      charset = GedcomParser.getCorrectedCharsetName(generator, charset, version);
       if (charset.length() == 0) {
          charset = "UTF-8"; // default
       }
       return charset;
    }
 
-   private void write(String tag, String id, String ref, String value) {
+   private void write(String tag, String id, String ref, String value, boolean forceValueOnSeparateLine) {
       try {
          int level = stack.size();
          out.write(level+" ");
@@ -90,24 +90,46 @@ public class GedcomWriter extends Visitor {
             out.write(" @"+ref+"@");
          }
          if (value != null && value.length() > 0) {
-            out.write(" ");
-            String[] lines = value.split("\\n");
-            for (int i = 0; i < lines.length; i++) {
-               if (i > 0) {
+            if (forceValueOnSeparateLine && !value.startsWith("\n")) {
+               out.write(eol+(level+1)+" CONC ");
+            }
+            else {
+               out.write(" ");
+            }
+            StringBuilder buf = new StringBuilder(value);
+            int cnt = 0;
+            boolean lastLine = false;
+            while (!lastLine) {
+               int nlPos = buf.indexOf("\n");
+               String line;
+               if (nlPos >= 0) {
+                  line = buf.substring(0, nlPos);
+                  buf.delete(0,nlPos+1);
+               }
+               else {
+                  line = buf.toString();
+                  lastLine = true;
+               }
+               if (cnt > 0) {
                   out.write(eol+(level+1)+" CONT ");
                }
-               while (lines[i].length() > 200) {
-                  out.write(lines[i].substring(0,200));
-                  lines[i] = lines[i].substring(200);
+               while (line.length() > 200) {
+                  out.write(line.substring(0,200));
+                  line = line.substring(200);
                   out.write(eol+(level+1)+" CONC ");
                }
-               out.write(lines[i]);
+               out.write(line);
+               cnt++;
             }
          }
          out.write(eol);
       } catch (IOException e) {
          nestedException = e;
       }
+   }
+
+   private void write(String tag, String id, String ref, String value) {
+      write(tag, id, ref, value, false);
    }
 
    private void write(String tag) {
@@ -188,27 +210,9 @@ public class GedcomWriter extends Visitor {
 
    @Override
    public boolean visit(EventFact eventFact) {
-      Person p = null;
-      if (stack.peek() instanceof Person) {
-         // look for another event with this tag as the cause-of-death tag
-         p = (Person) stack.peek();
-         for (EventFact ef : p.getEventsFacts()) {
-            // if this event's tag == another event's cause-of-death tag, put this event under the other event
-            if (eventFact.getTag().equals(ef.getCauseOfDeathTag())) {
-               return false;
-            }
-         }
-      }
       write(eventFact.getTag(), eventFact.getValue());
       stack.push(eventFact);
       writeEventFactStrings(eventFact);
-      if (eventFact.getCauseOfDeathTag() != null && p != null) {
-         for (EventFact ef : p.getEventsFacts()) {
-            if (eventFact.getCauseOfDeathTag().equals(ef.getTag())) {
-               ef.accept(this);
-            }
-         }
-      }
       return true;
    }
 
@@ -359,7 +363,7 @@ public class GedcomWriter extends Visitor {
       writeString("NSFX", name.getSuffix());
       writeString("SPFX", name.getSurnamePrefix());
       writeString("NICK", name.getNickname());
-      writeString("_TYPE", type);
+      writeString(name.getTypeTag(), type);
       writeString(name.getAkaTag(), name.getAka());
       writeString(name.getMarriedNameTag(), name.getMarriedName());
       return true;
@@ -367,22 +371,33 @@ public class GedcomWriter extends Visitor {
 
    @Override
    public boolean visit(Note note) {
-      write("NOTE", note.getId(), null, note.getValue());
-      stack.push(note);
-      if (note.isSourceCitationsUnderValue()) {
-         // yuck: handle Reunion broken citations: 0 NOTE 1 CONT ... 2 SOUR
+      boolean visitChildren = false;
+      if (note.isSourceCitationsUnderValue() && note.getSourceCitations().size() > 0 &&
+          note.getValue() != null && note.getValue().length() > 0) {
+         // yuck: handle Reunion broken citations: 0 NOTE 1 CONT ... 2 SOUR; also Easytree: 0 NOTE 1 CONC ... 2 SOUR
+         write("NOTE", note.getId(), null, note.getValue(), true);
+         stack.push(note);
          stack.push(new Object()); // increment level to 2
          for (SourceCitation sc : note.getSourceCitations()) {
             sc.accept(this);
          }
          stack.pop();
-         // need to handle the rest of the children here too
-         if (note.getChange() != null) {
-            note.getChange().accept(this);
-         }
+         visitChildren = true;
       }
+      else {
+         write("NOTE", note.getId(), null, note.getValue());
+         stack.push(note);
+      }
+
+      // write note strings
       writeString("RIN", note.getRin());
-      return !note.isSourceCitationsUnderValue(); // already handled children if source citations are under value
+
+      if (visitChildren) {
+         // if we return false below we need to visit the rest of the children and pop the stack here
+         note.visitContainedObjects(this, false);
+         stack.pop();
+      }
+      return !visitChildren;
    }
 
    @Override
@@ -442,8 +457,18 @@ public class GedcomWriter extends Visitor {
    public boolean visit(RepositoryRef repositoryRef) {
       write("REPO", null, repositoryRef.getRef(), repositoryRef.getValue());
       stack.push(repositoryRef);
-      writeString("CALN", repositoryRef.getCallNumber());
+      if (repositoryRef.isMediUnderCalnTag() ||
+              (repositoryRef.getCallNumber() != null && repositoryRef.getCallNumber().length() > 0)) {
+         write("CALN", repositoryRef.getCallNumber());
+      }
+      if (repositoryRef.isMediUnderCalnTag()) {
+         stack.push(new Object()); // placeholder
+      }
       writeString("MEDI", repositoryRef.getMediaType());
+      if (repositoryRef.isMediUnderCalnTag()) {
+         stack.pop();
+      }
+
       return true;
    }
 
@@ -468,18 +493,44 @@ public class GedcomWriter extends Visitor {
       return true;
    }
 
+   private void writeUnderData(String tag, String value) {
+      if (value != null && value.length() > 0) {
+         write("DATA");
+         stack.push(new Object()); // placeholder
+         write(tag, value);
+         stack.pop();
+      }
+   }
    @Override
    public boolean visit(SourceCitation sourceCitation) {
       write("SOUR", null, sourceCitation.getRef(), sourceCitation.getValue());
       stack.push(sourceCitation);
       writeString("PAGE", sourceCitation.getPage());
       writeString("QUAY", sourceCitation.getQuality());
-      if (sourceCitation.getDate() != null || sourceCitation.getText() == null) {
+      if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.COMBINED &&
+          (sourceCitation.getDate() != null && sourceCitation.getDate().length() > 0 ||
+           sourceCitation.getText() != null && sourceCitation.getText().length() > 0)) {
          write("DATA");
          stack.push(new Object()); // placeholder
          writeString("DATE", sourceCitation.getDate());
          writeString("TEXT", sourceCitation.getText());
          stack.pop();
+      }
+      else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.DATE) {
+         writeUnderData("DATE", sourceCitation.getDate());
+         writeString("TEXT", sourceCitation.getText());
+      }
+      else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.TEXT) {
+         writeUnderData("TEXT", sourceCitation.getText());
+         writeString("DATE", sourceCitation.getDate());
+      }
+      else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.SEPARATE) {
+         writeUnderData("DATE", sourceCitation.getDate());
+         writeUnderData("TEXT", sourceCitation.getText());
+      }
+      else if (sourceCitation.getDataTagContents() == null) {
+         writeString("DATE", sourceCitation.getDate());
+         writeString("TEXT", sourceCitation.getText());
       }
       return true;
    }

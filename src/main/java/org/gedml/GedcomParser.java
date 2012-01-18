@@ -20,7 +20,7 @@ import org.xml.sax.helpers.*;
  * Also revised in 2007 by Nathan Powell and revised in 2011 by Dallan Quass
  */
 public class GedcomParser implements XMLReader, Locator {
-   private static final List ACCEPTED_TRUE_SAX_FEATURES = Arrays.asList(
+   private static final List<String> ACCEPTED_TRUE_SAX_FEATURES = Arrays.asList(
            "http://xml.org/sax/features/namespace-prefixes",
            // OK to support, since non are produced from gedcom
            "http://xml.org/sax/features/external-general-entities",
@@ -29,7 +29,7 @@ public class GedcomParser implements XMLReader, Locator {
            // OK to support, since non are produced from gedcom
            "http://xml.org/sax/features/string-interning"
    );
-   private static final List EXPECTED_CHAR_ENCODINGS = Arrays.asList(
+   private static final List<String> EXPECTED_CHAR_ENCODINGS = Arrays.asList(
            "ANSEL","ASCII","Cp850","Cp874","Cp1251","Cp1252","Cp1254","UTF-8","x-MacRoman","UTF-16","UnicodeBigUnmarked"
    );
 
@@ -102,12 +102,12 @@ public class GedcomParser implements XMLReader, Locator {
       return errorHandler;
    }
 
-   public static String readCharsetName(InputStream is) throws IOException {
+   public static String readCorrectedCharsetName(InputStream is) throws IOException {
       BufferedReader in = new BufferedReader(new InputStreamReader(is));
-      return readCharsetName(in);
+      return readCorrectedCharsetName(in);
    }
 
-   private static String readCharsetName(BufferedReader in) throws IOException {
+   private static String readCorrectedCharsetName(BufferedReader in) throws IOException {
       // We will only try to read the first 100 lines of
       // the file attempting to get the char encoding.
       String line;
@@ -145,10 +145,10 @@ public class GedcomParser implements XMLReader, Locator {
       }
       in.close();
 
-      return getCharsetName(generatorName, encoding, version);
+      return getCorrectedCharsetName(generatorName, encoding, version);
    }
 
-   public static String getCharsetName(String generatorName, String encoding, String version) {
+   public static String getCorrectedCharsetName(String generatorName, String encoding, String version) {
       // correct incorrectly-assigned encoding values
       if ("GeneWeb".equals(generatorName) && "ASCII".equals(encoding)) {
          // GeneWeb ASCII -> Cp1252 (ANSI)
@@ -209,13 +209,13 @@ public class GedcomParser implements XMLReader, Locator {
 
    private BufferedReader getBufferedReader(String systemId) throws IOException, SAXException {
       InputStream in = (new URL(systemId)).openStream();
-      String charEncoding = readCharsetName(in);
+      String charEncoding = readCorrectedCharsetName(in);
       in.close();
 
       if (charEncoding.length() == 0) {
          // Let's try again with a UTF-16 reader.
          BufferedReader br = new BufferedReader(new InputStreamReader((new URL(systemId)).openStream(), "UTF-16"));
-         charEncoding = readCharsetName(br);
+         charEncoding = readCorrectedCharsetName(br);
          br.close();
          if (charEncoding.equals("UTF-16")) {
             // skip over junk at the beginning of the file
@@ -312,8 +312,8 @@ public class GedcomParser implements XMLReader, Locator {
                if (!lineParser.parse(line))
                {
                   if (goodLine) {
-                     errorHandler.warning(new SAXParseException("Line does not appear to be standard @ " +
-                             this.getLineNumber() + " appending content to the last tag started."+line, this));
+                     errorHandler.error(new SAXParseException("Line does not appear to be standard @ " +
+                             this.getLineNumber() + " appending content to the last tag started." + line, this));
                      contentHandler.characters(line.toCharArray(), 0, line.length());
                   } // if we haven't found a good line yet, just skip it
                   if (lineNr > 20 && !goodLine) {
@@ -326,13 +326,13 @@ public class GedcomParser implements XMLReader, Locator {
 
                   // if level is > prevlevel+1, ignore it until it comes back down
                   if (thisLevel > prevLevel+1) {
-                     errorHandler.warning(new SAXParseException("Level > prevLevel+1 @"+ this.getLineNumber(), this));
+                     errorHandler.error(new SAXParseException("Level > prevLevel+1 @ " + this.getLineNumber(), this));
                   }
                   else if (thisLevel < 0) {
-                     errorHandler.warning(new SAXParseException("Level < 0 @"+ this.getLineNumber(), this));
+                     errorHandler.error(new SAXParseException("Level < 0 @ " + this.getLineNumber(), this));
                   }
                   else if (tag == null || tag.length() == 0) {
-                     errorHandler.warning(new SAXParseException("Tag not found @"+ this.getLineNumber(), this));
+                     errorHandler.error(new SAXParseException("Tag not found @ " + this.getLineNumber(), this));
                   }
                   else {
                      iden = lineParser.getID();

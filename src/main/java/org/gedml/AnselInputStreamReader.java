@@ -150,8 +150,17 @@ public class AnselInputStreamReader extends InputStreamReader
             case 0xFA: return 0xFE22;  //  double tilde left half
             case 0xFB: return 0xFE23;  //  double tilde right half
             case 0xFE: return 0x0313;  //  comma above
-            case 0x92: return 0x0027;  // apostrophe
+            // WeRelate added
             case 0x81: return 0x00FC;  // ü - umlaught
+            case 0x88: return 0x0098;  // non-sort begin
+            case 0x89: return 0x009C;  // non-sort end
+            case 0x92: return 0x0027;  // apostophe
+            case 0x93: return 0x201C;  // left double quotation mark (not in the standard)
+            case 0x94: return 0x201D;  // right double quotation mark (not in the standard)
+            case 0xC7: return 0x00DF;  // eszett symbol
+            case 0xC8: return 0x20AC;  // euro sign
+            case 0xE8: return 0x0308;  // umlaut, diaresis
+
             default: return 0xFFFD;     // if no match, use Unicode REPLACEMENT CHARACTER
         } //end switch
     }

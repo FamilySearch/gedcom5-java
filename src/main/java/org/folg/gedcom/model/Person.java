@@ -41,9 +41,6 @@ public class Person extends PersonFamilyCommonContainer {
    private String phon = null;
    private String email = null;
    private String emailTag = null;
-   // TODO add living flag
-   // TODO add getUniqueIdentifier convenience function
-   // TODO add getAllNames convenience function, which breaks out Name.aka and Name.marriedName into separate names, giving each its own type
 
    public String getId() {
       return id;

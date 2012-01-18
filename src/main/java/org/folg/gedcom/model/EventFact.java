@@ -188,9 +188,9 @@ public class EventFact extends SourceCitationContainer {
    private String type = null;
    private String date = null;
    private String place = null;
-   private String causeOfDeathTag = null;
    private Address addr = null;
    private String rin = null;
+   private EventFact caus = null;
    private String _uid = null;
    private String uidTag = null;
 
@@ -249,20 +249,20 @@ public class EventFact extends SourceCitationContainer {
       this.place = place;
    }
 
-   public String getCauseOfDeathTag() {
-      return causeOfDeathTag;
-   }
-
-   public void setCauseOfDeathTag(String causeOfDeathTag) {
-      this.causeOfDeathTag = causeOfDeathTag;
-   }
-
    public Address getAddress() {
       return addr;
    }
 
    public void setAddress(Address addr) {
       this.addr = addr;
+   }
+
+   public EventFact getCause() {
+      return caus;
+   }
+
+   public void setCause(EventFact caus) {
+      this.caus = caus;
    }
 
    public String getRin() {
@@ -293,6 +293,9 @@ public class EventFact extends SourceCitationContainer {
    public void visitContainedObjects(Visitor visitor) {
       if (addr != null) {
          addr.accept(visitor);
+      }
+      if (caus != null) {
+         caus.accept(visitor);
       }
       super.visitContainedObjects(visitor);
    }

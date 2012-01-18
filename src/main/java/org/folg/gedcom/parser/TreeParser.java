@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Stack;
+import java.util.logging.Logger;
 
 /**
  * Call parseGedcom to parse a gedcom file into a list of GedcomTag's
@@ -31,9 +32,12 @@ import java.util.Stack;
  * Date: 12/23/11
  */
 public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
+   private static final Logger logger = Logger.getLogger("org.folg.gedcom.parser");
+
    private Locator locator;
    private GedcomTag tree;
    private Stack<GedcomTag> nodeStack;
+   private ErrorHandler errorHandler = null;
 
    @Override
    public void setDocumentLocator(Locator locator) {
@@ -102,17 +106,36 @@ public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    @Override
    public void warning(SAXParseException exception) throws SAXException {
-      System.out.println("warning: "+exception.getMessage());
+      if (errorHandler != null) {
+         errorHandler.warning(exception.getMessage(), exception.getLineNumber());
+      }
+      else {
+         logger.info(exception.getMessage() + " @ " + exception.getLineNumber());
+      }
    }
 
    @Override
    public void error(SAXParseException exception) throws SAXException {
-      System.out.println("error "+exception.getMessage());
+      if (errorHandler != null) {
+         errorHandler.error(exception.getMessage(), exception.getLineNumber());
+      }
+      else {
+         logger.warning(exception.getMessage() + " @ " + exception.getLineNumber());
+      }
    }
 
    @Override
    public void fatalError(SAXParseException exception) throws SAXException {
-      System.out.println("fatalError: "+exception.getMessage());
+      if (errorHandler != null) {
+         errorHandler.fatalError(exception.getMessage(), exception.getLineNumber());
+      }
+      else {
+         logger.severe(exception.getMessage() + " @ " + exception.getLineNumber());
+      }
+   }
+
+   public void setErrorHandler(ErrorHandler errorHandler) {
+      this.errorHandler = errorHandler;
    }
 
    public List<GedcomTag> parseGedcom(File gedcomFile) throws SAXParseException, IOException {
@@ -120,7 +143,7 @@ public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
       parser.setContentHandler(this);
       parser.setErrorHandler(this);
       parser.parse(gedcomFile.toURI().toString());
-      return tree.children;
+      return tree.getChildren();
    }
 
 }

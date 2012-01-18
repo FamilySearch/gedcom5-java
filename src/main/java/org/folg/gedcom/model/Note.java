@@ -90,15 +90,25 @@ public class Note extends ExtensionContainer {
       this.sourceCitationsUnderValue = sourceRefsUnderValue;
    }
 
-   public void accept(Visitor visitor) {
-      if (visitor.visit(this)) {
-         if (chan != null) {
-            chan.accept(visitor);
-         }
+   public void visitContainedObjects(Visitor visitor, boolean includeSourceCitations) {
+      if (chan != null) {
+         chan.accept(visitor);
+      }
+      if (includeSourceCitations) {
          for (SourceCitation sourceCitation : getSourceCitations()) {
             sourceCitation.accept(visitor);
          }
-         super.visitContainedObjects(visitor);
+      }
+      super.visitContainedObjects(visitor);
+   }
+
+   public void visitContainedObjects(Visitor visitor) {
+      visitContainedObjects(visitor, true);
+   }
+
+   public void accept(Visitor visitor) {
+      if (visitor.visit(this)) {
+         this.visitContainedObjects(visitor);
          visitor.endVisit(this);
       }
    }
