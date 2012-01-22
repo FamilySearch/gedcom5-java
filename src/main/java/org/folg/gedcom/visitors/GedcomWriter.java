@@ -18,7 +18,7 @@ package org.folg.gedcom.visitors;
 
 import org.folg.gedcom.model.*;
 import org.folg.gedcom.model.Name;
-import org.folg.gedcom.parser.GedcomTypeAdapter;
+import org.folg.gedcom.parser.ModelParser;
 import org.gedml.AnselOutputStreamWriter;
 import org.gedml.GedcomParser;
 
@@ -140,9 +140,30 @@ public class GedcomWriter extends Visitor {
       write(tag, null, null, value);
    }
 
-   private void writeString(String tag, String value) {
+   private void writeFieldExtensions(String fieldName, ExtensionContainer ec) {
+      @SuppressWarnings("unchecked")
+      List<GedcomTag> moreTags = (List<GedcomTag>)ec.getExtension(ModelParser.MORE_TAGS_EXTENSION_KEY);
+      if (moreTags != null) {
+         for (GedcomTag tag : moreTags) {
+            if (fieldName.equals(tag.getParentTagName())) {
+               stack.push(new Object()); // placeholder
+               writeGedcomTag(tag);
+               stack.pop();
+            }
+         }
+      }
+   }
+
+   private void writeString(String tag, ExtensionContainer ec, String value) {
       if (value != null && value.length() > 0) {
          write(tag, value);
+			writeFieldExtensions(tag, ec);
+      }
+   }
+   private void writeRef(String tag, ExtensionContainer ec, String ref) {
+      if (ref != null && ref.length() > 0) {
+         write(tag, null, ref, null);
+         writeFieldExtensions(tag, ec);
       }
    }
 
@@ -150,13 +171,13 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Address address) {
       write("ADDR", address.getValue());
       stack.push(address);
-      writeString("ADR1", address.getAddressLine1());
-      writeString("ADR2", address.getAddressLine2());
-      writeString("CITY", address.getCity());
-      writeString("STAE", address.getState());
-      writeString("POST", address.getPostalCode());
-      writeString("CTRY", address.getCountry());
-      writeString("_NAME", address.getName());
+      writeString("ADR1", address, address.getAddressLine1());
+      writeString("ADR2", address, address.getAddressLine2());
+      writeString("CITY", address, address.getCity());
+      writeString("STAE", address, address.getState());
+      writeString("POST", address, address.getPostalCode());
+      writeString("CTRY", address, address.getCountry());
+      writeString("_NAME", address, address.getName());
       return true;
    }
 
@@ -164,8 +185,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Association association) {
       write("ASSO", null, association.getRef(), null);
       stack.push(association);
-      writeString("TYPE", association.getType());
-      writeString("RELA", association.getRelation());
+      writeString("TYPE", association, association.getType());
+      writeString("RELA", association, association.getRelation());
       return true;
    }
 
@@ -180,7 +201,7 @@ public class GedcomWriter extends Visitor {
    public boolean visit(CharacterSet characterSet) {
       write("CHAR", characterSet.getValue());
       stack.push(characterSet);
-      writeString("VERS", characterSet.getVersion());
+      writeString("VERS", characterSet, characterSet.getVersion());
       return true;
    }
 
@@ -196,16 +217,16 @@ public class GedcomWriter extends Visitor {
    public boolean visit(DateTime dateTime) {
       write("DATE", dateTime.getValue());
       stack.push(dateTime);
-      writeString("TIME", dateTime.getTime());
+      writeString("TIME", dateTime, dateTime.getTime());
       return true;
    }
 
    private void writeEventFactStrings(EventFact eventFact) {
-      writeString("TYPE", eventFact.getType());
-      writeString("DATE", eventFact.getDate());
-      writeString("PLAC", eventFact.getPlace());
-      writeString("RIN", eventFact.getRin());
-      writeString(eventFact.getUidTag(), eventFact.getUid());
+      writeString("TYPE", eventFact, eventFact.getType());
+      writeString("DATE", eventFact, eventFact.getDate());
+      writeString("PLAC", eventFact, eventFact.getPlace());
+      writeString("RIN", eventFact, eventFact.getRin());
+      writeString(eventFact.getUidTag(), eventFact, eventFact.getUid());
    }
 
    @Override
@@ -227,11 +248,13 @@ public class GedcomWriter extends Visitor {
 
    @Override
    public boolean visit(String extensionKey, Object extension) {
-      if (GedcomTypeAdapter.MORE_TAGS_EXTENSION_KEY.equals(extensionKey)) {
+      if (ModelParser.MORE_TAGS_EXTENSION_KEY.equals(extensionKey)) {
          @SuppressWarnings("unchecked")
          List<GedcomTag> moreTags = (List<GedcomTag>)extension;
          for (GedcomTag tag : moreTags) {
-            writeGedcomTag(tag);
+            if (tag.getParentTagName() == null) { // if field name is not null, the extension should have been written already
+               writeGedcomTag(tag);
+            }
          }
       }
       return true;
@@ -239,10 +262,11 @@ public class GedcomWriter extends Visitor {
 
    private void writePersonFamilyCommonContainerStrings(PersonFamilyCommonContainer pf) {
       for (String refn : pf.getReferenceNumbers()) {
-         writeString("REFN", refn);
+         // it's a problem if there's multiple refns with sub-tags
+         writeString("REFN", pf, refn);
       }
-      writeString("RIN", pf.getRin());
-      writeString(pf.getUidTag(), pf.getUid());
+      writeString("RIN", pf, pf.getRin());
+      writeString(pf.getUidTag(), pf, pf.getUid());
    }
 
    @Override
@@ -262,8 +286,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(GedcomVersion gedcomVersion) {
       write("GEDC");
       stack.push(gedcomVersion);
-      writeString("VERS", gedcomVersion.getVersion());
-      writeString("FORM", gedcomVersion.getForm());
+      writeString("VERS", gedcomVersion, gedcomVersion.getVersion());
+      writeString("FORM", gedcomVersion, gedcomVersion.getForm());
       return true;
    }
 
@@ -271,8 +295,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Generator generator) {
       write("SOUR", generator.getValue());
       stack.push(generator);
-      writeString("NAME", generator.getName());
-      writeString("VERS", generator.getVersion());
+      writeString("NAME", generator, generator.getName());
+      writeString("VERS", generator, generator.getVersion());
       return true;
    }
 
@@ -280,8 +304,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(GeneratorCorporation generatorCorporation) {
       write("CORP", generatorCorporation.getValue());
       stack.push(generatorCorporation);
-      writeString("PHON", generatorCorporation.getPhone());
-      writeString(generatorCorporation.getWwwTag(), generatorCorporation.getWww());
+      writeString("PHON", generatorCorporation, generatorCorporation.getPhone());
+      writeString(generatorCorporation.getWwwTag(), generatorCorporation, generatorCorporation.getWww());
       return true;
    }
 
@@ -289,8 +313,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(GeneratorData generatorData) {
       write("DATA", generatorData.getValue());
       stack.push(generatorData);
-      writeString("DATE", generatorData.getDate());
-      writeString("COPR", generatorData.getCopyright());
+      writeString("DATE", generatorData, generatorData.getDate());
+      writeString("COPR", generatorData, generatorData.getCopyright());
       return true;
    }
 
@@ -298,16 +322,12 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Header header) {
       write("HEAD");
       stack.push(header);
-      writeString("DEST", header.getDestination());
-      writeString("FILE", header.getFile());
-      writeString("COPR", header.getCopyright());
-      writeString("LANG", header.getLanguage());
-      if (header.getSubmitterRef() != null) {
-         write("SUBM", null, header.getSubmitterRef(), null);
-      }
-      if (header.getSubmissionRef() != null) {
-         write("SUBN", null, header.getSubmissionRef(), null);
-      }
+      writeString("DEST", header, header.getDestination());
+      writeString("FILE", header, header.getFile());
+      writeString("COPR", header, header.getCopyright());
+      writeString("LANG", header, header.getLanguage());
+      writeRef("SUBM", header, header.getSubmitterRef());
+      writeRef("SUBN", header, header.getSubmissionRef());
       return true;
    }
 
@@ -316,8 +336,8 @@ public class GedcomWriter extends Visitor {
       write(ldsOrdinance.getTag(), ldsOrdinance.getValue());
       stack.push(ldsOrdinance);
       writeEventFactStrings(ldsOrdinance);
-      writeString("STAT", ldsOrdinance.getStatus());
-      writeString("TEMP", ldsOrdinance.getTemple());
+      writeString("STAT", ldsOrdinance, ldsOrdinance.getStatus());
+      writeString("TEMP", ldsOrdinance, ldsOrdinance.getTemple());
       return true;
    }
 
@@ -325,14 +345,14 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Media media) {
       write("OBJE", media.getId(), null, null);
       stack.push(media);
-      writeString("FORM", media.getFormat());
-      writeString("TITL", media.getTitle());
-      writeString("BLOB", media.getBlob());
-      writeString(media.getFileTag(), media.getFile());
-      writeString("_PRIM", media.getPrimary());
-      writeString("_TYPE", media.getType());
-      writeString("_SCBK", media.getScrapbook());
-      writeString("_SSHOW", media.getSlideShow());
+      writeString("FORM", media, media.getFormat());
+      writeString("TITL", media, media.getTitle());
+      writeString("BLOB", media, media.getBlob());
+      writeString(media.getFileTag(), media, media.getFile());
+      writeString("_PRIM", media, media.getPrimary());
+      writeString("_TYPE", media, media.getType());
+      writeString("_SCBK", media, media.getScrapbook());
+      writeString("_SSHOW", media, media.getSlideShow());
       return true;
    }
 
@@ -357,15 +377,15 @@ public class GedcomWriter extends Visitor {
       }
       write(tag, name.getValue());
       stack.push(name);
-      writeString("GIVN", name.getGiven());
-      writeString("SURN", name.getSurname());
-      writeString("NPFX", name.getPrefix());
-      writeString("NSFX", name.getSuffix());
-      writeString("SPFX", name.getSurnamePrefix());
-      writeString("NICK", name.getNickname());
-      writeString(name.getTypeTag(), type);
-      writeString(name.getAkaTag(), name.getAka());
-      writeString(name.getMarriedNameTag(), name.getMarriedName());
+      writeString("GIVN", name, name.getGiven());
+      writeString("SURN", name, name.getSurname());
+      writeString("NPFX", name, name.getPrefix());
+      writeString("NSFX", name, name.getSuffix());
+      writeString("SPFX", name, name.getSurnamePrefix());
+      writeString("NICK", name, name.getNickname());
+      writeString(name.getTypeTag(), name, type);
+      writeString(name.getAkaTag(), name, name.getAka());
+      writeString(name.getMarriedNameTag(), name, name.getMarriedName());
       return true;
    }
 
@@ -390,7 +410,7 @@ public class GedcomWriter extends Visitor {
       }
 
       // write note strings
-      writeString("RIN", note.getRin());
+      writeString("RIN", note, note.getRin());
 
       if (visitChildren) {
          // if we return false below we need to visit the rest of the children and pop the stack here
@@ -412,8 +432,8 @@ public class GedcomWriter extends Visitor {
       write("FAMC", null, parentFamilyRef.getRef(), null);
       stack.push(parentFamilyRef);
       writeSpouseFamilyRefStrings(parentFamilyRef);
-      writeString("PEDI", parentFamilyRef.getRelationshipType());
-      writeString("_PRIMARY", parentFamilyRef.getPrimary());
+      writeString("PEDI", parentFamilyRef, parentFamilyRef.getRelationshipType());
+      writeString("_PRIMARY", parentFamilyRef, parentFamilyRef.getPrimary());
       return true;
    }
 
@@ -428,15 +448,11 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Person person) {
       write("INDI", person.getId(), null, null);
       stack.push(person);
-      if (person.getAncestorInterestSubmitterRef() != null) {
-         write("ANCI", null, person.getAncestorInterestSubmitterRef(), null);
-      }
-      if (person.getDescendantInterestSubmitterRef() != null) {
-         write("DESI", null, person.getDescendantInterestSubmitterRef(), null);
-      }
-      writeString("RFN", person.getRecordFileNumber());
-      writeString("PHON", person.getPhone());
-      writeString(person.getEmailTag(), person.getEmail());
+      writeRef("ANCI", person, person.getAncestorInterestSubmitterRef());
+      writeRef("DESI", person, person.getDescendantInterestSubmitterRef());
+      writeString("RFN", person, person.getRecordFileNumber());
+      writeString("PHON", person, person.getPhone());
+      writeString(person.getEmailTag(), person, person.getEmail());
       writePersonFamilyCommonContainerStrings(person);
       return true;
    }
@@ -445,11 +461,11 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Repository repository) {
       write("REPO", repository.getId(), null, repository.getValue());
       stack.push(repository);
-      writeString("NAME", repository.getName());
-      writeString("PHON", repository.getPhone());
-      writeString("RIN", repository.getRin());
-      writeString(repository.getEmailTag(), repository.getEmail());
-      writeString(repository.getWwwTag(), repository.getWww());
+      writeString("NAME", repository, repository.getName());
+      writeString("PHON", repository, repository.getPhone());
+      writeString("RIN", repository, repository.getRin());
+      writeString(repository.getEmailTag(), repository, repository.getEmail());
+      writeString(repository.getWwwTag(), repository, repository.getWww());
       return true;
    }
 
@@ -464,7 +480,7 @@ public class GedcomWriter extends Visitor {
       if (repositoryRef.isMediUnderCalnTag()) {
          stack.push(new Object()); // placeholder
       }
-      writeString("MEDI", repositoryRef.getMediaType());
+      writeString("MEDI", repositoryRef, repositoryRef.getMediaType());
       if (repositoryRef.isMediUnderCalnTag()) {
          stack.pop();
       }
@@ -476,28 +492,28 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Source source) {
       write("SOUR", source.getId(), null, null);
       stack.push(source);
-      writeString("AUTH", source.getAuthor());
-      writeString("TITL", source.getTitle());
-      writeString("ABBR", source.getAbbreviation());
-      writeString("PUBL", source.getPublicationFacts());
-      writeString("TEXT", source.getText());
-      writeString("REFN", source.getReferenceNumber());
-      writeString("RIN", source.getRin());
-      writeString("MEDI", source.getMediaType());
-      writeString("CALN", source.getCallNumber());
-      writeString(source.getTypeTag(), source.getType());
-      writeString(source.getUidTag(), source.getUid());
-      writeString("_PAREN", source.getParen());
-      writeString("_ITALIC", source.getItalic());
-      writeString("DATE", source.getDate());
+      writeString("AUTH", source, source.getAuthor());
+      writeString("TITL", source, source.getTitle());
+      writeString("ABBR", source, source.getAbbreviation());
+      writeString("PUBL", source, source.getPublicationFacts());
+      writeString("TEXT", source, source.getText());
+      writeString("REFN", source, source.getReferenceNumber());
+      writeString("RIN", source, source.getRin());
+      writeString("MEDI", source, source.getMediaType());
+      writeString("CALN", source, source.getCallNumber());
+      writeString(source.getTypeTag(), source, source.getType());
+      writeString(source.getUidTag(), source, source.getUid());
+      writeString("_PAREN", source, source.getParen());
+      writeString("_ITALIC", source, source.getItalic());
+      writeString("DATE", source, source.getDate());
       return true;
    }
 
-   private void writeUnderData(String tag, String value) {
+   private void writeUnderData(String tag, SourceCitation sourceCitation, String value) {
       if (value != null && value.length() > 0) {
          write("DATA");
          stack.push(new Object()); // placeholder
-         write(tag, value);
+         writeString(tag, sourceCitation, value);
          stack.pop();
       }
    }
@@ -505,38 +521,38 @@ public class GedcomWriter extends Visitor {
    public boolean visit(SourceCitation sourceCitation) {
       write("SOUR", null, sourceCitation.getRef(), sourceCitation.getValue());
       stack.push(sourceCitation);
-      writeString("PAGE", sourceCitation.getPage());
-      writeString("QUAY", sourceCitation.getQuality());
+      writeString("PAGE", sourceCitation, sourceCitation.getPage());
+      writeString("QUAY", sourceCitation, sourceCitation.getQuality());
       if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.COMBINED &&
           (sourceCitation.getDate() != null && sourceCitation.getDate().length() > 0 ||
            sourceCitation.getText() != null && sourceCitation.getText().length() > 0)) {
          write("DATA");
          stack.push(new Object()); // placeholder
-         writeString("DATE", sourceCitation.getDate());
-         writeString("TEXT", sourceCitation.getText());
+         writeString("DATE", sourceCitation, sourceCitation.getDate());
+         writeString("TEXT", sourceCitation, sourceCitation.getText());
          stack.pop();
       }
       else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.DATE) {
-         writeUnderData("DATE", sourceCitation.getDate());
-         writeString("TEXT", sourceCitation.getText());
+         writeUnderData("DATE", sourceCitation, sourceCitation.getDate());
+         writeString("TEXT", sourceCitation, sourceCitation.getText());
       }
       else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.TEXT) {
-         writeUnderData("TEXT", sourceCitation.getText());
-         writeString("DATE", sourceCitation.getDate());
+         writeUnderData("TEXT", sourceCitation, sourceCitation.getText());
+         writeString("DATE", sourceCitation, sourceCitation.getDate());
       }
       else if (sourceCitation.getDataTagContents() == SourceCitation.DataTagContents.SEPARATE) {
-         writeUnderData("DATE", sourceCitation.getDate());
-         writeUnderData("TEXT", sourceCitation.getText());
+         writeUnderData("DATE", sourceCitation, sourceCitation.getDate());
+         writeUnderData("TEXT", sourceCitation, sourceCitation.getText());
       }
       else if (sourceCitation.getDataTagContents() == null) {
-         writeString("DATE", sourceCitation.getDate());
-         writeString("TEXT", sourceCitation.getText());
+         writeString("DATE", sourceCitation, sourceCitation.getDate());
+         writeString("TEXT", sourceCitation, sourceCitation.getText());
       }
       return true;
    }
 
    private void writeSpouseRefStrings(SpouseRef spouseRef) {
-      writeString("_PREF", spouseRef.getPreferred());
+      writeString("_PREF", spouseRef, spouseRef.getPreferred());
    }
 
    @Override
@@ -563,8 +579,8 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Submission submission) {
       write("SUBN", submission.getId(), null, null);
       stack.push(submission);
-      writeString("DESC", submission.getDescription());
-      writeString("ORDI", submission.getOrdinanceFlag());
+      writeString("DESC", submission, submission.getDescription());
+      writeString("ORDI", submission, submission.getOrdinanceFlag());
       return true;
    }
 
@@ -572,12 +588,12 @@ public class GedcomWriter extends Visitor {
    public boolean visit(Submitter submitter) {
       write("SUBM", submitter.getId(), null, submitter.getValue());
       stack.push(submitter);
-      writeString("PHON", submitter.getPhone());
-      writeString("NAME", submitter.getName());
-      writeString("RIN", submitter.getRin());
-      writeString("LANG", submitter.getLanguage());
-      writeString(submitter.getWwwTag(), submitter.getWww());
-      writeString(submitter.getEmailTag(), submitter.getEmail());
+      writeString("PHON", submitter, submitter.getPhone());
+      writeString("NAME", submitter, submitter.getName());
+      writeString("RIN", submitter, submitter.getRin());
+      writeString("LANG", submitter, submitter.getLanguage());
+      writeString(submitter.getWwwTag(), submitter, submitter.getWww());
+      writeString(submitter.getEmailTag(), submitter, submitter.getEmail());
       return true;
    }
 

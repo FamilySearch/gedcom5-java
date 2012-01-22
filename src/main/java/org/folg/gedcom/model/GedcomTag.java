@@ -33,6 +33,7 @@ public class GedcomTag implements Comparable<GedcomTag> {
    private String tag;
    private String ref;
    private String value;
+   private String parentTagName; // used by ModelParser to store tags under string fields
    private List<GedcomTag> children;
 
    public GedcomTag(String id, String tag, String ref) {
@@ -40,6 +41,7 @@ public class GedcomTag implements Comparable<GedcomTag> {
       this.tag = tag;
       this.ref = ref;
       this.value = null;
+      this.parentTagName = null;
       this.children = null;
    }
 
@@ -65,6 +67,14 @@ public class GedcomTag implements Comparable<GedcomTag> {
 
    public void setRef(String ref) {
       this.ref = ref;
+   }
+
+   public String getParentTagName() {
+      return parentTagName;
+   }
+
+   public void setParentTagName(String parentTagName) {
+      this.parentTagName = parentTagName;
    }
 
    public String getValue() {
@@ -108,6 +118,7 @@ public class GedcomTag implements Comparable<GedcomTag> {
    public boolean isEmpty() {
       return (id == null || id.length() == 0) &&
              (ref == null || ref.length() == 0) &&
+             (parentTagName == null || parentTagName.length() == 0) &&
              (value == null || value.length() == 0) &&
              (children == null || children.size() == 0);
    }
@@ -126,6 +137,9 @@ public class GedcomTag implements Comparable<GedcomTag> {
          return false;
       }
       if (!(ref == null ? "" : ref).equals(gt.ref == null ? "" : gt.ref)) {
+         return false;
+      }
+      if (!(parentTagName == null ? "" : parentTagName).equals(gt.parentTagName == null ? "" : gt.parentTagName)) {
          return false;
       }
       if (!(value == null ? "" : value).equals(gt.value == null ? "" : gt.value)) {
@@ -154,6 +168,7 @@ public class GedcomTag implements Comparable<GedcomTag> {
       int result = id != null && id.length() > 0 ? id.hashCode() : 0;
       result = 31 * result + (tag != null && tag.length() > 0 ? tag.hashCode() : 0);
       result = 31 * result + (ref != null && ref.length() > 0 ? ref.hashCode() : 0);
+      result = 31 * result + (parentTagName != null && parentTagName.length() > 0 ? parentTagName.hashCode() : 0);
       result = 31 * result + (value != null && value.length() > 0 ? value.hashCode() : 0);
 
       // Calculate the children hash code based on the actual value of each child hashcode
@@ -179,6 +194,9 @@ public class GedcomTag implements Comparable<GedcomTag> {
       if (ref != null) {
          buf.append(" ref:"+ref);
       }
+      if (parentTagName != null) {
+         buf.append(" parentTag:"+parentTagName);
+      }
       if (value != null) {
          buf.append(" value:"+value);
       }
@@ -198,6 +216,8 @@ public class GedcomTag implements Comparable<GedcomTag> {
       c = (getId() == null ? "" : getId()).compareTo(tag.getId() == null ? "" : tag.getId());
       if (c != 0) return c;
       c = (getRef() == null ? "" : getRef()).compareTo(tag.getRef() == null ? "" : tag.getRef());
+      if (c != 0) return c;
+      c = (getParentTagName() == null ? "" : getParentTagName()).compareTo(tag.getParentTagName() == null ? "" : tag.getParentTagName());
       if (c != 0) return c;
       c = (getValue() == null ? "" : getValue()).compareTo(tag.getValue() == null ? "" : tag.getValue());
       if (c != 0) return c;

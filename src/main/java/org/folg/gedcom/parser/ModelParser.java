@@ -31,6 +31,7 @@ import java.util.logging.Logger;
  */
 public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private static final Logger logger = Logger.getLogger("org.folg.gedcom.parser");
+   public static final String MORE_TAGS_EXTENSION_KEY = "folg.more_tags";
    private Locator locator;
 
    private Stack<String> tagStack;
@@ -401,29 +402,38 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          obj = handleEventFact(tos, tagName, tagNameUpper);
       }
 
-      tagStack.push(tagName);
       if (obj == null) {
          // unexpected tag
          obj = new GedcomTag(id, tagName, ref);
          if (tos instanceof ExtensionContainer) {
-            @SuppressWarnings("unchecked")
-            List<GedcomTag> moreTags = (List<GedcomTag>)((ExtensionContainer)tos).getExtension(GedcomTypeAdapter.MORE_TAGS_EXTENSION_KEY);
-            if (moreTags == null) {
-               moreTags = new ArrayList<GedcomTag>();
-               ((ExtensionContainer)tos).putExtension(GedcomTypeAdapter.MORE_TAGS_EXTENSION_KEY, moreTags);
-            }
-            moreTags.add((GedcomTag)obj);
-            warning(new SAXParseException("Tag added as extension: "+joinTagStack(), locator));
+            addGedcomTag((ExtensionContainer) tos, (GedcomTag) obj);
          }
          else if (tos instanceof GedcomTag) {
             ((GedcomTag)tos).addChild((GedcomTag)obj);
-            
-         } else {
-            error(new SAXParseException("Dropped tag: "+joinTagStack(), locator));
+         }
+         else if (tos instanceof FieldRef && ((FieldRef)tos).getTarget() instanceof ExtensionContainer) {
+            ((GedcomTag)obj).setParentTagName(tagStack.peek());
+            ExtensionContainer ec = (ExtensionContainer)((FieldRef)tos).getTarget();
+            addGedcomTag(ec, (GedcomTag)obj);
+         }
+         else {
+            error(new SAXParseException("Dropped tag: "+joinTagStack()+" "+tagName, locator));
          }
       }
 
+      tagStack.push(tagName);
       objectStack.push(obj);
+   }
+
+   private void addGedcomTag(ExtensionContainer ec, GedcomTag tag) throws SAXException {
+      @SuppressWarnings("unchecked")
+      List<GedcomTag> moreTags = (List<GedcomTag>)ec.getExtension(MORE_TAGS_EXTENSION_KEY);
+      if (moreTags == null) {
+         moreTags = new ArrayList<GedcomTag>();
+         ec.putExtension(MORE_TAGS_EXTENSION_KEY, moreTags);
+      }
+      moreTags.add(tag);
+      warning(new SAXParseException("Tag added as extension: "+joinTagStack(), locator));
    }
 
    private Object handleAbbr(Object tos) {
@@ -1370,7 +1380,8 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    
    private Object handleVers(Object tos) {
       if ((tos instanceof Generator && ((Generator)tos).getVersion() == null) ||
-          (tos instanceof GedcomVersion && ((GedcomVersion)tos).getVersion() == null)) {
+          (tos instanceof GedcomVersion && ((GedcomVersion)tos).getVersion() == null) ||
+          (tos instanceof CharacterSet && ((CharacterSet)tos).getVersion() == null)) {
          return new FieldRef(tos, "Version");
       }
       return null;

@@ -30,7 +30,6 @@ import java.util.List;
  * Date: 12/31/11
  */
 public class GedcomTypeAdapter implements JsonSerializer<Gedcom>, JsonDeserializer<Gedcom> {
-   public static final String MORE_TAGS_EXTENSION_KEY = "folg.more_tags";
 
    private Gson gson;
    private ExtensionsTypeAdapter extensionsTypeAdapter;
@@ -38,7 +37,7 @@ public class GedcomTypeAdapter implements JsonSerializer<Gedcom>, JsonDeserializ
    public GedcomTypeAdapter() {
       extensionsTypeAdapter = new ExtensionsTypeAdapter();
       // built-in extension
-      extensionsTypeAdapter.registerExtension(MORE_TAGS_EXTENSION_KEY, new TypeToken<List<GedcomTag>>(){}.getType());
+      extensionsTypeAdapter.registerExtension(ModelParser.MORE_TAGS_EXTENSION_KEY, new TypeToken<List<GedcomTag>>(){}.getType());
       gson = new GsonBuilder()
               .registerTypeAdapter(Extensions.class, extensionsTypeAdapter)
               .create();
