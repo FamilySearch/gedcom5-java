@@ -56,8 +56,8 @@ Extendible
 Developers can add custom extensions to the model.  An extension might annotate
 people with warnings about suspicious dates for example.
 
-Tools
------
+Parsers
+-------
 
 The project includes three parsers:
 
@@ -86,8 +86,40 @@ allow the user to correct the warnings, and save the information back as a GEDCO
 file without loss of information from the original GEDCOM for the vast majority of
 GEDCOM files.
 
+Building
+--------
+
+You'll need maven. `mvn install` creates the jar file.
+
+Tools
+-----
+
+* _Gedcom2Json.java_ converts a GEDCOM to a JSON file using either the model parser or the tree parser.
+
+* _Gedcom2Gedcom.java_ round-trips a GEDCOM file or a directory of GEDCOM files from GEDCOM, to the
+object model, and back to GEDCOM (in a different directory).
+
+* _CompareGedcom2Gedcom.java_ does the thing as Gedcom2Gedcom, and then compares the resulting GEDCOM
+to the original, reporting any differences.
+
+* _GedcomAnalyzer.java_ parses a GEDCOM file or a directory of GEDCOM files and reports tags that are
+stored as extensions and errors.
+
+* _PlaceWriter.java_ extracts all places from a directory of GEDCOM files, as an example of walking
+the model using a Visitor pattern. This function was written in just a few lines due to the other
+classes in this project.
+
+The tools can be run using
+`mvn exec:java -Dexec.mainClass=org.folg.gedcom.tools.<tool name> -Dexec.args="<args>"`
+
 Roadmap
 -------
 
-This project was posted only recently.  It may have bugs.  Use at your own risk.
-If you find bugs, please report them.
+* Once a GEDCOM has been imported, it still needs to be checked for referential integrity, and
+missing back-references must be added.  For example, if person A references family B, but family B does
+not reference person A, we need to add a reference from family B to person A.
+
+* If we're willing to forego round-trippability, we can handle additional tags that are stored as
+extensions currently.  For example, some GEDCOMs use FAMILY instead of FAM for family tags.  We
+could create Family objects from FAMILY tags, just as we do with FAM tags, but they would be exported
+as FAM tags, not FAMILY tags.
