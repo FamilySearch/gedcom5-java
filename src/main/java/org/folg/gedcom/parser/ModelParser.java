@@ -433,7 +433,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          ec.putExtension(MORE_TAGS_EXTENSION_KEY, moreTags);
       }
       moreTags.add(tag);
-      warning(new SAXParseException("Tag added as extension: "+joinTagStack(), locator));
+      warning(new SAXParseException("Tag added as extension: "+joinTagStack()+" "+tag.getTag(), locator));
    }
 
    private Object handleAbbr(Object tos) {
