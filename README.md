@@ -123,3 +123,8 @@ not reference person A, we need to add a reference from family B to person A.
 extensions currently.  For example, some GEDCOMs use FAMILY instead of FAM for family tags.  We
 could create Family objects from FAMILY tags, just as we do with FAM tags, but they would be exported
 as FAM tags, not FAMILY tags.
+
+Other projects
+--------------
+
+Check out [other genealogy projects[(https://github.com/DallanQ)
