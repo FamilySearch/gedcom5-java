@@ -127,4 +127,4 @@ as FAM tags, not FAMILY tags.
 Other projects
 --------------
 
-Check out [other genealogy projects[(https://github.com/DallanQ)
+Check out [other genealogy projects](https://github.com/DallanQ)
