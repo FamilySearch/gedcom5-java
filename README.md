@@ -112,6 +112,11 @@ classes in this project.
 The tools can be run using
 `mvn exec:java -Dexec.mainClass=org.folg.gedcom.tools.<tool name> -Dexec.args="<args>"`
 
+Support
+-------
+
+Support is available via the [Google group](https://groups.google.com/group/folg-gedcom)
+
 Roadmap
 -------
 

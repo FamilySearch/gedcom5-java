@@ -451,11 +451,11 @@ public class AnselOutputStreamWriter extends OutputStreamWriter
         case 0xFE22: return 0xFA;  //  double tilde left half
         case 0xFE23: return 0xFB;  //  double tilde right half
         // WeRelate added
-        //case 0x00FC: return 0x81;  // ü - umlaught
+        //case 0x00FC: return 0x81;  // ü - umlaught -- duplicate
         case 0x0098: return 0x88;  // non-sort begin
         case 0x009C: return 0x89;  // non-sort end
         case 0x0027: return 0x92;  // apostrophe
-        //case 0x00DF: return 0xC7;  //  eszett symbol
+        //case 0x00DF: return 0xC7;  //  eszett symbol -- duplicate
         case 0x201C: return 0x93;    // left double quotation mark (not in the standard)
         case 0x201D: return 0x94;    // right double quotation mark (not in the standard)
         case 0x20AC: return 0xC8;  //  euro sign
