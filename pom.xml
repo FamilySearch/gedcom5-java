@@ -10,6 +10,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--override this with a commandline define -->
     <skipTests>true</skipTests>
   </properties>
 
