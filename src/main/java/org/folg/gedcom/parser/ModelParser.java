@@ -79,7 +79,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
    
    public static enum Tag {
-      ABBR, ADDR, ADR1, ADR2, _AKA, ALIA, ANCI, ASSO, AUTH,
+      ABBR, ADDR, ADR1, ADR2, ADR3, _AKA, ALIA, ANCI, ASSO, AUTH,
       BLOB,
       CALN, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
       DATA, DATE, DESC, DESI, DEST,
@@ -129,7 +129,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             case ADR2:
                obj = handleAdr2(tos);
                break;
-            case _AKA:
+            case ADR3:
+               obj = handleAdr3(tos);
+               break;
+           case _AKA:
                obj = handleAka(tos, tagName);
                break;
             case ALIA:
@@ -480,6 +483,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private Object handleAdr2(Object tos) {
       if (tos instanceof Address && ((Address)tos).getAddressLine2() == null) {
          return new FieldRef(tos, "AddressLine2");
+      }
+      return null;
+   }
+
+   private Object handleAdr3(Object tos) {
+      if (tos instanceof Address && ((Address)tos).getAddressLine3() == null) {
+         return new FieldRef(tos, "AddressLine3");
       }
       return null;
    }

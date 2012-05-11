@@ -27,6 +27,7 @@ public class Address extends ExtensionContainer {
    private String value = null;
    private String adr1 = null;
    private String adr2 = null;
+   private String adr3 = null;
    private String city = null;
    private String stae = null;
    private String post = null;
@@ -47,6 +48,7 @@ public class Address extends ExtensionContainer {
       appendValue(buf, value);
       appendValue(buf, adr1);
       appendValue(buf, adr2);
+      appendValue(buf, adr3);
       appendValue(buf, (city != null ? city : "")+(city != null && stae != null ? ", " : "")+(stae != null ? stae : "")+
                        ((city != null || stae != null) && post != null ? " " : "")+(post != null ? post : ""));
       appendValue(buf, ctry);
@@ -74,6 +76,14 @@ public class Address extends ExtensionContainer {
 
    public void setAddressLine2(String adr2) {
       this.adr2 = adr2;
+   }
+
+   public String getAddressLine3() {
+      return adr3;
+   }
+
+   public void setAddressLine3(String adr3) {
+      this.adr3 = adr3;
    }
 
    public String getCity() {
