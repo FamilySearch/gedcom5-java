@@ -34,6 +34,7 @@ public class ModelParserTest {
     assertEquals(generatorCorporation.getAddress().getCity(), "Hometown");
     assertEquals(generatorCorporation.getAddress().getState(), "ZZ");
     assertEquals(generatorCorporation.getAddress().getPostalCode(), "99999");
+    assertEquals(generatorCorporation.getAddress().getCountry(), "United States");
     assertEquals(generatorCorporation.getPhone(), "866-000-0000");
     assertEquals(generatorCorporation.getEmail(), "info@mycorporation.com");
     assertEquals(generatorCorporation.getFax(), "866-111-1111");
@@ -51,6 +52,7 @@ public class ModelParserTest {
     assertEquals(submitter.getAddress().getCity(), "Hometown");
     assertEquals(submitter.getAddress().getState(), "ZZ");
     assertEquals(submitter.getAddress().getPostalCode(), "99999");
+    assertEquals(submitter.getAddress().getCountry(), "United States");
     assertEquals(submitter.getPhone(), "866-000-0000");
     assertEquals(submitter.getEmail(), "info@mycorporation.com");
     assertEquals(submitter.getFax(), "866-111-1111");
@@ -70,6 +72,7 @@ public class ModelParserTest {
     assertEquals(person.getAddress().getCity(), "Hometown");
     assertEquals(person.getAddress().getState(), "ZZ");
     assertEquals(person.getAddress().getPostalCode(), "99999");
+    assertEquals(person.getAddress().getCountry(), "United States");
     assertEquals(person.getPhone(), "866-000-0000");
     assertEquals(person.getEmail(), "info@mycorporation.com");
     assertEquals(person.getFax(), "866-111-1111");
@@ -89,6 +92,7 @@ public class ModelParserTest {
     assertEquals(eventFact.getAddress().getCity(), "Arlington");
     assertEquals(eventFact.getAddress().getState(), "VA");
     assertEquals(eventFact.getAddress().getPostalCode(), "22211");
+    assertEquals(eventFact.getAddress().getCountry(), "United States");
     assertEquals(eventFact.getPhone(), "877-907-8585");
     assertEquals(eventFact.getEmail(), "info@arlingtoncemetery.mil");
     assertEquals(eventFact.getFax(), "877-111-1111");
@@ -107,6 +111,7 @@ public class ModelParserTest {
     assertEquals(repository.getAddress().getCity(), "Hometown");
     assertEquals(repository.getAddress().getState(), "ZZ");
     assertEquals(repository.getAddress().getPostalCode(), "99999");
+    assertEquals(repository.getAddress().getCountry(), "United States");
     assertEquals(repository.getPhone(), "866-000-0000");
     assertEquals(repository.getEmail(), "info@mycorporation.com");
     assertEquals(repository.getFax(), "866-111-1111");
