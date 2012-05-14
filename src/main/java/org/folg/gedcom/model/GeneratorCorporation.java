@@ -26,6 +26,9 @@ public class GeneratorCorporation extends ExtensionContainer {
    private String value = null;
    private Address addr = null;
    private String phon = null;
+   private String _email = null;
+   private String emailTag = null;
+   private String fax = null;
    private String _www = null;
    private String wwwTag = null;
 
@@ -51,6 +54,30 @@ public class GeneratorCorporation extends ExtensionContainer {
 
    public void setPhone(String phon) {
       this.phon = phon;
+   }
+
+   public String getEmail() {
+      return _email;
+   }
+
+   public void setEmail(String email) {
+      this._email = email;
+   }
+
+   public String getEmailTag() {
+      return emailTag;
+   }
+
+   public void setEmailTag(String emailTag) {
+      this.emailTag = emailTag;
+   }
+
+   public String getFax() {
+      return fax;
+   }
+
+   public void setFax(String fax) {
+      this.fax = fax;
    }
 
    public String getWww() {

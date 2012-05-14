@@ -29,6 +29,7 @@ public class Repository extends NoteContainer {
    private String name = null;
    private Address addr = null;
    private String phon = null;
+   private String fax = null;
    private String rin = null;
    private Change chan = null;
    private String _email = null;
@@ -74,6 +75,14 @@ public class Repository extends NoteContainer {
 
    public void setPhone(String phon) {
       this.phon = phon;
+   }
+
+   public String getFax() {
+      return fax;
+   }
+
+   public void setFax(String fax) {
+      this.fax = fax;
    }
 
    public String getRin() {

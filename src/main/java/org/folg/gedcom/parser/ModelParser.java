@@ -84,7 +84,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       CALN, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
       DATA, DATE, DESC, DESI, DEST,
       EMAIL, _EMAIL, _EML,
-      FAM, FAMC, FAMS, _FILE, FILE, FORM, _FREL,
+      FAM, FAMC, FAMS, FAX, _FILE, FILE, FORM, _FREL,
       GED, GEDC, GIVN,
       HEAD, HUSB,
       INDI, _ITALIC,
@@ -208,6 +208,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case FAMS:
                obj = handleFams(tos, ref);
+               break;
+            case FAX:
+               obj = handleFax(tos);
                break;
             case _FILE:
             case FILE:
@@ -451,7 +454,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
           (tos instanceof EventFact && ((EventFact)tos).getAddress() == null) ||
           (tos instanceof Person && ((Person)tos).getAddress() == null) ||
           (tos instanceof Repository && ((Repository)tos).getAddress() == null) ||
-         (tos instanceof Submitter && ((Submitter)tos).getAddress() == null)) {
+          (tos instanceof Submitter && ((Submitter)tos).getAddress() == null)) {
          Address address = new Address();
          if (tos instanceof GeneratorCorporation) {
             ((GeneratorCorporation)tos).setAddress(address);
@@ -742,10 +745,18 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    private Object handleEmail(Object tos, String tagName) {
       if ((tos instanceof Submitter && ((Submitter)tos).getEmail() == null) ||
+          (tos instanceof GeneratorCorporation && ((GeneratorCorporation)tos).getEmail() == null) ||
+          (tos instanceof EventFact && ((EventFact)tos).getEmail() == null) ||
           (tos instanceof Person && ((Person)tos).getEmail() == null) ||
           (tos instanceof Repository && ((Repository)tos).getEmail() == null)) {
          if (tos instanceof Submitter) {
             ((Submitter)tos).setEmailTag(tagName);
+         }
+         else if (tos instanceof GeneratorCorporation) {
+            ((GeneratorCorporation)tos).setEmailTag(tagName);
+         }
+         else if (tos instanceof EventFact) {
+           ((EventFact)tos).setEmailTag(tagName);
          }
          else if (tos instanceof Person) {
             ((Person)tos).setEmailTag(tagName);
@@ -801,6 +812,17 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          spouseFamilyRef.setRef(ref);
          ((Person)tos).addSpouseFamilyRef(spouseFamilyRef);
          return spouseFamilyRef;
+      }
+      return null;
+   }
+
+   private Object handleFax(Object tos) {
+      if ((tos instanceof GeneratorCorporation && ((GeneratorCorporation)tos).getFax() == null) ||
+          (tos instanceof Repository && ((Repository)tos).getFax() == null) ||
+          (tos instanceof EventFact && ((EventFact)tos).getFax() == null) ||
+          (tos instanceof Person && ((Person)tos).getFax() == null) ||
+          (tos instanceof Submitter && ((Submitter)tos).getFax() == null)) {
+         return new FieldRef(tos, "Fax");
       }
       return null;
    }
@@ -1063,6 +1085,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private Object handlePhon(Object tos) {
       if ((tos instanceof GeneratorCorporation && ((GeneratorCorporation)tos).getPhone() == null) ||
           (tos instanceof Repository && ((Repository)tos).getPhone() == null) ||
+          (tos instanceof EventFact && ((EventFact)tos).getPhone() == null) ||
           (tos instanceof Person && ((Person)tos).getPhone() == null) ||
           (tos instanceof Submitter && ((Submitter)tos).getPhone() == null)) {
          return new FieldRef(tos, "Phone");
@@ -1410,12 +1433,20 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private Object handleWww(Object tos, String tagName) {
       if ((tos instanceof GeneratorCorporation && ((GeneratorCorporation)tos).getWww() == null) ||
           (tos instanceof Repository && ((Repository)tos).getWww() == null) ||
+          (tos instanceof EventFact && ((EventFact)tos).getWww() == null) ||
+          (tos instanceof Person && ((Person)tos).getWww() == null) ||
           (tos instanceof Submitter && ((Submitter)tos).getWww() == null)) {
          if (tos instanceof GeneratorCorporation) {
             ((GeneratorCorporation)tos).setWwwTag(tagName);
          }
          else if (tos instanceof Repository) {
             ((Repository)tos).setWwwTag(tagName);
+         }
+         else if (tos instanceof EventFact) {
+           ((EventFact)tos).setWwwTag(tagName);
+         }
+         else if (tos instanceof Person) {
+           ((Person)tos).setWwwTag(tagName);
          }
          else {
             ((Submitter)tos).setWwwTag(tagName);

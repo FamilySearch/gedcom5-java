@@ -189,10 +189,16 @@ public class EventFact extends SourceCitationContainer {
    private String date = null;
    private String place = null;
    private Address addr = null;
+   private String phon = null;
+   private String fax = null;
    private String rin = null;
    private EventFact caus = null;
    private String _uid = null;
    private String uidTag = null;
+   private String _email = null;
+   private String emailTag = null;
+   private String _www = null;
+   private String wwwTag = null;
 
    public String getValue() {
       return value;
@@ -257,6 +263,22 @@ public class EventFact extends SourceCitationContainer {
       this.addr = addr;
    }
 
+   public String getPhone() {
+      return phon;
+   }
+
+   public void setPhone(String phon) {
+      this.phon = phon;
+   }
+
+   public String getFax() {
+      return fax;
+   }
+
+   public void setFax(String fax) {
+      this.fax = fax;
+   }
+
    public EventFact getCause() {
       return caus;
    }
@@ -287,6 +309,38 @@ public class EventFact extends SourceCitationContainer {
 
    public void setUidTag(String uidTag) {
       this.uidTag = uidTag;
+   }
+
+   public String getEmail() {
+      return _email;
+   }
+
+   public void setEmail(String email) {
+      this._email = email;
+   }
+
+   public String getEmailTag() {
+      return emailTag;
+   }
+
+   public void setEmailTag(String emailTag) {
+      this.emailTag = emailTag;
+   }
+
+   public String getWww() {
+      return _www;
+   }
+
+   public void setWww(String www) {
+      this._www = www;
+   }
+
+   public String getWwwTag() {
+      return wwwTag;
+   }
+
+   public void setWwwTag(String wwwTag) {
+      this.wwwTag = wwwTag;
    }
 
    @Override

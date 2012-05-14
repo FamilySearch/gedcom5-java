@@ -39,10 +39,13 @@ public class Person extends PersonFamilyCommonContainer {
    private String rfn = null;
    private Address addr = null;
    private String phon = null;
+   private String fax = null;
    private String email = null;
    private String emailTag = null;
+   private String _www = null;
+   private String wwwTag = null;
 
-   public String getId() {
+  public String getId() {
       return id;
    }
 
@@ -179,6 +182,14 @@ public class Person extends PersonFamilyCommonContainer {
       this.phon = phon;
    }
 
+   public String getFax() {
+      return fax;
+   }
+
+   public void setFax(String fax) {
+      this.fax = fax;
+   }
+
    public String getEmail() {
       return email;
    }
@@ -195,7 +206,23 @@ public class Person extends PersonFamilyCommonContainer {
       this.emailTag = emailTag;
    }
 
-   public void accept(Visitor visitor) {
+   public String getWww() {
+      return _www;
+   }
+
+   public void setWww(String www) {
+      this._www = www;
+   }
+
+   public String getWwwTag() {
+      return wwwTag;
+   }
+
+   public void setWwwTag(String wwwTag) {
+      this.wwwTag = wwwTag;
+   }
+
+  public void accept(Visitor visitor) {
       if (visitor.visit(this)) {
          for (Name name : getNames()) {
             name.accept(visitor);

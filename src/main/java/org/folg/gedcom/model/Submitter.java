@@ -27,6 +27,7 @@ public class Submitter extends ExtensionContainer {
    private String value = null;
    private Address addr = null;
    private String phon = null;
+   private String fax = null;
    private String name = null;
    private Change chan = null;
    private String rin = null;
@@ -66,6 +67,14 @@ public class Submitter extends ExtensionContainer {
 
    public void setPhone(String phon) {
       this.phon = phon;
+   }
+
+   public String getFax() {
+      return fax;
+   }
+
+   public void setFax(String fax) {
+      this.fax = fax;
    }
 
    public String getName() {

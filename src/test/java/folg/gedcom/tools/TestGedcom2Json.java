@@ -1,12 +1,17 @@
 package folg.gedcom.tools;
 
-import junit.framework.*;
 import org.folg.gedcom.tools.Gedcom2Json;
+import org.testng.annotations.Test;
 import org.xml.sax.SAXParseException;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 
 /**
  * <Description>
@@ -14,8 +19,9 @@ import java.net.URL;
  * @author DaveySE
  *         Creation Date: 4/30/12
  */
-public class TestGedcom2Json extends TestCase {
+public class TestGedcom2Json {
 
+  @Test
   public void testSimpleSmoke() {
     URL inUrl = this.getClass().getResource("/Simple_Test.ged");
     assertNotNull(inUrl);
