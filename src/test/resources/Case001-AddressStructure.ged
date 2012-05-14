@@ -1,0 +1,90 @@
+0 HEAD
+1 SOUR PAF
+2 NAME MyCorporation Gedcom Generator
+2 VERS 5.2.18.0
+2 CORP MyCorporation, Inc.
+3 ADDR 5000 MyCorpCampus Dr
+4 CONT Hometown, ZZ  99999
+4 CONT United States
+4 ADR1 __ADR1_VALUE__
+4 ADR2 __ADR2_VALUE__
+4 ADR3 5000 MyCorpCampus Dr
+4 CITY Hometown
+4 STAE ZZ
+4 POST 99999
+4 CTRY United States
+3 PHON 866-000-0000
+3 EMAIL info@mycorporation.com
+3 FAX 866-111-1111
+3 WWW http://www.mycorporation.org/
+1 DATE 12 Dec 2012
+2 TIME 12:12:12
+1 GEDC
+2 VERS 5.5
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 SUBM @SUB1@
+0 @SUB1@ SUBM
+1 NAME MyCorporation, Inc.
+1 ADDR 5000 MyCorpCampus Dr
+2 CONT Hometown, ZZ  99999
+2 CONT United States
+2 ADR1 __ADR1_VALUE__
+2 ADR2 __ADR2_VALUE__
+2 ADR3 5000 MyCorpCampus Dr
+2 CITY Hometown
+2 STAE ZZ
+2 POST 99999
+2 CTRY United States
+1 PHON 866-000-0000
+1 EMAIL info@mycorporation.com
+1 FAX 866-111-1111
+1 WWW http://www.mycorporation.org/
+0 @I1@ INDI
+1 NAME MyGiven1 MyGiven2 /MySurname/ IV
+1 BURI
+2 ADDR Arlington National Cemetery
+3 CONT State Hwy 110 & Memorial Dr
+3 CONT Arlington, VA  22211
+3 CONT United States
+3 ADR1 __ADR1_VALUE__
+3 ADR2 __ADR2_VALUE__
+3 ADR3 __ADR3_VALUE__
+3 CITY Arlington
+3 STAE VA
+3 POST 22211
+3 CTRY United States
+2 PHON 877-907-8585
+2 EMAIL info@arlingtoncemetery.mil
+2 FAX 877-111-1111
+2 WWW http://www.arlingtoncemetery.mil/
+1 ADDR 5000 MyCorpCampus Dr
+2 CONT Hometown, ZZ  99999
+2 CONT United States
+2 ADR1 __ADR1_VALUE__
+2 ADR2 __ADR2_VALUE__
+2 ADR3 5000 MyCorpCampus Dr
+2 CITY Hometown
+2 STAE ZZ
+2 POST 99999
+2 CTRY United States
+1 PHON 866-000-0000
+1 EMAIL info@mycorporation.com
+1 FAX 866-111-1111
+1 WWW http://www.mycorporation.org/
+0 @REPO3@ REPO
+1 NAME MyCorporation, Inc.
+1 ADDR 5000 MyCorpCampus Dr
+2 CONT Hometown, ZZ  99999
+2 CONT United States
+2 ADR1 __ADR1_VALUE__
+2 ADR2 __ADR2_VALUE__
+2 ADR3 5000 MyCorpCampus Dr
+2 CITY Hometown
+2 STAE ZZ
+2 POST 99999
+2 CTRY United States
+1 PHON 866-000-0000
+1 EMAIL info@mycorporation.com
+1 FAX 866-111-1111
+1 WWW https://www.mycorporation.com/
