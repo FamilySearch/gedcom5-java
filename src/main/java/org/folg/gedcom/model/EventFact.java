@@ -28,24 +28,28 @@ import java.util.*;
  */
 public class EventFact extends SourceCitationContainer {
    public static final Set<String> PERSONAL_EVENT_FACT_TAGS = new HashSet<String>(Arrays.asList(
-           "ADOP", "AFN", "ARRI", "ARVL", "_ATTR",
-           "BAP", "BAPM", "BAPT", "BARM", "BIRT", "BLES", "BURI",
-           "CAST", "CAUS", "CENS", "CHR", "_COLOR", "CONF", "CREM",
-           "_DCAUSE", "DEAT", "DEED", "_DEG", "DPRT", "DSCR",
-           "EDUC", "_ELEC", "EMAIL", "EMIG", "EMPL", "_EMPLOY", "ENLIST", "EVEN", "EVENT", "EYES",
-           "FACT", "FCOM", "_FNRL", "_FUN",
+           "ADOP", "ADOPTION", "ADULT_CHRISTNG", "AFN", "ARRI", "ARVL", "ARRIVAL", "_ATTR",
+           "BAP", "BAPM", "BAPT", "BAPTISM", "BARM", "BAR_MITZVAH", "BASM", "BAS_MITZVAH", "BATM", "BAT_MITZVAH", "BIRT", "BIRTH", "BLES", "BLESS", "BLESSING", "BLSL", "BURI", "BURIAL",
+           "CAST", "CASTE", "CAUS", "CENS", "CENSUS", "CHILDREN_COUNT", "CHR", "CHRA", "CHRISTENING", "CIRC", "CITN", "_COLOR",  "CONF", "CONFIRMATION", "CREM", "CREMATION",
+           "_DCAUSE", "DEAT", "DEATH", "_DEATH_OF_SPOUSE", "DEED", "_DEG", "_DEGREE", "DEPA", "DPRT", "DSCR", "DWEL",
+           "EDUC", "EDUCATION", "_ELEC", "EMAIL", "EMIG", "EMIGRATION", "EMPL", "_EMPLOY", "ENGA", "ENLIST", "EVEN", "EVENT", "_EXCM", "EXCO", "EYES",
+           "FACT", "FCOM", "FIRST_COMMUNION", "_FNRL", "_FUN",
            "_FA1", "_FA2", "_FA3", "_FA4", "_FA5", "_FA6", "_FA7", "_FA8", "_FA9", "_FA10", "_FA11", "_FA12", "_FA13",
-           "GRAD",
-           "HAIR", "HEIG", "_HEIG",
-           "ILL", "IMMI",
-           "MARR", "_MDCL", "MIL", "MILI", "_MIL", "_MILI", "_MILT", "_MILTID", "MISE",
-           "NATI", "NATU",
-           "OCCU", "ORDI", "ORDN",
-           "PHON", "PROB", "PROP",
-           "RELI", "RESI", "RETI",
-           "SEX", "SSN",
-           "_WEIG", "WILL"
-   ));
+           "GRAD", "GRADUATION",
+           "HAIR", "HEIG", "_HEIG", "_HEIGHT",
+           "IDNO", "IDENT_NUMBER", "_INTE",
+           "ILL", "ILLN", "IMMI", "IMMIGRATION",
+           "LVG", "LVNG",
+           "MARR", "MARRIAGE_COUNT", "_MDCL", "_MEDICAL", "MIL", "_MIL", "MILA", "MILD", "MILI", "_MILI", "MILT", "_MILT", "_MILTID", "MISE", "_MISE", "_MILITARY_SERVICE", "MISN ", "_MISN", "MOVE",
+           "_NAMS", "NATI", "NATIONALITY", "NATU", "NATURALIZATION", "NCHI", "NMR",
+           "OCCU", "OCCUPATION", "ORDI", "ORDL", "ORDN", "ORDINATION",
+           "PHON", "PHY_DESCRIPTION", "PROB", "PROBATE", "PROP", "PROPERTY",
+           "RACE", "RELI", "RELIGION", "RESI", "RESIR", "RESIDENCE", "RETI", "RETIREMENT",
+           "SEX", "SOC_SEC_NUMBER", "SSN", "STIL", "STLB",
+           "TITL", "TITLE",
+           "WEIG", "_WEIG", "_WEIGHT",
+           "WILL"
+  ));
    public static final Set<String> FAMILY_EVENT_FACT_TAGS = new HashSet<String>(Arrays.asList(
       "ANUL",
       "CENS", "CLAW",
