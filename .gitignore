@@ -6,3 +6,4 @@ target
 *.iml
 nbproject
 out
+.DS_Store
