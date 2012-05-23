@@ -9,7 +9,8 @@ import org.kohsuke.args4j.Option;
 import org.xml.sax.SAXParseException;
 
 import java.io.*;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: dallan
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  * Convert a GEDCOM file or directory to the model and back again
  */
 public class Gedcom2Gedcom {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.tools");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.tools");
 
    @Option(name="-i", required=true, usage="file or directory containing gedcom files to convert")
    private File gedcomIn;
@@ -47,12 +48,12 @@ public class Gedcom2Gedcom {
             System.out.println(out.toString());
          }
       } catch (SAXParseException e) {
-         logger.severe("SaxParseException for file: "+file.getName()+" "+e.getMessage()+" @ "+e.getLineNumber());
+         logger.error("SaxParseException for file: "+file.getName()+" "+e.getMessage()+" @ "+e.getLineNumber());
       } catch (IOException e) {
-         logger.severe("IOException for file: " + file.getName() + " " + e.getMessage());
+         logger.error("IOException for file: " + file.getName() + " " + e.getMessage());
       } catch (RuntimeException e) {
          e.printStackTrace();
-         logger.severe("Exception for file: "+file.getName()+" "+e.getMessage());
+         logger.error("Exception for file: "+file.getName()+" "+e.getMessage());
       }
    }
 

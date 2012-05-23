@@ -19,7 +19,8 @@ package org.folg.gedcom.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Simple data structure for a gedcom node - json-friendly
@@ -27,7 +28,7 @@ import java.util.logging.Logger;
  * Date: 12/23/11
  */
 public class GedcomTag implements Comparable<GedcomTag> {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.model");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.model");
 
    private String id;
    private String tag;

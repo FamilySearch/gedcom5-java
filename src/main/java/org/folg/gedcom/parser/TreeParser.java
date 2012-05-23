@@ -24,7 +24,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Stack;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Call parseGedcom to parse a gedcom file into a list of GedcomTag's
@@ -32,7 +33,7 @@ import java.util.logging.Logger;
  * Date: 12/23/11
  */
 public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.parser");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.parser");
 
    private Locator locator;
    private GedcomTag tree;
@@ -120,7 +121,7 @@ public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
          errorHandler.error(exception.getMessage(), exception.getLineNumber());
       }
       else {
-         logger.warning(exception.getMessage() + " @ " + exception.getLineNumber());
+         logger.warn(exception.getMessage() + " @ " + exception.getLineNumber());
       }
    }
 
@@ -130,7 +131,7 @@ public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
          errorHandler.fatalError(exception.getMessage(), exception.getLineNumber());
       }
       else {
-         logger.severe(exception.getMessage() + " @ " + exception.getLineNumber());
+         logger.error(exception.getMessage() + " @ " + exception.getLineNumber());
       }
    }
 

@@ -15,7 +15,8 @@ import java.io.*;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: Ryan K.
@@ -24,7 +25,7 @@ import java.util.logging.Logger;
  * Convert a GEDCOM file or directory to the model and back again
  */
 public class CompareGedcom2Gedcom implements ErrorHandler {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.tools");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.tools");
 
    @Option(name = "-i", required = true, usage = "file or directory containing gedcom files to convert")
    private File gedcomIn;
@@ -44,7 +45,7 @@ public class CompareGedcom2Gedcom implements ErrorHandler {
    @Override
    public void warning(String message, int lineNumber) {
       if (logWarningsErrors) {
-         logger.warning(message+" @ "+lineNumber);
+         logger.warn(message+" @ "+lineNumber);
       }
    }
 
@@ -52,7 +53,7 @@ public class CompareGedcom2Gedcom implements ErrorHandler {
    public void error(String message, int lineNumber) {
       hasError = true;
       if (logWarningsErrors) {
-         logger.severe(message+" @ "+lineNumber+" => "+currentFilename);
+         logger.error(message+" @ "+lineNumber+" => "+currentFilename);
       }
    }
 
@@ -97,17 +98,17 @@ public class CompareGedcom2Gedcom implements ErrorHandler {
             expectedNotEqualsCount++;
          }
          else {
-            logger.warning("Unexpected not equal: " + file.getName());
+            logger.warn("Unexpected not equal: " + file.getName());
             unexpectedNotEqualsCount++;
          }
 
       } catch (SAXParseException e) {
-         logger.severe("SaxParseException for file: " + file.getName() + " " + e.getMessage() + " @ " + e.getLineNumber());
+         logger.error("SaxParseException for file: " + file.getName() + " " + e.getMessage() + " @ " + e.getLineNumber());
       } catch (IOException e) {
-         logger.severe("IOException for file: " + file.getName() + " " + e.getMessage());
+         logger.error("IOException for file: " + file.getName() + " " + e.getMessage());
       } catch (RuntimeException e) {
          e.printStackTrace();
-         logger.severe("Exception for file: " + file.getName() + " " + e.getMessage());
+         logger.error("Exception for file: " + file.getName() + " " + e.getMessage());
       }
    }
 

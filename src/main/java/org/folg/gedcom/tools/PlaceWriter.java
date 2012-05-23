@@ -8,14 +8,15 @@ import org.kohsuke.args4j.Option;
 import org.xml.sax.SAXParseException;
 
 import java.io.*;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: dallan
  * Date: 1/7/12
  */
 public class PlaceWriter extends Visitor {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.tools");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.tools");
 
    @Option(name="-i", required=true, usage="file or directory containing gedcom files to process")
    private File gedcomIn;

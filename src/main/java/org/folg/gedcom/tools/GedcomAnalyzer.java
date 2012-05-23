@@ -29,14 +29,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: dallan
  * Date: 1/2/12
  */
 public class GedcomAnalyzer implements ErrorHandler {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.tools");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.tools");
 
    @Option(name="-i", required=true, usage="file or directory containing gedcom files to analyze")
    private File gedcomIn;
@@ -73,7 +74,7 @@ public class GedcomAnalyzer implements ErrorHandler {
    }
 
    public void error(String message, int lineNumber) {
-      logger.warning(message+" @ "+lineNumber);
+      logger.warn(message+" @ "+lineNumber);
       errors.add(message);
    }
 
@@ -101,12 +102,12 @@ public class GedcomAnalyzer implements ErrorHandler {
             ccErrors.add(error);
          }
       } catch (SAXParseException e) {
-         logger.severe("SaxParseException for file: "+file.getName()+" "+e.getMessage()+" @ "+e.getLineNumber());
+         logger.error("SaxParseException for file: "+file.getName()+" "+e.getMessage()+" @ "+e.getLineNumber());
       } catch (IOException e) {
-         logger.severe("IOException for file: " + file.getName() + " " + e.getMessage());
+         logger.error("IOException for file: " + file.getName() + " " + e.getMessage());
       } catch (RuntimeException e) {
          e.printStackTrace();
-         logger.severe("Exception for file: "+file.getName()+" "+e.getMessage());
+         logger.error("Exception for file: "+file.getName()+" "+e.getMessage());
       }
    }
 

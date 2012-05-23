@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.folg.gedcom</groupId>
   <artifactId>gedcom</artifactId>
@@ -12,6 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--override this with a commandline define -->
     <testng.version>6.5.2</testng.version>
+    <slf-api.version>1.6.4</slf-api.version>
     <skipTests>true</skipTests>
   </properties>
 
@@ -48,6 +49,12 @@
       <artifactId>args4j</artifactId>
       <version>2.0.16</version>
     </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>1.6.4</version>
+      <scope>provided</scope>
+    </dependency>
 
     <!--test dependencies-->
     <dependency>
@@ -56,5 +63,11 @@
       <version>${testng.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf-api.version}</version>
+    </dependency>
   </dependencies>
+
 </project>

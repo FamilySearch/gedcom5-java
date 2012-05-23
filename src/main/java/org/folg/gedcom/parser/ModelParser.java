@@ -23,14 +23,15 @@ import org.xml.sax.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: Dallan
  * Date: 12/25/11
  */
 public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
-   private static final Logger logger = Logger.getLogger("org.folg.gedcom.parser");
+   private static final Logger logger = LoggerFactory.getLogger("org.folg.gedcom.parser");
    public static final String MORE_TAGS_EXTENSION_KEY = "folg.more_tags";
    private Locator locator;
 
@@ -1526,7 +1527,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          errorHandler.error(exception.getMessage(), exception.getLineNumber());
       }
       else {
-         logger.warning(exception.getMessage() + " @ " + exception.getLineNumber());
+         logger.warn(exception.getMessage() + " @ " + exception.getLineNumber());
       }
    }
 
@@ -1536,7 +1537,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          errorHandler.fatalError(exception.getMessage(), exception.getLineNumber());
       }
       else {
-         logger.severe(exception.getMessage() + " @ " + exception.getLineNumber());
+         logger.error(exception.getMessage() + " @ " + exception.getLineNumber());
       }
    }
 
