@@ -59,7 +59,7 @@ public class EventFact extends SourceCitationContainer {
       "MARB", "MARC", "MARL", "MARR", "MARRIAGE", "MARS", "_MBON",
       "NCHI",
       "RESI",
-      "SEPA", "_SEPR"
+      "SEPA", "_SEPR", "_SEPARATED"
    ));
 
    public static final Map<String,String> DISPLAY_TYPE;
