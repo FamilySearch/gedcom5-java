@@ -1,0 +1,11 @@
+To cut a new version:
+
+1. mvn release:prepare -Dtag=$RELEASE_VERSION -DreleaseVersion=$RELEASE_VERSION -DdevelopmentVersion=$NEXT_SNAPSHOT_VERSION
+2. mvn release:clean
+3. Configure the release build[1] with a branch specifier of $RELEASE_VERSION (todo: make this step easier)
+4. Build[2]
+5. Blog about the release
+6. Create a new milestone in the github issues.
+
+[1] https://gedcom.ci.cloudbees.com/job/gedcom-5.5-parser-release/configure
+[2] https://gedcom.ci.cloudbees.com/job/gedcom-5.5-parser-release/build?delay=0sec
