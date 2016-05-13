@@ -1,7 +1,5 @@
 Here is a parser that converts GEDCOM files to a _de facto_ object model.
 
-__[Try the demo](https://github.com/DallanQ/Gedcom/wiki/Demo)__.
-
 De Facto object model
 ---------------------
 
@@ -112,11 +110,6 @@ classes in this project.
 The tools can be run using
 `mvn exec:java -Dexec.mainClass=org.folg.gedcom.tools.<tool name> -Dexec.args="<args>"`
 
-Support
--------
-
-Support is available via the [Google group](https://groups.google.com/group/folg-gedcom)
-
 Roadmap
 -------
 
@@ -128,8 +121,3 @@ not reference person A, we need to add a reference from family B to person A.
 extensions currently.  For example, some GEDCOMs use FAMILY instead of FAM for family tags.  We
 could create Family objects from FAMILY tags, just as we do with FAM tags, but they would be exported
 as FAM tags, not FAMILY tags.
-
-Other projects
---------------
-
-Check out [other genealogy projects](https://github.com/DallanQ)
