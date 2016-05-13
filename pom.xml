@@ -21,6 +21,29 @@
     <url>https://github.com/FamilySearch/Gedcom</url>
   </scm>
 
+  <contributors>
+    <contributor>
+      <name>Dallan Quass</name>
+      <email>dallan@werelate.org</email>
+    </contributor>
+    <contributor>
+      <name>Michael Kay</name>
+      <email>mhkay@iclway.co.uk</email>
+    </contributor>
+    <contributor>
+      <name>Lynn Monson</name>
+      <url>http://lmonson.com</url>
+    </contributor>
+    <contributor>
+      <name>Nathan Powell</name>
+      <url>nathanielpowell.org</url>
+    </contributor>
+    <contributor>
+      <name>Ryan Heaton</name>
+      <email>heatonra@familysearch.org</email>
+    </contributor>
+  </contributors>
+
   <build>
     <plugins>
       <plugin>
