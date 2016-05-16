@@ -29,9 +29,6 @@ public class GedcomParser implements XMLReader, Locator {
            // OK to support, since non are produced from gedcom
            "http://xml.org/sax/features/string-interning"
    );
-   private static final List<String> EXPECTED_CHAR_ENCODINGS = Arrays.asList(
-           "ANSEL","ASCII","Cp850","Cp874","Cp1251","Cp1252","Cp1254","UTF-8","x-MacRoman","UTF-16","UnicodeBigUnmarked"
-   );
 
    private ContentHandler contentHandler;
    private ErrorHandler errorHandler;
@@ -238,31 +235,28 @@ public class GedcomParser implements XMLReader, Locator {
          charEncoding = "ANSEL"; // default
       }
 
-      if (EXPECTED_CHAR_ENCODINGS.contains(charEncoding)) {
-         // skip over junk at the beginning of the file
-         in = (new URL(systemId)).openStream();
-         int cnt = 0;
-         int c;
-         while ((c = in.read()) != '0' && c != -1) {
-            cnt++;
-         }
-         in.close();
-         in = (new URL(systemId)).openStream();
-         for (int i = 0; i < cnt; i++) {
-            in.read();
-         }
-
-         InputStreamReader reader;
-         if (charEncoding.equals("ANSEL")) {
-            reader = new AnselInputStreamReader(in);
-         }
-         else {
-            reader = new InputStreamReader(in, charEncoding);
-         }
-         return new BufferedReader(reader);
+      // skip over junk at the beginning of the file
+      in = (new URL(systemId)).openStream();
+      int cnt = 0;
+      int c;
+      while ((c = in.read()) != '0' && c != -1) {
+         cnt++;
+      }
+      in.close();
+      in = (new URL(systemId)).openStream();
+      for (int i = 0; i < cnt; i++) {
+         in.read();
       }
 
-      throw new SAXException("Unrecognized encoding in gedcom file: " + charEncoding);
+      InputStreamReader reader;
+      if (charEncoding.equals("ANSEL")) {
+         reader = new AnselInputStreamReader(in);
+      }
+      else {
+         reader = new InputStreamReader(in, charEncoding);
+      }
+
+      return new BufferedReader(reader);
    }
 
    /**
