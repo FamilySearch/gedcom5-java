@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class GedcomLineParser {
    private static final Pattern pGedcomLine = Pattern.compile(
-           "^\\s*(\\d)\\s+(@([^@ ]+)@\\s+)?(\\w+)(\\s+@([^@ ]+)@)?(\\s(.*))?$", Pattern.DOTALL); // DOTALL for unicode line separator
+           "^\\s*(\\d)\\s+(@([^@ ]+)@\\s+)?([a-zA-Z_0-9.]+)(\\s+@([^@ ]+)@)?(\\s(.*))?$", Pattern.DOTALL); // DOTALL for unicode line separator
 
    private static final int LEVEL_GROUP = 1;
    private static final int ID_GROUP = 3;
