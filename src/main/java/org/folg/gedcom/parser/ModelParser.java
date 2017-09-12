@@ -103,7 +103,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       WIFE, _WEB, WWW, _WWW,
       
       // personal LDS ordinances
-      BAPL, CONL, ENDL, SLGC, 
+      BAPL, CONL, WAC, ENDL, SLGC,
       // family LDS ordinances
       SLGS
    }
@@ -391,6 +391,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             // lds ordinance tags
             case BAPL:
             case CONL:
+            case WAC:
             case ENDL:
             case SLGC:
                obj = handleLdsOrdinance(tos, true, tagNameUpper);
