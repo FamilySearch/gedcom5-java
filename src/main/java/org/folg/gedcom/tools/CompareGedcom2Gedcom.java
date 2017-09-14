@@ -19,9 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * User: Ryan K.
- * Date: 1/7/12
- * <p/>
  * Convert a GEDCOM file or directory to the model and back again
  */
 public class CompareGedcom2Gedcom implements ErrorHandler {

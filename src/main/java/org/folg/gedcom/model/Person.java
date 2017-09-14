@@ -24,7 +24,7 @@ import java.util.List;
  * User: Dallan
  * Date: 12/25/11
  *
- * omit: Submitter, Reference type, Restriction, >1 anci, >1 desi
+ * omit: Submitter, Reference type, Restriction, &gt;1 anci, &gt;1 desi
  * add: Uid, Address, phone, email, title (is a Name)
  * change: alia from xref to Name
  */

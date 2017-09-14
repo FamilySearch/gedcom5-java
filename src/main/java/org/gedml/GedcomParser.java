@@ -8,8 +8,6 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
 /**
- * org.gedml.Gedcom2Json
- * <p/>
  * This class is designed to look like a SAX2-compliant XML parser; however,
  * it takes GEDCOM as its input rather than XML.
  * The events sent to the ContentHandler reflect the GEDCOM input "as is";

@@ -117,8 +117,8 @@ public class CountsCollector {
    /**
     * Returns the collection sorted and filtered
     * @param byKey if true, sort by key; otherwise sort descending by count
-    * @param minCount only include items >= minCount
-    * @return sorted set of Map.Entry<String,Counter>
+    * @param minCount only include items greater than minCount
+    * @return the collection sorted and filtered
     */
    public SortedSet<Map.Entry<String,Counter>> getSortedSet(boolean byKey, int minCount) {
       Comparator<Map.Entry<String,Counter>> comp;
@@ -142,7 +142,7 @@ public class CountsCollector {
    /**
     * Write the stats in sorted order
     * @param byKey if true, sort by key value; otherwise sort by count
-    * @param minCount write out only those entries having count >= minCount
+    * @param minCount write out only those entries having count greater than minCount
     * @param writer PrintWriter to write to
     */
    public void writeSorted(boolean byKey, int minCount, PrintWriter writer) {
