@@ -33,10 +33,14 @@ public class Name extends SourceCitationContainer {
    private String nsfx = null;
    private String spfx = null;
    private String nick = null;
+   private String fone = null;
+   private String romn = null;
    private String _type = null;
    private String typeTag = null;
    private String _aka = null;
    private String akaTag = null;
+   private String foneTag = null;
+   private String romnTag = null;
    private String _marrnm = null;
    private String marrnmTag = null;
 
@@ -159,6 +163,39 @@ public class Name extends SourceCitationContainer {
    public void setAkaTag(String akaTag) {
       this.akaTag = akaTag;
    }
+
+   public String getRomn() {
+      return romn;
+   }
+
+   public void setRomn(String romn) {
+      this.romn = romn;
+   }
+
+   public String getRomnTag() {
+      return romnTag;
+   }
+
+   public void setRomnTag(String romnTag) {
+      this.romnTag = romnTag;
+   }
+
+   public String getFone() {
+      return fone;
+   }
+
+   public void setFone(String fone) {
+      this.fone = fone;
+   }
+
+   public String getFoneTag() {
+      return foneTag;
+   }
+
+   public void setFoneTag(String foneTag) {
+      this.foneTag = foneTag;
+   }
+
 
    public String getMarriedName() {
       return _marrnm;

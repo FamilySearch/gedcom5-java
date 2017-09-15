@@ -85,7 +85,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       CALN, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
       DATA, DATE, DESC, DESI, DEST,
       EMAIL, _EMAIL, _EML,
-      FAM, FAMC, FAMS, FAX, _FILE, FILE, FORM, _FREL,
+      FAM, FAMC, FAMS, FAX, _FILE, FILE, FONE, FORM, _FREL,
       GED, GEDC, GIVN,
       HEAD, HUSB,
       INDI, _ITALIC,
@@ -95,7 +95,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       OBJE, ORDI,
       PAGE, _PAREN, PEDI, PHON, POST, PLAC, _PREF, _PRIM, _PRIMARY, PUBL,
       QUAY,
-      REFN, RELA, REPO, RFN, RIN,
+      REFN, RELA, REPO, RFN, RIN, ROMN,
       _SCBK, SOUR, SPFX, _SSHOW, STAE, STAT, SUBM, SUBN, SURN,
       TEMP, TEXT, TIME, TITL, TRLR, TYPE, _TYPE,
       UID, _UID, _URL,
@@ -217,7 +217,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             case FILE:
                obj = handleFile(tos, tagName);
                break;
-            case FORM:
+           case FONE:
+             obj = handleFone(tos, tagName);
+             break;
+           case FORM:
                obj = handleForm(tos);
                break;
             case _FREL:
@@ -326,7 +329,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             case RIN:
                obj = handleRin(tos);
                break;
-            case _SCBK:
+           case ROMN:
+             obj = handleRomn(tos, tagName);
+             break;
+           case _SCBK:
                obj = handleScbk(tos);
                break;
             case SOUR:
@@ -507,7 +513,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
-   private Object handleAlia(Object tos, String ref) {
+  private Object handleAlia(Object tos, String ref) {
       // we don't handle the standard ALIA @ref@ form, because nobody writes it that way
       // make it a name so it can have source citations
       if (tos instanceof Person && ref == null) {
@@ -840,7 +846,15 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
-   private Object handleForm(Object tos) {
+  private Object handleFone(Object tos, String tagName) {
+    if (tos instanceof Name && ((Name)tos).getFone() == null) {
+      ((Name)tos).setFoneTag(tagName);
+      return new FieldRef(tos, "Fone");
+    }
+    return null;
+  }
+
+  private Object handleForm(Object tos) {
       if (tos instanceof GedcomVersion && ((GedcomVersion)tos).getForm() == null) {
          return new FieldRef(tos, "Form");
       }
@@ -1194,7 +1208,15 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
-   private Object handleScbk(Object tos) {
+  private Object handleRomn(Object tos, String tagName) {
+    if (tos instanceof Name && ((Name)tos).getRomn() == null) {
+      ((Name)tos).setRomnTag(tagName);
+      return new FieldRef(tos, "Romn");
+    }
+    return null;
+  }
+
+  private Object handleScbk(Object tos) {
       if (tos instanceof Media && ((Media)tos).getScrapbook() == null) {
          return new FieldRef(tos, "Scrapbook");
       }
