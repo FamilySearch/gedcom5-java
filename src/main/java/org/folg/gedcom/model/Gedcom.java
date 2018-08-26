@@ -24,7 +24,7 @@ import java.util.*;
  */
 public class Gedcom extends ExtensionContainer {
    private Header head = null;
-   private Submitter subm = null;
+   private List<Submitter> subms = null;
    private Submission subn = null;
    private List<Person> people = null;
    private List<Family> families = null;
@@ -39,6 +39,7 @@ public class Gedcom extends ExtensionContainer {
    private transient Map<String,Note> noteIndex;
    private transient Map<String,Source> sourceIndex;
    private transient Map<String,Repository> repositoryIndex;
+   private transient Map<String,Submitter> submitterIndex;
 
    public Header getHeader() {
       return head;
@@ -185,17 +186,34 @@ public class Gedcom extends ExtensionContainer {
     * @return Submitter top-level record or from header
     */
    public Submitter getSubmitter() {
-      if (subm != null) {
-         return subm;
+      if (subms != null && !subms.isEmpty()) {
+         return subms.get(0);
       }
       else if (head != null) {
-         return head.getSubmitter();
+         return submitterIndex.get(head.getSubmitterRef());
       }
       return null;
    }
 
-   public void setSubmitter(Submitter subm) {
-      this.subm = subm;
+   public Submitter getSubmitter(String id) { return submitterIndex.get(id); }
+
+   public List<Submitter> getSubmitters() {
+      return subms;
+   }
+
+   public void setSubmitters(List<Submitter> submitters) {
+      this.subms = submitters;
+   }
+
+   public void addSubmitters(Submitter submitter) {
+      if (subms == null) {
+         subms = new ArrayList<>();
+      }
+      subms.add(submitter);
+
+      if (submitterIndex != null) {
+         submitterIndex.put(submitter.getId(), submitter);
+      }
    }
 
    /**
@@ -241,6 +259,11 @@ public class Gedcom extends ExtensionContainer {
       for (Repository repository : getRepositories()) {
          repositoryIndex.put(repository.getId(), repository);
       }
+
+      submitterIndex = new HashMap<String, Submitter>();
+      for (Submitter submitter : getSubmitters()){
+         submitterIndex.put(submitter.getId(), submitter);
+      }
    }
 
    public void accept(Visitor visitor) {
@@ -248,8 +271,8 @@ public class Gedcom extends ExtensionContainer {
          if (head != null) {
             head.accept(visitor);
          }
-         if (subm != null) {
-            subm.accept(visitor);
+         for (Submitter submitter : subms) {
+            submitter.accept(visitor);
          }
          if (subn != null) {
             subn.accept(visitor);

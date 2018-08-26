@@ -27,7 +27,6 @@ public class Header extends NoteContainer {
    private String dest = null;
    private DateTime date = null;
    private String submRef = null;
-   private Submitter subm = null;
    private String subnRef = null;
    private Submission subn = null;
    private String file = null;
@@ -76,12 +75,8 @@ public class Header extends NoteContainer {
     * Use Gedcom.getSubmitter in place of this function
     * @return submitter
     */
-   public Submitter getSubmitter() {
-      return subm;
-   }
-
-   public void setSubmitter(Submitter subm) {
-      this.subm = subm;
+   public Submitter getSubmitter(Gedcom gedcom) {
+      return gedcom.getSubmitter(submRef);
    }
 
    /**
@@ -155,9 +150,6 @@ public class Header extends NoteContainer {
          }
          if (date != null) {
             date.accept(visitor);
-         }
-         if (subm != null) {
-            subm.accept(visitor);
          }
          if (subn != null) {
             subn.accept(visitor);
