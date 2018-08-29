@@ -205,9 +205,9 @@ public class Gedcom extends ExtensionContainer {
       this.subms = submitters;
    }
 
-   public void addSubmitters(Submitter submitter) {
+   public void addSubmitter(Submitter submitter) {
       if (subms == null) {
-         subms = new ArrayList<>();
+         subms = new ArrayList<Submitter>();
       }
       subms.add(submitter);
 
