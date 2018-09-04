@@ -1300,17 +1300,12 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          ((Header)tos).setSubmitterRef(ref);
          return new Object(); // placeholder
       }
-      else if (tos instanceof Header && ref == null && ((Header)tos).getSubmitter() == null) {
-         Submitter submitter = new Submitter();
-         ((Header)tos).setSubmitter(submitter);
-         return submitter;
-      }
-      else if (tos instanceof Gedcom && ((Gedcom)tos).getSubmitter() == null) {
+      else if (tos instanceof Gedcom) {
          Submitter submitter = new Submitter();
          if (id != null) {
             submitter.setId(id);
          }
-         ((Gedcom)tos).setSubmitter(submitter);
+         ((Gedcom)tos).addSubmitter(submitter);
          return submitter;
       }
       return null;
