@@ -198,7 +198,7 @@ public class Gedcom extends ExtensionContainer {
    public Submitter getSubmitter(String id) { return submitterIndex.get(id); }
 
    public List<Submitter> getSubmitters() {
-      return subms;
+      return subms != null ? subms : Collections.<Submitter>emptyList();
    }
 
    public void setSubmitters(List<Submitter> submitters) {
