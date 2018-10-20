@@ -20,7 +20,7 @@ package org.folg.gedcom.model;
  * User: Dallan
  * Date: 12/25/11
  */
-public class Change extends ExtensionContainer {
+public class Change extends NoteContainer {
    private DateTime date = null;
 
    public DateTime getDateTime() {
