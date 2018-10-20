@@ -271,7 +271,7 @@ public class Gedcom extends ExtensionContainer {
          if (head != null) {
             head.accept(visitor);
          }
-         for (Submitter submitter : subms) {
+         for (Submitter submitter : getSubmitters()) {
             submitter.accept(visitor);
          }
          if (subn != null) {
