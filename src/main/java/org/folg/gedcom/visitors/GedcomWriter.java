@@ -225,6 +225,7 @@ public class GedcomWriter extends Visitor {
       writeString("TYPE", eventFact, eventFact.getType());
       writeString("DATE", eventFact, eventFact.getDate());
       writeString("PLAC", eventFact, eventFact.getPlace());
+      writeString("CAUS", eventFact, eventFact.getCause());
       writeString("RIN", eventFact, eventFact.getRin());
       writeString(eventFact.getUidTag(), eventFact, eventFact.getUid());
    }

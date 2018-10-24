@@ -82,7 +82,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    public static enum Tag {
       ABBR, ADDR, ADR1, ADR2, ADR3, _AKA, ALIA, ANCI, ASSO, AUTH,
       BLOB,
-      CALN, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
+      CALN, CAUS, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
       DATA, DATE, DESC, DESI, DEST,
       EMAIL, _EMAIL, _EML,
       FAM, FAMC, FAMS, FAX, _FILE, FILE, FONE, FORM, _FREL,
@@ -154,6 +154,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
             case CALN:
                obj = handleCaln(tos);
                break;
+            case CAUS:
+                obj = handleCaus(tos);
+                break;
             case CHAN:
                obj = handleChan(tos);
                break;
@@ -567,6 +570,13 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
       return null;
    }
 
+   private Object handleCaus(Object tos) {
+      if (tos instanceof EventFact && ((EventFact)tos).getCause() == null) {
+         return new FieldRef(tos, "Cause");
+      }
+      return null;
+   }
+
    private Object handleChan(Object tos) {
       if ((tos instanceof PersonFamilyCommonContainer && ((PersonFamilyCommonContainer)tos).getChange() == null) ||
           (tos instanceof Media && ((Media)tos).getChange() == null) ||
@@ -779,16 +789,10 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
 
    private Object handleEventFact(Object tos, String tagName, String tagNameUpper) {
       if ((tos instanceof Person && EventFact.PERSONAL_EVENT_FACT_TAGS.contains(tagNameUpper)) ||
-          (tos instanceof Family && EventFact.FAMILY_EVENT_FACT_TAGS.contains(tagNameUpper)) ||
-          (tos instanceof EventFact && "CAUS".equals(tagNameUpper) && ((EventFact)tos).getCause() == null)) {
+          (tos instanceof Family && EventFact.FAMILY_EVENT_FACT_TAGS.contains(tagNameUpper))) {
          EventFact eventFact = new EventFact();
          eventFact.setTag(tagName);
-         if (tos instanceof EventFact) {
-            ((EventFact)tos).setCause(eventFact);
-         }
-         else {
-            ((PersonFamilyCommonContainer)tos).addEventFact(eventFact);
-         }
+         ((PersonFamilyCommonContainer)tos).addEventFact(eventFact);
          return eventFact;
       }
       return null;
