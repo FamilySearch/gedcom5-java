@@ -129,7 +129,7 @@ public class Name extends SourceCitationContainer {
    }
 
    /**
-    * Name has a type of ALIA or TITL when the GEDCOM had a ALIA or TITL sub-tag of INDI
+    * Name has a type of ALIA when the GEDCOM had a ALIA sub-tag of INDI
     * @return The type.
     */
    public String getType() {

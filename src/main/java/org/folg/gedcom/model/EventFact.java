@@ -179,6 +179,8 @@ public class EventFact extends SourceCitationContainer {
       m.put("SSN","Social security number");
       m.put("SOC_","Social security number");
       m.put("SOC_SEC_NUMBER","Social security number");
+      m.put("TITL","Title");
+      m.put("TITLE","Title");
       m.put("_WEIG","Weight");
       m.put("_WEIGHT","Weight");
       m.put("WILL","Will");
