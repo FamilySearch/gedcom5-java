@@ -59,10 +59,6 @@ public class Header extends NoteContainer {
       this.date = date;
    }
 
-   /**
-    * Use Gedcom.getSubmitter in place of this function
-    * @return submitter reference
-    */
    public String getSubmitterRef() {
       return submRef;
    }
@@ -71,10 +67,6 @@ public class Header extends NoteContainer {
       this.submRef = submRef;
    }
 
-   /**
-    * Use Gedcom.getSubmitter in place of this function
-    * @return submitter
-    */
    public Submitter getSubmitter(Gedcom gedcom) {
       return gedcom.getSubmitter(submRef);
    }
