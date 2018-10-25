@@ -181,20 +181,6 @@ public class Gedcom extends ExtensionContainer {
       }
    }
 
-   /**
-    * Use this function in place of Header.getSubmitter
-    * @return Submitter top-level record or from header
-    */
-   public Submitter getSubmitter() {
-      if (subms != null && !subms.isEmpty()) {
-         return subms.get(0);
-      }
-      else if (head != null) {
-         return submitterIndex.get(head.getSubmitterRef());
-      }
-      return null;
-   }
-
    public Submitter getSubmitter(String id) { return submitterIndex.get(id); }
 
    public List<Submitter> getSubmitters() {
