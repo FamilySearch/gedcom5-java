@@ -1382,12 +1382,6 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
           (tos instanceof Source && ((Source)tos).getTitle() == null)) {
          return new FieldRef(tos, "Title");
       }
-      else if (tos instanceof Person) {
-         Name name = new Name();
-         name.setType("TITL");
-         ((Person)tos).addName(name);
-         return name;
-      }
       return null;
    }
 

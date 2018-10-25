@@ -366,10 +366,10 @@ public class GedcomWriter extends Visitor {
 
    @Override
    public boolean visit(Name name) {
-      // handle ALIA and TITL names by recording them with that tag
+      // handle ALIA name by recording it with that tag
       String tag;
       String type = name.getType();
-      if ("ALIA".equals(type) || "TITL".equals(type)) {
+      if ("ALIA".equals(type)) {
          tag = type;
          type = null;
       }
