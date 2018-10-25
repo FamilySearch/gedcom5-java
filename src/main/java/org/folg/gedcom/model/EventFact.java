@@ -24,7 +24,6 @@ import java.util.*;
  * 
  * omit: Phone, Age, Agency, Cause (except for death events)
  * add: Rin, Uid
- * move: move caus tag for death events to its own event so it can have source citations; set EventFact.causeTag=tag of other event
  */
 public class EventFact extends SourceCitationContainer {
    public static final Set<String> PERSONAL_EVENT_FACT_TAGS = new HashSet<String>(Arrays.asList(
@@ -196,7 +195,7 @@ public class EventFact extends SourceCitationContainer {
    private String phon = null;
    private String fax = null;
    private String rin = null;
-   private EventFact caus = null;
+   private String caus = null;
    private String _uid = null;
    private String uidTag = null;
    private String _email = null;
@@ -283,11 +282,11 @@ public class EventFact extends SourceCitationContainer {
       this.fax = fax;
    }
 
-   public EventFact getCause() {
+   public String getCause() {
       return caus;
    }
 
-   public void setCause(EventFact caus) {
+   public void setCause(String caus) {
       this.caus = caus;
    }
 
@@ -351,9 +350,6 @@ public class EventFact extends SourceCitationContainer {
    public void visitContainedObjects(Visitor visitor) {
       if (addr != null) {
          addr.accept(visitor);
-      }
-      if (caus != null) {
-         caus.accept(visitor);
       }
       super.visitContainedObjects(visitor);
    }
