@@ -121,8 +121,8 @@ public class EventFact extends SourceCitationContainer {
       m.put("_EMPLOY","Employment");
       m.put("ENGA","Engagement");
       m.put("ENLIST","Military");
-      m.put("EVEN","Other");
-      m.put("EVENT","Other");
+      m.put("EVEN","Event");
+      m.put("EVENT","Event");
       m.put("EYES","Eyes");
       m.put("_EXCM","Excommunication");
       m.put("FCOM","First communion");
@@ -218,9 +218,8 @@ public class EventFact extends SourceCitationContainer {
     * @return human-friendly event type
     */
    public String getDisplayType() {
-      String key = type != null && type.length() > 0 ? type : tag;
-      if (key != null) {
-         String displayType = DISPLAY_TYPE.get(key.toUpperCase());
+      if (tag != null) {
+         String displayType = DISPLAY_TYPE.get(tag.toUpperCase());
          if (displayType != null) {
             return displayType;
          }
