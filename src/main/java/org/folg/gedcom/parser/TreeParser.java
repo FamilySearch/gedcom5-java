@@ -22,6 +22,8 @@ import org.xml.sax.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.util.List;
 import java.util.Stack;
 import org.slf4j.Logger;
@@ -140,11 +142,28 @@ public class TreeParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    public List<GedcomTag> parseGedcom(File gedcomFile) throws SAXParseException, IOException {
+      GedcomParser parser = gedcomParser();
+      parser.parse(gedcomFile.toURI().toString());
+      return tree.getChildren();
+   }
+
+   public List<GedcomTag> parseGedcom(InputStream is) throws SAXParseException, IOException {
+      GedcomParser parser = gedcomParser();
+      parser.parse(is);
+      return tree.getChildren();
+   }
+
+   public List<GedcomTag> parseGedcom(Reader reader) throws SAXParseException, IOException {
+      GedcomParser parser = gedcomParser();
+      parser.parse(reader);
+      return tree.getChildren();
+   }
+
+   private GedcomParser gedcomParser() {
       GedcomParser parser = new GedcomParser();
       parser.setContentHandler(this);
       parser.setErrorHandler(this);
-      parser.parse(gedcomFile.toURI().toString());
-      return tree.getChildren();
+      return parser;
    }
 
 }
