@@ -4,6 +4,9 @@ import org.folg.gedcom.model.*;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 
 import static org.testng.Assert.assertEquals;
@@ -19,6 +22,8 @@ public class ModelParserTest {
 
     Gedcom gedcom = modelParser.parseGedcom(gedcomFile);
     assertNotNull(gedcom);
+
+    gedcom.createIndexes();
 
     assertNotNull(gedcom.getHeader());
     assertNotNull(gedcom.getHeader().getGenerator());
@@ -40,7 +45,7 @@ public class ModelParserTest {
     assertEquals(generatorCorporation.getFax(), "866-111-1111");
     assertEquals(generatorCorporation.getWww(), "http://www.mycorporation.org/");
 
-    Submitter submitter = gedcom.getSubmitter();
+    Submitter submitter = gedcom.getSubmitter("SUB1");
     assertNotNull(submitter);
     assertEquals(submitter.getAddress().getValue()
       , "5000 MyCorpCampus Dr\n" +
@@ -117,4 +122,31 @@ public class ModelParserTest {
     assertEquals(repository.getFax(), "866-111-1111");
     assertEquals(repository.getWww(), "https://www.mycorporation.com/");
   }
+
+  @Test
+  public void testParse_withInputStream() throws Exception {
+    URL gedcomUrl = this.getClass().getClassLoader().getResource("Case001-AddressStructure.ged");
+    ModelParser modelParser = new ModelParser();
+
+    InputStream is = gedcomUrl.openStream();
+    assertNotNull(is);
+
+    Gedcom gedcom = modelParser.parseGedcom(is);
+    assertNotNull(gedcom);
+  }
+
+  @Test
+  public void testParse_withReader() throws Exception {
+    URL gedcomUrl = this.getClass().getClassLoader().getResource("Case001-AddressStructure.ged");
+    ModelParser modelParser = new ModelParser();
+
+    InputStream is = gedcomUrl.openStream();
+    assertNotNull(is);
+
+    Reader reader = new InputStreamReader(is, "UTF-8");
+
+    Gedcom gedcom = modelParser.parseGedcom(reader);
+    assertNotNull(gedcom);
+  }
+
 }
