@@ -493,7 +493,7 @@ public class AnselInputStreamReader extends InputStreamReader
             case 0xF948: return 0x1E2A;  //  capital h with breve below
             case 0xF968: return 0x1E2B;  //  small h with breve below
             // FamilySearch Extensions
-            case 0xFC20: return 0x002F;  //  space with diagonal stroke
+            case 0xFC20: return 0x0338;  //  space with diagonal stroke
             case 0xFC41: return 0x023A;  //  capital A with diagonal stroke
             case 0xFC43: return 0x023B;  //  capital C with diagonal stroke
             case 0xFC45: return 0x0246;  //  capital E with diagonal stroke
@@ -512,176 +512,176 @@ public class AnselInputStreamReader extends InputStreamReader
             case 0xFC71: return 0xA759;  //  small q with diagonal stroke
             case 0xFC74: return 0x2C66;  //  small t with diagonal stroke
             case 0xFC76: return 0xA75F;  //  small v with diagonal stroke
-            case 0xD741: return 0x2550;	 // box drawings double horizontal
-            case 0xD742: return 0x2551;	 // box drawings double vertical
-            case 0xD743: return 0x2557;	 // box drawings double down and left
-            case 0xD744: return 0x255D;	 // box drawings double up and left
-            case 0xD745: return 0x255A;	 // box drawings double up and right
-            case 0xD746: return 0x2554;	 // box drawings double down and right
-            case 0xD747: return 0x2563;	 // box drawings double vertical and left
-            case 0xD748: return 0x2569;	 // box drawings double up and horizontal
-            case 0xD749: return 0x2560;	 // box drawings double vertical and right
-            case 0xD74A: return 0x2566;	 // box drawings double down and horizontal
-            case 0xD74B: return 0x256C;	 // box drawings double vertical and horizontal
-            case 0xD74C: return 0x2562;	 // box drawings double vertical and single left
-            case 0xD74D: return 0x2567;	 // box drawings single up and double horizontal
-            case 0xD74E: return 0x255F;	 // box drawings double vertical and single right
-            case 0xD74F: return 0x2564;	 // box drawings single down and double horizontal
-            case 0xD750: return 0x2561;	 // box drawings single vertical and double left
-            case 0xD751: return 0x2568;	 // box drawings double up and single horizontal
-            case 0xD752: return 0x255E;	 // box drawings single vertical and double right
-            case 0xD753: return 0x2565;	 // box drawings double down and single horizontal
-            case 0xD754: return 0x256A;	 // box drawings single vertical and double horizontal
-            case 0xD755: return 0x2591;	 // light shade - 25%
-            case 0xD756: return 0x2592;	 // medium shade - 50%
-            case 0xD757: return 0x2593;	 // dark shade - 75%
-            case 0xD758: return 0x2588;	 // full block
-            case 0xD761: return 0x2500;	 // box drawings light horizontal
-            case 0xD762: return 0x2502;	 // box drawings light vertical
-            case 0xD763: return 0x2510;	 // box drawings light down and left
-            case 0xD764: return 0x2518;	 // box drawings light up and left
-            case 0xD765: return 0x2514;	 // box drawings light up and right
-            case 0xD766: return 0x250C;	 // box drawings light down and right
-            case 0xD767: return 0x2524;	 // box drawings light vertical and left
-            case 0xD768: return 0x2534;	 // box drawings light up and horizontal
-            case 0xD769: return 0x251C;	 // box drawings light vertical and right
-            case 0xD76A: return 0x252C;	 // box drawings light down and horizontal
-            case 0xD76B: return 0x253C;	 // box drawings light vertical and horizontal
-            case 0xD76C: return 0x2555;	 // box drawings light single down and double left
-            case 0xD76D: return 0x255B;	 // box drawings light single up and double left
-            case 0xD76E: return 0x2558;	 // box drawings light single up and double right
-            case 0xD76F: return 0x2552;	 // box drawings light single down and double right
-            case 0xD770: return 0x2556;	 // box drawings light double down and single left
-            case 0xD771: return 0x255C;	 // box drawings light double up and single left
-            case 0xD772: return 0x2559;	 // box drawings light double up and single right
-            case 0xD773: return 0x2553;	 // box drawings light double down and single right
-            case 0xD774: return 0x256B;	 // box drawings light double vertical and single horizontal
-            case 0xD775: return 0x258C;	 // left half block
-            case 0xD776: return 0x2580;	 // upper half block
-            case 0xD777: return 0x2590;	 // right half block
-            case 0xD778: return 0x2584;	 // lower half block
-            case 0xD779: return 0x25AA;	 // black small square
-            case 0xD824: return 0x03C2;	 // Greek small letter final sigma
-            case 0xD841: return 0x0391;	 // Greek capital letter alpha
-            case 0xD842: return 0x0392;	 // Greek capital letter beta
-            case 0xD843: return 0x03A5;	 // Greek capital letter upsilon
-            case 0xD844: return 0x0394;	 // Greek capital letter delta
-            case 0xD845: return 0x0395;	 // Greek capital letter epsilon
-            case 0xD846: return 0x03A6;	 // Greek capital letter phi
-            case 0xD847: return 0x0393;	 // Greek capital letter gamma
-            case 0xD848: return 0x03A8;	 // Greek capital letter psi
-            case 0xD849: return 0x0399;	 // Greek capital letter iota
-            case 0xD84B: return 0x039A;	 // Greek capital letter kappa
-            case 0xD84C: return 0x039B;	 // Greek capital letter lamda
-            case 0xD84D: return 0x039C;	 // Greek capital letter mu
-            case 0xD84E: return 0x039D;	 // Greek capital letter nu
-            case 0xD84F: return 0x039F;	 // Greek capital letter omicron
-            case 0xD850: return 0x03A0;	 // Greek capital letter pi
-            case 0xD851: return 0x03A7;	 // Greek capital letter chi
-            case 0xD852: return 0x03A1;	 // Greek capital letter rho
-            case 0xD853: return 0x03A3;	 // Greek capital letter sigma
-            case 0xD854: return 0x03A4;	 // Greek capital letter tau
-            case 0xD855: return 0x03A9;	 // Greek capital letter omega
-            case 0xD856: return 0x0398;	 // Greek capital letter theta
-            case 0xD857: return 0x0397;	 // Greek capital letter eta
-            case 0xD858: return 0x039E;	 // Greek capital letter xi
-            case 0xD85A: return 0x0396;	 // Greek capital letter zeta
-            case 0xD861: return 0x03B1;	 // Greek small letter alpha
-            case 0xD862: return 0x03B2;	 // Greek small letter beta
-            case 0xD863: return 0x03C5;	 // Greek small letter upsilon
-            case 0xD864: return 0x03B4;	 // Greek small letter delta
-            case 0xD865: return 0x03B5;	 // Greek small letter epsilon
-            case 0xD866: return 0x03C6;	 // Greek small letter phi
-            case 0xD867: return 0x03B3;	 // Greek small letter gamma
-            case 0xD868: return 0x03C8;	 // Greek small letter psi
-            case 0xD869: return 0x03B9;	 // Greek small letter iota
-            case 0xD86B: return 0x03BA;	 // Greek small letter kappa
-            case 0xD86C: return 0x03BB;	 // Greek small letter lamda
-            case 0xD86D: return 0x03BC;	 // Greek small letter mu
-            case 0xD86E: return 0x03BD;	 // Greek small letter nu
-            case 0xD86F: return 0x03BF;	 // Greek small letter omicron
-            case 0xD870: return 0x03C0;	 // Greek small letter pi
-            case 0xD871: return 0x03C7;	 // Greek small letter chi
-            case 0xD872: return 0x03C1;	 // Greek small letter rho
-            case 0xD873: return 0x03C3;	 // Greek small letter sigma
-            case 0xD874: return 0x03C4;	 // Greek small letter tau
-            case 0xD875: return 0x03C9;	 // Greek small letter omega
-            case 0xD876: return 0x03B8;	 // Greek small letter theta
-            case 0xD877: return 0x03B7;	 // Greek small letter eta
-            case 0xD878: return 0x03BE;	 // Greek small letter xi
-            case 0xD87A: return 0x03B6;	 // Greek small letter zeta
-            case 0xD920: return 0x0E3F;	 // Thai currency symbol baht
-            case 0xD921: return 0x00A2;	 // cent sign
-            case 0xD922: return 0x00A5;	 // yen sign
-            case 0xD923: return 0x20A7;	 // peseta sign
-            case 0xD924: return 0x0192;	 // florin currency sign
-            case 0xD925: return 0x00A4;	 // currency sign
-            case 0xD926: return 0x20A4;	 // lira sign
-            case 0xD927: return 0x20A0;	 // Euro-currency sign
-            case 0xD928: return 0x20A1;	 // colon sign
-            case 0xD929: return 0x20A2;	 // cruzeiro sign
-            case 0xD92A: return 0x20A3;	 // French franc sign
-            case 0xD92B: return 0x20A5;	 // mill sign
-            case 0xD92C: return 0x20A6;	 // naira sign
-            case 0xD92D: return 0x20A8;	 // rupee sign
-            case 0xD92E: return 0x20A9;	 // won sign
-            case 0xD92F: return 0x20AA;	 // new sheqel sign
-            case 0xD930: return 0x20AC;	 // Euro sign
-            case 0xD931: return 0x00B9;	 // superscript one
-            case 0xD932: return 0x00B2;	 // superscript two
-            case 0xD933: return 0x00B3;	 // superscript three
-            case 0xD941: return 0x00AA;	 // feminine ordinal indicator
-            case 0xD942: return 0x00BA;	 // masculine ordinal indicator
-            case 0xD943: return 0x00AB;	 // left-pointing double angle quotation mark
-            case 0xD944: return 0x00BB;	 // right-pointing double angle quotation mark
-            case 0xD945: return 0x00A6;	 // broken vertical bar
-            case 0xD946: return 0x00B6;	 // pilcrow/paragraph sign
-            case 0xD947: return 0x00A7;	 // section sign
-            case 0xD948: return 0x2310;	 // reversed not sign
-            case 0xD949: return 0x2020;	 // dagger
-            case 0xD94A: return 0x2021;	 // double dagger
-            case 0xD94C: return 0x2122;	 // trade mark sign
-            case 0xD94D: return 0xFB01;	 // Latin small ligature fi
-            case 0xD94E: return 0xFB02;	 // Latin small ligature fl
-            case 0xD94F: return 0x2039;	 // left-pointing single angle quotation mark
-            case 0xD950: return 0x203A;	 // right-pointing single angle quotation mark
-            case 0xD951: return 0x2030;	 // per mille sign
-            case 0xD952: return 0x2026;	 // horizontal ellipsis
-            case 0xD953: return 0x201C;	 // left double quotation mark
-            case 0xD954: return 0x201D;	 // right double quotation mark
-            case 0xD955: return 0x201A;	 // single low-9 quotation mark
-            case 0xD956: return 0x201E;	 // double low-9 quotation mark
-            case 0xD957: return 0x2022;	 // bullet
-            case 0xD958: return 0x2013;	 // en dash
-            case 0xD959: return 0x00A0;	 // no-break space
-            case 0xD95A: return 0x00B5;	 // micro sign
-            case 0xD961: return 0x00BD;	 // vulgar fraction one half
-            case 0xD962: return 0x00BC;	 // vulgar fraction one quarter
-            case 0xD963: return 0x00BE;	 // vulgar fraction three quarters
-            case 0xD964: return 0x221E;	 // infinity
-            case 0xD965: return 0x2205;	 // empty set
-            case 0xD966: return 0x2208;	 // element of
-            case 0xD967: return 0x2229;	 // intersection
-            case 0xD968: return 0x00AC;	 // not sign
-            case 0xD969: return 0x2261;	 // identical to
-            case 0xD96A: return 0x00D7;	 // multiplication sign
-            case 0xD96B: return 0x2265;	 // greater-than or equal to
-            case 0xD96C: return 0x2264;	 // less-than or equal to
-            case 0xD96D: return 0x00F7;	 // division sign
-            case 0xD96E: return 0x2248;	 // almost equal to
-            case 0xD96F: return 0x22C5;	 // dot operator
-            case 0xD970: return 0x2320;	 // top half integral
-            case 0xD971: return 0x2321;	 // bottom half integral
-            case 0xD972: return 0x221A;	 // square root
-            case 0xD973: return 0x2044;	 // fraction/division slash
-            case 0xD974: return 0x2018;	 // left single quotation mark
-            case 0xD975: return 0x2019;	 // right single quotation mark
-            case 0xD976: return 0x2014;	 // em dash
-            case 0xD977: return 0x00AD;	 // soft hyphen
-            case 0xD979: return 0x20AD;	 // kip sign
-            case 0xD97A: return 0x20AE;	 // tugrik sign
-            case 0xD97B: return 0x20AF;	 // drachma sign
-            case 0xD97C: return 0x20AB;	 // dong sign
+            case 0xD741: return 0x2550;  //  box drawings double horizontal
+            case 0xD742: return 0x2551;  //  box drawings double vertical
+            case 0xD743: return 0x2557;  //  box drawings double down and left
+            case 0xD744: return 0x255D;  //  box drawings double up and left
+            case 0xD745: return 0x255A;  //  box drawings double up and right
+            case 0xD746: return 0x2554;  //  box drawings double down and right
+            case 0xD747: return 0x2563;  //  box drawings double vertical and left
+            case 0xD748: return 0x2569;  //  box drawings double up and horizontal
+            case 0xD749: return 0x2560;  //  box drawings double vertical and right
+            case 0xD74A: return 0x2566;  //  box drawings double down and horizontal
+            case 0xD74B: return 0x256C;  //  box drawings double vertical and horizontal
+            case 0xD74C: return 0x2562;  //  box drawings double vertical and single left
+            case 0xD74D: return 0x2567;  //  box drawings single up and double horizontal
+            case 0xD74E: return 0x255F;  //  box drawings double vertical and single right
+            case 0xD74F: return 0x2564;  //  box drawings single down and double horizontal
+            case 0xD750: return 0x2561;  //  box drawings single vertical and double left
+            case 0xD751: return 0x2568;  //  box drawings double up and single horizontal
+            case 0xD752: return 0x255E;  //  box drawings single vertical and double right
+            case 0xD753: return 0x2565;  //  box drawings double down and single horizontal
+            case 0xD754: return 0x256A;  //  box drawings single vertical and double horizontal
+            case 0xD755: return 0x2591;  //  light shade - 25%
+            case 0xD756: return 0x2592;  //  medium shade - 50%
+            case 0xD757: return 0x2593;  //  dark shade - 75%
+            case 0xD758: return 0x2588;  //  full block
+            case 0xD761: return 0x2500;  //  box drawings light horizontal
+            case 0xD762: return 0x2502;  //  box drawings light vertical
+            case 0xD763: return 0x2510;  //  box drawings light down and left
+            case 0xD764: return 0x2518;  //  box drawings light up and left
+            case 0xD765: return 0x2514;  //  box drawings light up and right
+            case 0xD766: return 0x250C;  //  box drawings light down and right
+            case 0xD767: return 0x2524;  //  box drawings light vertical and left
+            case 0xD768: return 0x2534;  //  box drawings light up and horizontal
+            case 0xD769: return 0x251C;  //  box drawings light vertical and right
+            case 0xD76A: return 0x252C;  //  box drawings light down and horizontal
+            case 0xD76B: return 0x253C;  //  box drawings light vertical and horizontal
+            case 0xD76C: return 0x2555;  //  box drawings light single down and double left
+            case 0xD76D: return 0x255B;  //  box drawings light single up and double left
+            case 0xD76E: return 0x2558;  //  box drawings light single up and double right
+            case 0xD76F: return 0x2552;  //  box drawings light single down and double right
+            case 0xD770: return 0x2556;  //  box drawings light double down and single left
+            case 0xD771: return 0x255C;  //  box drawings light double up and single left
+            case 0xD772: return 0x2559;  //  box drawings light double up and single right
+            case 0xD773: return 0x2553;  //  box drawings light double down and single right
+            case 0xD774: return 0x256B;  //  box drawings light double vertical and single horizontal
+            case 0xD775: return 0x258C;  //  left half block
+            case 0xD776: return 0x2580;  //  upper half block
+            case 0xD777: return 0x2590;  //  right half block
+            case 0xD778: return 0x2584;  //  lower half block
+            case 0xD779: return 0x25AA;  //  black small square
+            case 0xD824: return 0x03C2;  //  Greek small letter final sigma
+            case 0xD841: return 0x0391;  //  Greek capital letter alpha
+            case 0xD842: return 0x0392;  //  Greek capital letter beta
+            case 0xD843: return 0x03A5;  //  Greek capital letter upsilon
+            case 0xD844: return 0x0394;  //  Greek capital letter delta
+            case 0xD845: return 0x0395;  //  Greek capital letter epsilon
+            case 0xD846: return 0x03A6;  //  Greek capital letter phi
+            case 0xD847: return 0x0393;  //  Greek capital letter gamma
+            case 0xD848: return 0x03A8;  //  Greek capital letter psi
+            case 0xD849: return 0x0399;  //  Greek capital letter iota
+            case 0xD84B: return 0x039A;  //  Greek capital letter kappa
+            case 0xD84C: return 0x039B;  //  Greek capital letter lamda
+            case 0xD84D: return 0x039C;  //  Greek capital letter mu
+            case 0xD84E: return 0x039D;  //  Greek capital letter nu
+            case 0xD84F: return 0x039F;  //  Greek capital letter omicron
+            case 0xD850: return 0x03A0;  //  Greek capital letter pi
+            case 0xD851: return 0x03A7;  //  Greek capital letter chi
+            case 0xD852: return 0x03A1;  //  Greek capital letter rho
+            case 0xD853: return 0x03A3;  //  Greek capital letter sigma
+            case 0xD854: return 0x03A4;  //  Greek capital letter tau
+            case 0xD855: return 0x03A9;  //  Greek capital letter omega
+            case 0xD856: return 0x0398;  //  Greek capital letter theta
+            case 0xD857: return 0x0397;  //  Greek capital letter eta
+            case 0xD858: return 0x039E;  //  Greek capital letter xi
+            case 0xD85A: return 0x0396;  //  Greek capital letter zeta
+            case 0xD861: return 0x03B1;  //  Greek small letter alpha
+            case 0xD862: return 0x03B2;  //  Greek small letter beta
+            case 0xD863: return 0x03C5;  //  Greek small letter upsilon
+            case 0xD864: return 0x03B4;  //  Greek small letter delta
+            case 0xD865: return 0x03B5;  //  Greek small letter epsilon
+            case 0xD866: return 0x03C6;  //  Greek small letter phi
+            case 0xD867: return 0x03B3;  //  Greek small letter gamma
+            case 0xD868: return 0x03C8;  //  Greek small letter psi
+            case 0xD869: return 0x03B9;  //  Greek small letter iota
+            case 0xD86B: return 0x03BA;  //  Greek small letter kappa
+            case 0xD86C: return 0x03BB;  //  Greek small letter lamda
+            case 0xD86D: return 0x03BC;  //  Greek small letter mu
+            case 0xD86E: return 0x03BD;  //  Greek small letter nu
+            case 0xD86F: return 0x03BF;  //  Greek small letter omicron
+            case 0xD870: return 0x03C0;  //  Greek small letter pi
+            case 0xD871: return 0x03C7;  //  Greek small letter chi
+            case 0xD872: return 0x03C1;  //  Greek small letter rho
+            case 0xD873: return 0x03C3;  //  Greek small letter sigma
+            case 0xD874: return 0x03C4;  //  Greek small letter tau
+            case 0xD875: return 0x03C9;  //  Greek small letter omega
+            case 0xD876: return 0x03B8;  //  Greek small letter theta
+            case 0xD877: return 0x03B7;  //  Greek small letter eta
+            case 0xD878: return 0x03BE;  //  Greek small letter xi
+            case 0xD87A: return 0x03B6;  //  Greek small letter zeta
+            case 0xD920: return 0x0E3F;  //  Thai currency symbol baht
+            case 0xD921: return 0x00A2;  //  cent sign
+            case 0xD922: return 0x00A5;  //  yen sign
+            case 0xD923: return 0x20A7;  //  peseta sign
+            case 0xD924: return 0x0192;  //  florin currency sign
+            case 0xD925: return 0x00A4;  //  currency sign
+            case 0xD926: return 0x20A4;  //  lira sign
+            case 0xD927: return 0x20A0;  //  Euro-currency sign
+            case 0xD928: return 0x20A1;  //  colon sign
+            case 0xD929: return 0x20A2;  //  cruzeiro sign
+            case 0xD92A: return 0x20A3;  //  French franc sign
+            case 0xD92B: return 0x20A5;  //  mill sign
+            case 0xD92C: return 0x20A6;  //  naira sign
+            case 0xD92D: return 0x20A8;  //  rupee sign
+            case 0xD92E: return 0x20A9;  //  won sign
+            case 0xD92F: return 0x20AA;  //  new sheqel sign
+            case 0xD930: return 0x20AC;  //  Euro sign
+            case 0xD931: return 0x00B9;  //  superscript one
+            case 0xD932: return 0x00B2;  //  superscript two
+            case 0xD933: return 0x00B3;  //  superscript three
+            case 0xD941: return 0x00AA;  //  feminine ordinal indicator
+            case 0xD942: return 0x00BA;  //  masculine ordinal indicator
+            case 0xD943: return 0x00AB;  //  left-pointing double angle quotation mark
+            case 0xD944: return 0x00BB;  //  right-pointing double angle quotation mark
+            case 0xD945: return 0x00A6;  //  broken vertical bar
+            case 0xD946: return 0x00B6;  //  pilcrow/paragraph sign
+            case 0xD947: return 0x00A7;  //  section sign
+            case 0xD948: return 0x2310;  //  reversed not sign
+            case 0xD949: return 0x2020;  //  dagger
+            case 0xD94A: return 0x2021;  //  double dagger
+            case 0xD94C: return 0x2122;  //  trade mark sign
+            case 0xD94D: return 0xFB01;  //  Latin small ligature fi
+            case 0xD94E: return 0xFB02;  //  Latin small ligature fl
+            case 0xD94F: return 0x2039;  //  left-pointing single angle quotation mark
+            case 0xD950: return 0x203A;  //  right-pointing single angle quotation mark
+            case 0xD951: return 0x2030;  //  per mille sign
+            case 0xD952: return 0x2026;  //  horizontal ellipsis
+            case 0xD953: return 0x201C;  //  left double quotation mark
+            case 0xD954: return 0x201D;  //  right double quotation mark
+            case 0xD955: return 0x201A;  //  single low-9 quotation mark
+            case 0xD956: return 0x201E;  //  double low-9 quotation mark
+            case 0xD957: return 0x2022;  //  bullet
+            case 0xD958: return 0x2013;  //  en dash
+            case 0xD959: return 0x00A0;  //  no-break space
+            case 0xD95A: return 0x00B5;  //  micro sign
+            case 0xD961: return 0x00BD;  //  vulgar fraction one half
+            case 0xD962: return 0x00BC;  //  vulgar fraction one quarter
+            case 0xD963: return 0x00BE;  //  vulgar fraction three quarters
+            case 0xD964: return 0x221E;  //  infinity
+            case 0xD965: return 0x2205;  //  empty set
+            case 0xD966: return 0x2208;  //  element of
+            case 0xD967: return 0x2229;  //  intersection
+            case 0xD968: return 0x00AC;  //  not sign
+            case 0xD969: return 0x2261;  //  identical to
+            case 0xD96A: return 0x00D7;  //  multiplication sign
+            case 0xD96B: return 0x2265;  //  greater-than or equal to
+            case 0xD96C: return 0x2264;  //  less-than or equal to
+            case 0xD96D: return 0x00F7;  //  division sign
+            case 0xD96E: return 0x2248;  //  almost equal to
+            case 0xD96F: return 0x22C5;  //  dot operator
+            case 0xD970: return 0x2320;  //  top half integral
+            case 0xD971: return 0x2321;  //  bottom half integral
+            case 0xD972: return 0x221A;  //  square root
+            case 0xD973: return 0x2044;  //  fraction/division slash
+            case 0xD974: return 0x2018;  //  left single quotation mark
+            case 0xD975: return 0x2019;  //  right single quotation mark
+            case 0xD976: return 0x2014;  //  em dash
+            case 0xD977: return 0x00AD;  //  soft hyphen
+            case 0xD979: return 0x20AD;  //  kip sign
+            case 0xD97A: return 0x20AE;  //  tugrik sign
+            case 0xD97B: return 0x20AF;  //  drachma sign
+            case 0xD97C: return 0x20AB;  //  dong sign
 
             default: return -1;
         } //end switch
