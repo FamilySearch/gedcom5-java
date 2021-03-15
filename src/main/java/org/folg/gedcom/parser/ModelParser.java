@@ -1535,7 +1535,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          errorHandler.warning(exception.getMessage(), exception.getLineNumber());
       }
       else {
-         logger.info(exception.getMessage() + " @ " + exception.getLineNumber());
+         logger.trace(exception.getMessage() + " @ " + exception.getLineNumber());
       }
    }
 
