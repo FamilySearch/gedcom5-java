@@ -23,266 +23,333 @@ import java.util.*;
  * Date: 12/24/11
  */
 public class Gedcom extends ExtensionContainer {
-   private Header head = null;
-   private List<Submitter> subms = null;
-   private Submission subn = null;
-   private List<Person> people = null;
-   private List<Family> families = null;
-   private List<Media> media = null;
-   private List<Note> notes = null;
-   private List<Source> sources = null;
-   private List<Repository> repositories = null;
+    private Header head = null;
+    private List<Submitter> subms = null;
+    private Submission subn = null;
+    private List<Person> people = null;
+    private List<Family> families = null;
+    private List<Media> media = null;
+    private List<Note> notes = null;
+    private List<Source> sources = null;
+    private List<Repository> repositories = null;
 
-   private transient Map<String,Person> personIndex;
-   private transient Map<String,Family> familyIndex;
-   private transient Map<String,Media> mediaIndex;
-   private transient Map<String,Note> noteIndex;
-   private transient Map<String,Source> sourceIndex;
-   private transient Map<String,Repository> repositoryIndex;
-   private transient Map<String,Submitter> submitterIndex;
+    private transient Map<String, Person> personIndex;
+    private transient Map<String, Family> familyIndex;
+    private transient Map<String, Media> mediaIndex;
+    private transient Map<String, Note> noteIndex;
+    private transient Map<String, Source> sourceIndex;
+    private transient Map<String, Repository> repositoryIndex;
+    private transient Map<String, Submitter> submitterIndex;
 
-   public Header getHeader() {
-      return head;
-   }
+    public Header getHeader() {
+        return head;
+    }
 
-   public void setHeader(Header head) {
-      this.head = head;
-   }
+    public void setHeader(Header head) {
+        this.head = head;
+    }
 
-   public List<Person> getPeople() {
-      return people != null ? people : Collections.<Person>emptyList();
-   }
+    public List<Person> getPeople() {
+        return people != null ? people : Collections.<Person>emptyList();
+    }
 
-   public Person getPerson(String id) {
-      return personIndex.get(id);
-   }
+    public Person getPerson(String id) {
+        return personIndex.get(id);
+    }
 
-   public void setPeople(List<Person> people) {
-      this.people = people;
-   }
+    public void setPeople(List<Person> people) {
+        this.people = people;
+    }
 
-   public void addPerson(Person person) {
-      if (people == null) {
-         people = new ArrayList<Person>();
-      }
-      people.add(person);
-      if (personIndex != null) {
-         personIndex.put(person.getId(), person);
-      }
-   }
+    public void addPerson(Person person) {
+        if (people == null) {
+            people = new ArrayList<Person>();
+        }
+        people.add(person);
+        if (personIndex != null) {
+            personIndex.put(person.getId(), person);
+        }
+    }
 
-   public List<Family> getFamilies() {
-      return families != null ? families : Collections.<Family>emptyList();
-   }
+    public List<Family> getFamilies() {
+        return families != null ? families : Collections.<Family>emptyList();
+    }
 
-   public Family getFamily(String id) {
-      return familyIndex.get(id);
-   }
+    public Family getFamily(String id) {
+        return familyIndex.get(id);
+    }
 
-   public void setFamilies(List<Family> families) {
-      this.families = families;
-   }
+    public void setFamilies(List<Family> families) {
+        this.families = families;
+    }
 
-   public void addFamily(Family family) {
-      if (families == null) {
-         families = new ArrayList<Family>();
-      }
-      families.add(family);
-      if (familyIndex != null) {
-         familyIndex.put(family.getId(), family);
-      }
-   }
+    public void addFamily(Family family) {
+        if (families == null) {
+            families = new ArrayList<Family>();
+        }
+        families.add(family);
+        if (familyIndex != null) {
+            familyIndex.put(family.getId(), family);
+        }
+    }
 
-   public List<Media> getMedia() {
-      return media != null ? media : Collections.<Media>emptyList();
-   }
+    public List<Media> getMedia() {
+        return media != null ? media : Collections.<Media>emptyList();
+    }
 
-   public Media getMedia(String id) {
-      return mediaIndex.get(id);
-   }
+    public Media getMedia(String id) {
+        return mediaIndex.get(id);
+    }
 
-   public void setMedia(List<Media> media) {
-      this.media = media;
-   }
+    public void setMedia(List<Media> media) {
+        this.media = media;
+    }
 
-   public void addMedia(Media m) {
-      if (media == null) {
-         media = new ArrayList<Media>();
-      }
-      media.add(m);
-      if (mediaIndex != null) {
-         mediaIndex.put(m.getId(), m);
-      }
-   }
+    public void addMedia(Media m) {
+        if (media == null) {
+            media = new ArrayList<Media>();
+        }
+        media.add(m);
+        if (mediaIndex != null) {
+            mediaIndex.put(m.getId(), m);
+        }
+    }
 
-   public List<Note> getNotes() {
-      return notes != null ? notes : Collections.<Note>emptyList();
-   }
+    public List<Note> getNotes() {
+        return notes != null ? notes : Collections.<Note>emptyList();
+    }
 
-   public Note getNote(String id) {
-      return noteIndex.get(id);
-   }
+    public Note getNote(String id) {
+        return noteIndex.get(id);
+    }
 
-   public void setNotes(List<Note> notes) {
-      this.notes = notes;
-   }
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
 
-   public void addNote(Note note) {
-      if (notes == null) {
-         notes = new ArrayList<Note>();
-      }
-      notes.add(note);
-      if (noteIndex != null) {
-         noteIndex.put(note.getId(), note);
-      }
-   }
+    public void addNote(Note note) {
+        if (notes == null) {
+            notes = new ArrayList<Note>();
+        }
+        notes.add(note);
+        if (noteIndex != null) {
+            noteIndex.put(note.getId(), note);
+        }
+    }
 
-   public List<Source> getSources() {
-      return sources != null ? sources : Collections.<Source>emptyList();
-   }
+    public List<Source> getSources() {
+        return sources != null ? sources : Collections.<Source>emptyList();
+    }
 
-   public Source getSource(String id) {
-      return sourceIndex.get(id);
-   }
+    public Source getSource(String id) {
+        return sourceIndex.get(id);
+    }
 
-   public void setSources(List<Source> sources) {
-      this.sources = sources;
-   }
+    public void setSources(List<Source> sources) {
+        this.sources = sources;
+    }
 
-   public void addSource(Source source) {
-      if (sources == null) {
-         sources = new ArrayList<Source>();
-      }
-      sources.add(source);
-      if (sourceIndex != null) {
-         sourceIndex.put(source.getId(), source);
-      }
-   }
+    public void addSource(Source source) {
+        if (sources == null) {
+            sources = new ArrayList<Source>();
+        }
+        sources.add(source);
+        if (sourceIndex != null) {
+            sourceIndex.put(source.getId(), source);
+        }
+    }
 
-   public List<Repository> getRepositories() {
-      return repositories != null ? repositories : Collections.<Repository>emptyList();
-   }
+    public List<Repository> getRepositories() {
+        return repositories != null ? repositories : Collections.<Repository>emptyList();
+    }
 
-   public Repository getRepository(String id) {
-      return repositoryIndex.get(id);
-   }
+    public Repository getRepository(String id) {
+        return repositoryIndex.get(id);
+    }
 
-   public void setRepositories(List<Repository> repositories) {
-      this.repositories = repositories;
-   }
+    public void setRepositories(List<Repository> repositories) {
+        this.repositories = repositories;
+    }
 
-   public void addRepository(Repository repository) {
-      if (repositories == null) {
-         repositories = new ArrayList<Repository>();
-      }
-      repositories.add(repository);
-      if (repositoryIndex != null) {
-         repositoryIndex.put(repository.getId(), repository);
-      }
-   }
+    public void addRepository(Repository repository) {
+        if (repositories == null) {
+            repositories = new ArrayList<Repository>();
+        }
+        repositories.add(repository);
+        if (repositoryIndex != null) {
+            repositoryIndex.put(repository.getId(), repository);
+        }
+    }
 
-   public Submitter getSubmitter(String id) { return submitterIndex.get(id); }
+    public Submitter getSubmitter(String id) {
+        return submitterIndex.get(id);
+    }
 
-   public List<Submitter> getSubmitters() {
-      return subms != null ? subms : Collections.<Submitter>emptyList();
-   }
+    public List<Submitter> getSubmitters() {
+        return subms != null ? subms : Collections.<Submitter>emptyList();
+    }
 
-   public void setSubmitters(List<Submitter> submitters) {
-      this.subms = submitters;
-   }
+    public void setSubmitters(List<Submitter> submitters) {
+        this.subms = submitters;
+    }
 
-   public void addSubmitter(Submitter submitter) {
-      if (subms == null) {
-         subms = new ArrayList<Submitter>();
-      }
-      subms.add(submitter);
+    public void addSubmitter(Submitter submitter) {
+        if (subms == null) {
+            subms = new ArrayList<Submitter>();
+        }
+        subms.add(submitter);
 
-      if (submitterIndex != null) {
-         submitterIndex.put(submitter.getId(), submitter);
-      }
-   }
+        if (submitterIndex != null) {
+            submitterIndex.put(submitter.getId(), submitter);
+        }
+    }
 
-   /**
-    * Use this function in place of Header.getSubmission
-    * @return Submission top-level record or from header
-    */
-   public Submission getSubmission() {
-      if (subn != null) {
-         return subn;
-      }
-      else if (head != null) {
-         return head.getSubmission();
-      }
-      return null;
-   }
+    /**
+     * Use this function in place of Header.getSubmission
+     *
+     * @return Submission top-level record or from header
+     */
+    public Submission getSubmission() {
+        if (subn != null) {
+            return subn;
+        } else if (head != null) {
+            return head.getSubmission();
+        }
+        return null;
+    }
 
-   public void setSubmission(Submission subn) {
-      this.subn = subn;
-   }
+    public void setSubmission(Submission subn) {
+        this.subn = subn;
+    }
 
-   public void createIndexes() {
-      personIndex = new HashMap<String, Person>();
-      for (Person person : getPeople()) {
-         personIndex.put(person.getId(), person);
-      }
-      familyIndex = new HashMap<String, Family>();
-      for (Family family : getFamilies()) {
-         familyIndex.put(family.getId(), family);
-      }
-      mediaIndex = new HashMap<String, Media>();
-      for (Media m : getMedia()) {
-         mediaIndex.put(m.getId(), m);
-      }
-      noteIndex = new HashMap<String, Note>();
-      for (Note note : getNotes()) {
-         noteIndex.put(note.getId(), note);
-      }
-      sourceIndex = new HashMap<String, Source>();
-      for (Source source : getSources()) {
-         sourceIndex.put(source.getId(), source);
-      }
-      repositoryIndex = new HashMap<String, Repository>();
-      for (Repository repository : getRepositories()) {
-         repositoryIndex.put(repository.getId(), repository);
-      }
+    public void updateReferences() {
+        for (Person person : getPeople()) {
+            for (SpouseFamilyRef spouseRef : person.getSpouseFamilyRefs()) {
+                Family family = getFamily(spouseRef.getRef());
+                boolean spouseRefInHusbands = family.getHusbandRefs().stream().anyMatch(ref -> ref.getRef().equals(person.getId()));
+                boolean spouseRefInWives = family.getWifeRefs().stream().anyMatch(ref -> ref.getRef().equals(person.getId()));
+                if (!spouseRefInHusbands && !spouseRefInWives) {
+                    Optional<EventFact> fact = person.getEventsFacts().stream().filter(event -> event.getTag().equals("SEX")).findFirst();
+                    SpouseRef ref = new SpouseRef();
+                    ref.setRef(person.getId());
 
-      submitterIndex = new HashMap<String, Submitter>();
-      for (Submitter submitter : getSubmitters()){
-         submitterIndex.put(submitter.getId(), submitter);
-      }
-   }
+                    if (fact.isPresent() && fact.get().getValue().equals("F")) {
+                        family.addWife(ref);
+                    } else {
+                        family.addHusband(ref);
+                    }
+                }
+            }
 
-   public void accept(Visitor visitor) {
-      if (visitor.visit(this)) {
-         if (head != null) {
-            head.accept(visitor);
-         }
-         for (Submitter submitter : getSubmitters()) {
-            submitter.accept(visitor);
-         }
-         if (subn != null) {
-            subn.accept(visitor);
-         }
-         for (Person person : getPeople()) {
-            person.accept(visitor);
-         }
-         for (Family family : getFamilies()) {
-            family.accept(visitor);
-         }
-         for (Media media : getMedia()) {
-            media.accept(visitor);
-         }
-         for (Note note : getNotes()) {
-            note.accept(visitor);
-         }
-         for (Source source : getSources()) {
-            source.accept(visitor);
-         }
-         for (Repository repository : getRepositories()) {
-            repository.accept(visitor);
-         }
-         super.visitContainedObjects(visitor);
-         visitor.endVisit(this);
-      }
-   }
+            for (ParentFamilyRef parentRef : person.getParentFamilyRefs()) {
+                Family family = getFamily(parentRef.getRef());
+                boolean containsReference = family.getChildRefs().stream().anyMatch(ref -> ref.getRef().equals(person.getId()));
+                if (!containsReference) {
+                    ChildRef ref = new ChildRef();
+                    ref.setRef(person.getId());
+                    family.addChild(ref);
+                }
+            }
+        }
+
+        for (Family family : getFamilies()) {
+            for (SpouseRef ref : family.getHusbandRefs()) {
+                Person person = getPerson(ref.getRef());
+                boolean containsRef = person.getSpouseFamilyRefs().stream()
+                        .anyMatch(spouseFamilyRef -> spouseFamilyRef.getRef().equals(family.getId()));
+                if (!containsRef) {
+                    SpouseFamilyRef spouseFamilyRef = new SpouseFamilyRef();
+                    spouseFamilyRef.setRef(family.getId());
+                    person.addSpouseFamilyRef(spouseFamilyRef);
+                }
+            }
+           for (SpouseRef ref : family.getWifeRefs()) {
+              Person person = getPerson(ref.getRef());
+              boolean containsRef = person.getSpouseFamilyRefs().stream()
+                      .anyMatch(spouseFamilyRef -> spouseFamilyRef.getRef().equals(family.getId()));
+              if (!containsRef) {
+                 SpouseFamilyRef spouseFamilyRef = new SpouseFamilyRef();
+                 spouseFamilyRef.setRef(family.getId());
+                 person.addSpouseFamilyRef(spouseFamilyRef);
+              }
+           }
+
+           for (ChildRef ref : family.getChildRefs()) {
+              Person person = getPerson(ref.getRef());
+              boolean containsRef = person.getParentFamilyRefs().stream()
+                      .anyMatch(parentFamilyRef -> parentFamilyRef.getRef().equals(family.getId()));
+              if (!containsRef) {
+                 ParentFamilyRef spouseFamilyRef = new ParentFamilyRef();
+                 spouseFamilyRef.setRef(family.getId());
+                 person.addParentFamilyRef(spouseFamilyRef);
+              }
+           }
+        }
+    }
+
+    public void createIndexes() {
+        personIndex = new HashMap<String, Person>();
+        for (Person person : getPeople()) {
+            personIndex.put(person.getId(), person);
+        }
+        familyIndex = new HashMap<String, Family>();
+        for (Family family : getFamilies()) {
+            familyIndex.put(family.getId(), family);
+        }
+        mediaIndex = new HashMap<String, Media>();
+        for (Media m : getMedia()) {
+            mediaIndex.put(m.getId(), m);
+        }
+        noteIndex = new HashMap<String, Note>();
+        for (Note note : getNotes()) {
+            noteIndex.put(note.getId(), note);
+        }
+        sourceIndex = new HashMap<String, Source>();
+        for (Source source : getSources()) {
+            sourceIndex.put(source.getId(), source);
+        }
+        repositoryIndex = new HashMap<String, Repository>();
+        for (Repository repository : getRepositories()) {
+            repositoryIndex.put(repository.getId(), repository);
+        }
+
+        submitterIndex = new HashMap<String, Submitter>();
+        for (Submitter submitter : getSubmitters()) {
+            submitterIndex.put(submitter.getId(), submitter);
+        }
+    }
+
+    public void accept(Visitor visitor) {
+        if (visitor.visit(this)) {
+            if (head != null) {
+                head.accept(visitor);
+            }
+            for (Submitter submitter : getSubmitters()) {
+                submitter.accept(visitor);
+            }
+            if (subn != null) {
+                subn.accept(visitor);
+            }
+            for (Person person : getPeople()) {
+                person.accept(visitor);
+            }
+            for (Family family : getFamilies()) {
+                family.accept(visitor);
+            }
+            for (Media media : getMedia()) {
+                media.accept(visitor);
+            }
+            for (Note note : getNotes()) {
+                note.accept(visitor);
+            }
+            for (Source source : getSources()) {
+                source.accept(visitor);
+            }
+            for (Repository repository : getRepositories()) {
+                repository.accept(visitor);
+            }
+            super.visitContainedObjects(visitor);
+            visitor.endVisit(this);
+        }
+    }
 }
