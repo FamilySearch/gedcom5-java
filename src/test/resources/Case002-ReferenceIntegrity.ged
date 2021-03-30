@@ -1,0 +1,75 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.5
+2 FORM LINEAGE-LINKED
+3 VERS 5.5.5
+1 CHAR UTF-8
+1 SOUR gedcom.org
+2 NAME The GEDCOM Site
+2 VERS 5.5.5
+2 CORP gedcom.org
+3 ADDR
+4 CITY LEIDEN
+3 WWW www.gedcom.org
+1 DATE 2 Oct 2019
+2 TIME 0:00:00
+1 FILE REMARR.GED
+1 LANG English
+1 SUBM @U1@
+0 @U1@ SUBM
+1 NAME gedcom.org
+1 ADDR
+2 CITY Leiden
+1 WWW www.gedcom.org
+0 @I1@ INDI
+1 NAME Peter /Sweet/
+2 SURN Sweet
+2 GIVN Peter
+1 SEX M
+1 BIRT
+2 DATE 7 Jul 1877
+1 FAMS @F1@
+1 FAMS @F3@
+0 @I2@ INDI
+1 NAME Mary /Encore/
+2 SURN Encore
+2 GIVN Mary
+1 SEX F
+1 BIRT
+2 DATE 4 May 1876
+1 FAMS @F1@
+1 FAMS @F3@
+0 @I3@ INDI
+1 NAME Juan /Donalds/
+2 SURN Donalds
+2 GIVN Juan
+1 SEX M
+1 BIRT
+2 DATE 8 Aug 1888
+1 FAMS @F2@
+0 @I4@ INDI
+1 NAME Juan /Donalds/
+2 SURN Donalds
+2 GIVN Juan
+1 SEX M
+1 FAMC @F2@
+0 @F1@ FAM
+1 MARR
+2 DATE 1 Jan 1900
+2 PLAC Amsterdam, Noord-Holland, Netherlands
+1 DIV
+2 DATE 10 Oct 1910
+2 PLAC Amsterdam, Noord-Holland, Netherlands
+0 @F2@ FAM
+1 WIFE @I2@
+1 MARR
+2 DATE 11 Nov 1911
+2 PLAC Amsterdam, Noord-Holland, Netherlands
+1 DIV
+2 DATE 12 Dec 1912
+2 PLAC Amsterdam, Noord-Holland, Netherlands
+0 @F3@ FAM
+1 MARR
+2 DATE 1 Jan 1912
+2 PLAC Amsterdam, Noord-Holland, Netherlands
+0 TRLR
