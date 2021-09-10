@@ -107,6 +107,9 @@ stored as extensions and errors.
 the model using a Visitor pattern. This function was written in just a few lines due to the other
 classes in this project.
 
+* _Gedcom2Dot.java_ pares a GEDCOM file and creates a DOT file starting from a root person which can be visualized
+using GraphViz.
+
 The tools can be run using
 `mvn exec:java -Dexec.mainClass=org.folg.gedcom.tools.<tool name> -Dexec.args="<args>"`
 

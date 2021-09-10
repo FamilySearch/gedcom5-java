@@ -1,0 +1,1403 @@
+﻿0 HEAD
+1 CHAR UTF-8
+1 COPR Copyright by Mailingliste GEDCOM-L - http://creativecommons.org/licenses/by/4.0/deed.de
+1 DATE 5 OCT 2017
+2 TIME 14:19:43
+1 DEST ANSTFILE
+1 FILE Muster_GEDCOM.ged
+1 GEDC
+2 FORM LINEAGE-LINKED
+2 VERS 5.5.1
+1 LANG German
+1 NOTE Diese GEDCOM-Datei wurde für Testzwecke erstellt. Sie umfasst den GEDCOM-Standard 5.5.1 sowie Anforderungen aus der Mailingliste GEDCOM-L, in welcher sich die meisten deutschsprachigen Hersteller von Genealogieprogrammen zusammengeschlossen ha
+2 CONC ben.
+2 CONT  
+2 CONT Personen, Orte und Handlungen in dieser GEDCOM-Musterdatei sind frei erfunden. Ähnlichkeiten wären zufällig und völlig unbeabsichtigt.
+2 CONT  
+2 CONT Der Inhalt dieser GEDCOM-Musterdatei darf vervielfältigt, verbreitet und öffentlich zugänglich gemacht werden. Es ist weiterhin erlaubt, die GEDCOM-Musterdatei inhaltlich zu bearbeiten, zu ergänzen oder zu reduzieren. Eine kommerzielle Nutzung i
+2 CONC st erlaubt, soweit auf den ursprünglichen Ersteller dieser Musterdatei im Header-Satz Bezug genommen wird.
+2 CONT /// dieser Stand wurde am 04.08.2015 aus dem Web heruntergeladen ///
+1 PLAC
+2 FORM Ort, Kreis, Bundesland, Staat
+1 SOUR GEDCOM-L
+2 CORP Verein für Computergenealogie e.V.
+3 ADDR c/o Susanne Nicola
+4 CONT Altwickeder Hellweg 217
+4 CONT 44319 Dortmund
+4 CONT Deutschland
+4 ADR1 c/o Susanne Nicola
+4 ADR2 Altwickeder Hellweg 217
+4 ADR3 44319 Dortmund
+4 CITY Dortmund
+4 CTRY Deutschland
+4 POST 44319
+4 STAE ---
+3 EMAIL gedcom-l@@genealogy.net
+3 FAX +49 (0) 321 - 21 25 51 08 
+3 PHON +49 (0) 421 - 40 89 68 05
+3 WWW http://wiki-de.genealogy.net/GEDCOM-L/
+2 DATA Ergebnisse der Diskussion in GEDCOM-L - http://wiki-de.genealogy.net/GEDCOM_Musterdatei/
+3 DATE 1 OCT 2017
+2 NAME Mailingliste GEDCOM-L
+2 VERS 0.1.3
+1 SUBM @SUBM1@
+1 SUBN @SUBN@
+0 @SUBM1@ SUBM
+1 NAME Mailingliste GEDCOM-L
+1 ADDR ---
+2 ADR1 ---
+2 ADR2 ---
+2 ADR3 ---
+2 CITY ---
+2 CTRY Deutschland
+2 POST ---
+2 STAE ---
+1 EMAIL gedcom-l@@genealogy.net
+1 FAX -----
+1 LANG German
+1 PHON ---
+1 WWW www.wiki-de.genealogy.net/GEDCOM-L
+1 _UID E50B4A655A714B2A8BCDCF5C59548447DAE5
+0 @SUBM2@ SUBM
+1 NAME Albert Julbruch
+1 ADDR Ahnenallee 12/1
+2 CONT 89123 Irgendwo
+2 CONT Deutschland
+2 ADR1 Ahnenallee 12/1
+2 ADR2 ???
+2 ADR3 ???
+2 CITY Irgendwo
+2 CTRY Deutschland
+2 POST 89123
+2 STAE ???
+1 EMAIL Albert@@Familie-Juhlbruch.de
+1 FAX +49 (7123) 919512
+1 LANG German
+1 OBJE @O1@
+1 PHON +49 (7123) 919511
+1 WWW www.Familie-Juhlbruch.de
+1 _UID F290ED6730DE4B85BC53C13F2410A75DFB77
+0 @SUBN@ SUBN
+1 FAMF Mustermann Familie
+1 SUBM @SUBM1@
+1 TEMP SLAKE
+1 _UID BAAB6F8F016E49DEA5657EBD6B4639D3FBBB
+0 @I1@ INDI
+1 NAME Max Manfred /Mustermann/
+2 GIVN Max, Manfred
+2 SURN Mustermann
+2 _RUFNAME Max
+1 BIRT
+2 DATE 21 MAY 1943
+2 PLAC Brosowo, Kulm, Bromberg, Danzig-Westpreussen, Deutsches Reich
+3 FORM Ort, Landkreis, Regierungsbezirk, Reichsgau, Staat
+3 _GOV BROOWOJO93FH
+3 _LOC @P_BROOWOJO93FH@
+1 EDUC Werkzeugschlosser Lehre
+2 DATE FROM APR 1958 TO MAR 1961
+2 NOTE bei Firma Borsig AG
+2 PLAC Berlin (West), , , Deutschland
+1 EDUC Studium Maschinenbau Ingenieur
+2 DATE BET APR 1961 AND MAR 1964
+2 NOTE Abschluß Dipl-Ing.
+1 FAMC @F5@
+1 FAMS @F1@
+1 NOTE Ausgangsperson
+2 CONT - 2 Vornamen, Rufname: Max
+2 CONT - geboren am 21 Mai 1943 in Brosowo
+2 CONT - von April 1958 bis März 1961 Lehre zum Werkzeugschlosser bei Firma Borsig AG
+2 CONT - von April 1961 bis März 1964 Studium zum Maschinenbau Ingenieur,  Abschluß Dipl-Ing.
+2 CONT - verheiratet mit Erika Gabler
+2 CONT - Verlobung: am 24. Dezember 1966 im Hause der Eltern von Erika Gabler, Berlin-Tempelhof
+2 CONT - zivile Trauung: 12. September 1968, Standesamt II in Köln, Trauzeugen: Otto Mustermann, Franz-Xaver Gabler
+2 CONT - kirchliche Trauung: 14. September 1968 im Kölner Dom, Trauzeugen: Maria von Stradonitz, Franziska Friedrich
+2 CONT - Kinder: Christiane Mustermann, Erwin Mustermann
+1 REFN 1
+1 RELI evangelisch
+1 SEX M
+1 _UID 0FC74315CB834E209FFA96CBE1F8D09F2C99
+0 @I2@ INDI
+1 NAME Erika /Gabler/
+2 GIVN Erika
+2 SURN Gabler
+1 BIRT
+2 DATE 12 SEP 1945
+2 PLAC Tempelhof, amerikanischer Sektor, Berlin (West), Deutschland
+3 FORM Stadtbezirk, Stadtteil, Stadt, Staat
+3 _LOC @P29@
+1 FAMC @F2@
+1 FAMS @F1@
+1 NOTE Ehefrau von Max Mustermann
+2 CONT - geboren am 12. September 1945 in Berlin-Tempelhof
+1 REFN 1.a
+1 SEX F
+1 _UID A51E2894DC914C7997A3441C50B709F9544B
+0 @I3@ INDI
+1 NAME Leon /Mustermann/
+2 GIVN Leon
+2 SURN Mustermann
+1 BIRT
+2 DATE 15 MAR 2003
+2 PLAC München, München, Bayern, Deutschland
+1 FAMC @F3@
+1 NOTE Sohn von Erwin Mustermann und Chantal Häberle
+2 CONT - geboren am 15. März 2003 in München
+1 REFN 1.2.1
+1 SEX M
+1 _UID E635B351CB1B490686A06B34DDBFF17F2547
+0 @I4@ INDI
+1 NAME Franz-Xaver /Gabler/
+2 GIVN Franz-Xaver
+2 SURN Gabler
+1 FAMS @F2@
+1 NOTE Vater von Erika Gabler
+2 CONT - verheiratet mit Franziska Friedrich
+1 REFN 1.a.V
+1 SEX M
+1 _UID 79009E11E06D47DC9D88F86CEFDC09615611
+0 @I5@ INDI
+1 NAME Erik /Gabler/
+2 GIVN Erik
+2 SURN Gabler
+1 NAME Norbert /Gabler/
+2 GIVN Norbert
+2 NOTE Ordensname ab 1966
+2 SURN Gabler
+2 TYPE religious
+1 BIRT
+2 DATE 12 SEP 1945
+2 PLAC Tempelhof, amerikanischer Sektor, Berlin (West), Deutschland
+3 FORM Stadtbezirk, Stadtteil, Stadt, Staat
+3 _LOC @P29@
+1 EDUC Studium der Theologie und Philosophie
+2 DATE FROM 1967 TO 1971
+2 PLAC Paderborn, Paderborn, Nordrhein-Westfalen, Deutschland
+1 EVEN
+2 ADDR Benediktinerkloster Neresheim
+2 DATE 1965
+2 PLAC Neresheim, Aalen, Baden-Württemberg, Deutschland
+2 TYPE Eintritt in den Benedektinerorden
+1 EVEN
+2 ADDR Benediktinerkloster Neresheim
+2 DATE 1966
+2 PLAC Neresheim, Aalen, Baden-Württemberg, Deutschland
+2 TYPE Ordensgelübde
+1 FAMC @F2@
+1 GRAD
+2 ADDR Päpstliche Universität Gregoriana, Rom
+2 DATE 1978
+2 NOTE Abschluss: magna cum laude
+2 PLAC Rom, , , Italien
+2 TYPE Dr.theol.
+1 NOTE Zwillingsbruder von Erika Gabler
+2 CONT - geboren am 12. September 1945 in Berlin-Tempelhof
+2 CONT - Besonderheiten: ging ins Kloster (kirchlicher Name)
+2 CONT - Trat 1965 in das Benediktinerkloster Neresheim ein 
+2 CONT - legte 1966 sein Ordensgelübde ab und nahm den Ordensnamen Norbert an
+2 CONT - 1967 - 1971 Studium der Theologie und Philosophie in Paderborn 
+2 CONT - wurde  am 20. November 1971 von Carl Joseph Liebknecht in der Abteikirche zum Priester geweiht. 
+2 CONT - 1978 Promotion zum Dr.theol. an der Gregoriana in Rom
+2 CONT - Bemerkung: 1980 ernannte ihn sein Abt Johannes Maler zum Prior der Abtei. Am 13. September 1987 wurde er vom Klosterkonvent zum Abt gewählt. Am 11. Oktober 1987 empfing er durch Georg Mauser die Benediktion.
+1 NOTE @N1@
+1 ORDN
+2 DATE 20 NOV 1971
+2 NOTE wurde von Carl Joseph Liebknecht in der Abteikirche von Neresheim zum Priester geweiht
+2 PLAC Neresheim, Aalen, Baden-Württemberg, Deutschland
+2 TYPE Priester
+1 SEX M
+1 TITL Dr.
+1 _UID 4329F3D429424D909F16FE5B28EE33D9AB6F
+0 @I6@ INDI
+1 NAME Markus /Schüchter/
+2 GIVN Markus
+2 SURN Schüchter
+1 NAME Markus /Freiwein/
+2 GIVN Markus
+2 NOTE Mit der Adoption am 7. Mai 1967 durch Gerold Freiwein nahm Markus Schüchter den Nachnamen seines Adoptivvaters an.
+2 SURN Freiwein
+2 TYPE adopted
+1 ADOP
+2 DATE 7 MAY 1967
+2 FAMC @F7@
+3 ADOP HUSB
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 ADOP
+2 DATE 1 JUN 1973
+2 FAMC @F8@
+3 ADOP WIFE
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 BIRT
+2 DATE 3 SEP 1963
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 FAMC @F6@
+2 PEDI birth
+1 FAMC @F7@
+2 PEDI adopted
+1 FAMC @F8@
+2 PEDI adopted
+1 NOTE Sohn von Mathilde Mustermann und Wilhelm Schüchter
+2 CONT - geboren am 3. September 1963 in Köln
+2 CONT - adoptiert am 7. Mai 1967 von Gerold Freiwein in Köln
+2 CONT - Name nach Adoption: Markus Freiwein
+2 CONT - adoptiert am 1. Juni 1973 von Brigitte Freiwein, geb. Marquardt in Köln
+2 CONT - Besonderheiten: Vater stirbt 1 Jahr nach der Geburt, Mutter heiratet wieder, Markus wird adoptiert, Mutter stirbt 5 Jahre später, Adoptivvater heiratet wieder und Markus wird von neuer Ehefrau ebenfalls adoptiert
+1 REFN 2.1.1
+1 SEX M
+1 _UID A8D2C7B04C6D4BFA928A4E53CC4D373E3A23
+0 @I7@ INDI
+1 NAME Desiré Jeanette /Mustermann/
+2 GIVN Desiré, Jeanette
+2 SURN Mustermann
+1 BIRT
+2 DATE 24 DEC 1997
+1 FAMC @F4@
+1 NOTE Tochter von Erwin Mustermann und Brigitte Gutedel
+2 CONT - geboren am 24. Dezember 1997
+1 REFN 1.2.2
+1 SEX F
+1 _UID 6FA0D90742B8462F99C06EDDF0D02E2C1C91
+0 @I8@ INDI
+1 NAME Anne /Mustermann/
+2 GIVN Anne
+2 SURN Mustermann
+1 BIRT
+2 DATE 18 AUG 1999
+1 FAMC @F4@
+1 NOTE Tochter von Erwin Mustermann und Brigitte Gutedel
+2 CONT - geboren am 18. August 1999
+1 REFN 1.2.3
+1 SEX F
+1 _UID 738AB9EE0C6D47C692486D3620FC358B8302
+0 @I9@ INDI
+1 NAME Hans /Mustermann/
+2 GIVN Hans
+2 SURN Mustermann
+1 NAME Hans /Musterman/
+2 GIVN Hans
+2 SOUR @S1@
+3 PAGE S. 65
+3 QUAY 2
+2 SURN Musterman
+1 NAME Charles Sample
+2 NOTE veröffentlichte 1969 in New York erstmals ein Soloalbum unter dem Künstlernamen Dave Sample
+2 TYPE pseudonym
+1 ASSO @I32@
+2 NOTE Dave Sample spielte von 1971 bis 1999 in der Elton John Band
+2 RELA langjähriger Weggefährte
+1 BIRT
+2 DATE 13 NOV 1942
+2 PLAC Brosowo, Kulm, Bromberg, Danzig-Westpreussen, Deutsches Reich
+3 FORM Ort, Landkreis, Regierungsbezirk, Reichsgau, Staat
+3 MAP
+4 LATI N53.32
+4 LONG E18.42
+3 _GOV BROOWOJO93FH
+3 _LOC @P_BROOWOJO93FH@
+1 FACT Gitarre
+2 TYPE beherrschte Instrumente
+1 FACT Banjo
+2 TYPE beherrschte Instrumente
+1 FACT Sitar
+2 TYPE beherrschte Instrumente
+1 FACT Mandoline
+2 TYPE beherrschte Instrumente
+1 FAMC @F5@
+1 FAMS @F18@
+1 NOTE Bruder von Max Mustermann
+2 CONT - geboren am 13. November 1944 in Brosowo
+2 CONT - Kartendaten zum Geburtsort: N53.32 E18.42
+2 CONT - verheiratet mit Carla Lopez seit 1965
+2 CONT - abweichender Name in Heiratsurkunde: Hans Musterman
+2 CONT - Beruf: Berufsmusiker (spielt mehrere Instrumente: Gitarre, Banjo, Sitar, Mandoline)
+2 CONT - Wohnorte: bis 1965 Berlin, 1965-1971 in New York, seit 1971 in London
+2 CONT - Künstlername: Charles Sample seit 1969
+2 CONT - berufliche Beziehung zu Elton John, in dessen Band er von 1971 bis 1999 spielte
+2 CONT - erhielt 1965 seine amerikanische Sozialversicherungsnummer
+1 OCCU Studio- und Livemusiker
+1 REFN 2.2
+1 RESI
+2 DATE TO 1965
+2 PLAC Berlin, , , Deutschland
+1 RESI
+2 DATE FROM 1965 TO 1971
+2 PLAC New York, , , USA
+1 RESI
+2 DATE FROM 1971
+2 PLAC London, , , Großbritannien
+1 SEX M
+1 SSN 217-82-1186
+2 DATE 1965
+1 _UID 58549010467F40CC98EED538F63B1B504CEC
+0 @I10@ INDI
+1 NAME Christiane /Mustermann/
+2 GIVN Christiane
+2 SURN Mustermann
+1 BIRT
+2 DATE 1 FEB 1970
+1 CHAN
+2 DATE 23 JUN 2012
+3 TIME 19:30:10
+1 FAMC @F1@
+1 FAMS @F9@
+1 NOTE Tochter von Max Mustermann und Erika Gabler
+2 CONT - geboren am 1. Februar 1970
+2 CONT - verheiratet mit Friedhelm Müller
+2 CONT - letzte Änderung am Datensatz: 23. Juni 2012, 19:30:10
+1 REFN 1.1
+1 SEX F
+1 _UID BE7016DC537743CE80B43AA7334A6501F3AD
+0 @I11@ INDI
+1 NAME Erwin /Mustermann/
+2 GIVN Erwin
+2 SURN Mustermann
+1 BIRT
+2 DATE 16 OCT 1972
+1 FAMC @F1@
+1 FAMS @F4@
+1 FAMS @F3@
+1 NOTE Sohn von Max Mustermann und Erika Gabler
+2 CONT - geboren am 16. Oktober 1972
+2 CONT - verheiratet mit Brigitte Gutedel
+2 CONT - Eheschließung am 3. Juni 1996
+2 CONT - Juli 1997 Pilgerreise nach Rom - Brigitte Gutedel war im 3. Monat schwanger
+2 CONT - Kinder: Desiré Jeanette Mustermann, Anne Mustermann
+2 CONT - Familie wohnte seit Mai 1996 in 12345 Berlin-Tempelhof, Gedcom Gasse 551, Tel. +49-(0)1234-56789, Fax +49-(0)9876-543210, Email fam@mustermann.name, Internet www.mustermann.name
+2 CONT - Scheidung eingereicht am 29. September 2002 vor dem Familiengericht IV in Berlin-Tempelhof
+2 CONT - Scheidung  am 15. Oktober 2003 vor dem Familiengericht IV in Berlin-Tempelhof
+2 CONT - Lebensgemeinschaft mit Chantal Häberle
+2 CONT - Kinder: Leon Mustermann
+1 REFN 1.2
+1 SEX M
+1 _UID 4463A6F53C0E4F3AB95940DE893E10CAE6F1
+0 @I12@ INDI
+1 NAME Otto /Mustermann/
+2 GIVN Otto
+2 SURN Mustermann
+1 DEAT
+2 CAUS vermisst
+2 DATE AFT 1 JAN 1943
+2 NOTE letztes Lebenszeichen war ein Feldpostbrief vom 1. Januar 1943
+2 PLAC Stalingrad, , , Russland
+1 FAMS @F5@
+1 NOTE Vater von Max Mustermann
+2 CONT - verschollen im 2. WK: letzter Feldpostbrief vom 1. Januar 1943 aus Stalingrad
+1 REFN 2
+1 SEX M
+1 _UID 36885E90ABCE450A95561C89185FAD1038F4
+0 @I13@ INDI
+1 NAME Maria /von Stradonitz/
+2 GIVN Maria
+2 SPFX von
+2 SURN Stradonitz
+1 BIRT
+2 DATE 13 AUG 1910
+1 FAMC @F16@
+1 FAMS @F5@
+1 NOTE Mutter von Max Mustermann
+2 CONT - geboren am 13. August 1910
+2 CONT - Besonderheiten: Adel
+2 CONT - Nachnamenspräfix: von
+2 CONT - Sortierung des Namens unter (S)tradonitz
+1 REFN 3
+1 SEX F
+1 _UID 159265E7791F46A59AEBDF1E292D7C20EAF9
+0 @I14@ INDI
+1 NAME Franziska /Friedrich/
+2 GIVN Franziska
+2 SURN Friedrich
+1 FAMS @F2@
+1 NOTE Mutter von Erika Gabler
+2 CONT - verheiratet mit Franz-Xaver Gabler
+1 REFN 1.a.M
+1 SEX F
+1 _UID 3A54C07C947B41289A74C5F796B6FD095E6D
+0 @I15@ INDI
+1 NAME Chantal /Häberle/
+2 GIVN Chantal
+2 SURN Häberle
+1 BIRT
+2 DATE 16 OCT 1980
+2 PLAC Stuttgart, Stuttgart, Baden-Württemberg, Deutschland
+1 FAMS @F3@
+1 NOTE 2. Lebensgefährtin von Erwin Mustermann
+2 CONT - geboren am 16. Oktober 1980 in Stuttgart
+1 REFN 1.2.a
+1 SEX F
+1 _UID B663E4DF9D054044934C7C545B44AFBEBDFB
+0 @I16@ INDI
+1 NAME Brigitte /Gutedel/
+2 GIVN Brigitte
+2 SURN Gutedel
+1 BIRT
+2 DATE 11 AUG 1972
+2 PLAC Neustadt an der Weinstraße, Neustadt an der Weinstraße, Rheinland-Pfalz, Deutschland
+1 FAMS @F4@
+1 NOTE 1. Frau (verheiratet) von Erwin Mustermann
+2 CONT - geboren am 11. August 1972 in Neustadt an der Weinstraße
+1 REFN 1.2.b
+1 SEX F
+1 _UID D2311CD531884E10BB50330CBD81C6BB144C
+0 @I17@ INDI
+1 NAME Mathilde /Mustermann/
+2 GIVN Mathilde
+2 SURN Mustermann
+1 NAME Mathilde /Schüchter/
+2 GIVN Mathilde
+2 NOTE Namensänderung bei Heirat am 9.8.1962
+2 SURN Schüchter
+2 TYPE married
+1 NAME Mathilde /Mustermann-Freiwein/
+2 GIVN Mathilde
+2 NOTE Namensänderung bei Heirat am 19.2.1966
+2 SURN Mustermann-Freiwein
+2 TYPE married
+1 BIRT
+2 DATE 6 JUN 1939
+2 PLAC Brosowo, Kulm, Bromberg, Danzig-Westpreussen, Deutsches Reich
+3 FORM Ort, Landkreis, Regierungsbezirk, Reichsgau, Staat
+3 _GOV BROOWOJO93FH
+3 _LOC @P_BROOWOJO93FH@
+1 BURI
+2 ADDR Stadtfriedhof
+2 DATE 20 AUG 1970
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 DEAT
+2 ADDR St. Anna Klinik, Köln
+2 CAUS Brustkrebs
+2 DATE 17 AUG 1970
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 FAMC @F5@
+1 FAMS @F6@
+1 FAMS @F7@
+1 NOTE Schwester von Max Mustermann
+2 CONT - geboren am 6. Juni 1939 in Brosowo
+2 CONT - gestorben am 17. August 1970 an Brustkrebs in der St. Anna Klinik in Köln
+2 CONT - Beerdigung am 20. August 1970 auf dem Stadtfriedhof in Köln
+2 CONT - verheiratet mit Wilhelm Schüchter (1. Ehe)
+2 CONT - Eheschließung am 9. August 1962 in Köln
+2 CONT - Ehename: Mathilde Schüchter
+2 CONT - verheiratet mit Gerold Freiwein (2. Ehe)
+2 CONT - Eheschließung am 19. Februar 1966 in Köln
+2 CONT - Ehename: Mathilde Mustermann-Freiwein
+1 REFN 2.1
+1 SEX F
+1 _UID A6D206B7CBBE4D5EA2FFE19695FF3893E0DC
+0 @I18@ INDI
+1 NAME Wilhelm /Schüchter/
+2 GIVN Wilhelm
+2 SURN Schüchter
+1 BIRT
+2 DATE 17 NOV 1936
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+2 SOUR Heiratsurkunde
+1 BIRT
+2 DATE 18 NOV 1936
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+2 SOUR Sterbeurkunde
+1 DEAT
+2 ADDR BAB A7,Anschlussstelle Fallingbostel
+2 AGE 27y
+2 CAUS Verkehrsunfall
+2 DATE 16 NOV 1964
+2 PLAC Fallingbostel, Lüneburg, Niedersachsen, Deutschland
+1 FAMS @F6@
+1 NOTE Ehemann von Mathilde Mustermann
+2 CONT - geboren am 17. November 1936 in Köln (laut Heiratsurkunde)
+2 CONT - geboren am 18. November 1936 in Köln (laut Sterbeurkunde)
+2 CONT - gestorben am 16. November 1964 im Alter von 27 Jahren bei einem Verkehrsunfall auf der Autobahn bei Fallingbostel
+2 CONT - Besonderheiten: verstarb bei Verkehrsunfall 1 Jahr nach Geburt des Sohnes Markus
+1 REFN 2.1.a
+1 SEX M
+1 _UID FA2F4F9D38CA4CD08D28753DA81C44CF71FC
+0 @I19@ INDI
+1 NAME Gerold /Freiwein/
+2 GIVN Gerold
+2 SURN Freiwein
+1 BIRT
+2 DATE 30 APR 1938
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 FAMS @F7@
+1 FAMS @F8@
+1 NOTE 2. Ehemann von Mathilde Mustermann
+2 CONT - geboren am 30. Aprl 1938 in Köln
+2 CONT - verheiratet mit Mathilde Mustermann (1. Ehe)
+2 CONT - Eheschließung am 9. August 1962 in Köln
+2 CONT - verheiratet mit Brigitte Marquardt (2. Ehe)
+2 CONT - Eheschließung am 10. Oktober 1972 in Köln
+2 CONT - 2. Ehemann von Mathilde Mustermann, Adoptivvater von Markus Schüchter
+1 REFN 2.1.b
+1 SEX M
+1 _UID 76941AB3200B47C498ED1B106AD5B3E190CD
+0 @I20@ INDI
+1 NAME Brigitte /Marquardt/
+2 GIVN Brigitte
+2 SURN Marquardt
+1 NAME Brigitte /Freiwein/
+2 GIVN Brigitte
+2 SURN Freiwein
+2 TYPE married
+1 BIRT
+2 DATE 19 FEB 1942
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+1 FAMS @F8@
+1 NOTE 2. Ehefrau von Gerold Freiwein
+2 CONT - geboren am 19. Februar 1942 in Hamburg
+2 CONT - Ehename: Brigitte Freiwein
+2 CONT - Besonderheiten: adoptiert Markus Friedrich/Freiwein
+1 REFN 2.1.b.b
+1 SEX F
+1 _UID 4398F13084D44091A3618217D361F701EE37
+0 @I21@ INDI
+1 NAME Friedhelm /Müller/
+2 GIVN Friedhelm
+2 NICK Freddy
+2 SURN Müller
+1 BIRT
+2 DATE 25 NOV 1959
+2 PLAC Sydney, , , Australien
+1 FAMC @F10@
+1 FAMS @F9@
+1 NOTE Ehemann von Christiane Mustermann
+2 CONT - geboren am 25. November 1959 in Sydney, Australien
+2 CONT - Spitzname: Freddy
+1 SEX M
+1 SUBM @SUBM2@
+1 _UID 4F597519E9244363A366A0260580F6235666
+0 @I22@ INDI
+1 NAME Karl /Müller/ Junior
+2 GIVN Karl
+2 NSFX Junior
+2 SURN Müller
+1 ASSO @I35@
+2 RELA Godparent
+1 BIRT
+2 ADDR Kreiskrankenhaus
+3 CONT Am Park 1
+3 CONT 59846 Wenningen
+3 ADR1 Kreiskrankenhaus
+3 ADR2 Am Park 1
+3 ADR3 59846 Wenningen
+3 CITY Wenningen
+3 CTRY Deutschland
+3 POST 58846
+3 STAE Nordrhein-Westfalen
+2 DATE 01 MAY 1933
+2 PLAC Wenningen, Hochsauerlandkreis, Nordrhein-Westfalen, Deutschland
+2 RESN confidential
+1 CHR
+2 ADDR Michaelikirche
+3 CONT Wenningen
+3 ADR1 Michaelikirche
+3 ADR2 Wenningen
+2 DATE 05 MAY 1933
+2 PLAC Wenningen, Hochsauerlandkreis, Nordrhein-Westfalen, Deutschland
+2 RELI evangelisch
+2 RESN privacy
+1 CONF
+2 ADDR Michaelikirche
+3 CONT Wenningen
+3 ADR1 Michaelikirche
+3 ADR2 Wenningen
+2 DATE 15 APR 1947
+2 RELI evangelisch
+1 CREM
+2 DATE 27 JUN 1980
+2 PLAC Sydney, , , Australien
+1 DEAT
+2 CAUS Herzversagen
+2 DATE 25 JUN 1980
+2 PLAC Sydney, , , Australien
+1 DSCR blonde Haare, blaue Augen, Größe 1,85 m
+2 DATE 1 MAR 1960
+2 PLAC Sydney, , , Australien
+1 EMIG
+2 DATE 1 SEP 1957
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+1 EVEN
+2 ADDR Schiff "Washington"
+2 DATE 1 SEP 1957
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+2 TYPE Schiffs-Abfahrt
+1 EVEN
+2 ADDR Schiff "Washington"
+2 DATE 11 OCT 1957
+2 PLAC Sydney, , , Australien
+2 TYPE Schiffs-Ankunft
+1 FAMC @F11@
+1 FAMS @F10@
+1 GRAD
+2 DATE 30 MAR 1949
+2 PLAC Wenningen, Hochsauerlandkreis, Nordrhein-Westfalen, Deutschland
+2 TYPE Hauptschulabschluss
+1 IMMI
+2 CAUS bessere Berufsaussichten
+2 DATE 11 OCT 1957
+2 PLAC , , , Australien
+1 NATU
+2 DATE 01 MAR 1960
+2 PLAC Sydney, , , Australien
+1 NOTE Vater von Friedhelm Müller
+2 CONT - Namenszusatz: Junior
+2 CONT - geboren am 1. Mai 1933 in Wenningen
+2 CONT - Geburtsadresse: Kreiskrankenhaus Wenningen
+2 CONT - Geburtsdaten als vertraulich gekennzeichnet
+2 CONT - Taufe am 5. Mai 1933 in der Michaelikirche in Wenningen
+2 CONT - Taufpate: Max Herbert Mustermann (Verknüpfung über ASSO)
+2 CONT - Taufdaten als privat gekennzeichnet
+2 CONT - Religion: evangelisch
+2 CONT - Konfirmation am 15. April 1947 in der Michaelikirche in Wenningen
+2 CONT - Schulbildung: Hauptschulabschluss am 30. März 1949 in Wenningen
+2 CONT - Beruf: Installateur, Lehrabschluss in 1952
+2 CONT - Auswanderung: am 1. Oktober 1957 nach Australien
+2 CONT - Schiffs-Abfahrt: Hamburger Hafen mit der "Washington"
+2 CONT - Einwanderung: am 11. Oktober 1957 in Australien wegen besserer Berufsaussichten
+2 CONT - Schiffs-Ankunft: Sydney mit der "Washington"
+2 CONT - Einbürgerung am 1. März 1960 in Sydney, Australien
+2 CONT - Wohnort: Sydney, Australien (ab 1. Januar 1958)
+2 CONT - Ruhestand: Frührenter ab 15. August 1979 wegen Herzproblemen
+2 CONT - gestorben am 25. Juni 1980 in Sydney, Todesursache: Herzversagen
+2 CONT - Feuerbestattung am 27. Juni 1980 in Sydney
+2 CONT - verheiratet mit Rosina Thalhuber
+2 CONT - zivile Trauung: 4. Juli 1958 in 35 Regent Street, Chippendale, Sydney
+2 CONT - kirchliche Trauung: 5. Juli 1958 in der St John’s Church, 1 Takari Avenue, Point Clare, Sydney (evangelisch)
+2 CONT - Dateneinreichung: Albert Julbruch 
+2 CONT - persönliche Beschreibung: blonde Haare, blaue Augen, Größe 1,85 m
+2 CONT - Testamenteintrag mit anschließender Bestätigung
+1 OCCU Installateur
+2 DATE 1952
+1 PROB
+2 DATE 5 OCT 1979
+2 PLAC Sydney, , , Australien
+1 RELI evangelisch
+1 RESI
+2 DATE 01 JAN 1958
+2 PLAC Sydney, , , Australien
+1 RETI
+2 CAUS Herzprobleme
+2 DATE 15 AUG 1979
+2 TYPE Frührentner
+1 SEX M
+1 SUBM @SUBM2@
+1 WILL
+2 DATE 1 OCT 1979
+2 PLAC Sydney, , , Australien
+1 _UID 280C162E88CA43D996F065167094B36A0863
+0 @I23@ INDI
+1 NAME Rosina /Thalhuber/
+2 GIVN Rosina
+2 SURN Thalhuber
+1 BIRT
+2 DATE OCT 1936
+2 PLAC Sydney, , , Australien
+1 FAMS @F10@
+1 NOTE Mutter von Friedhelm Müller
+2 CONT - geboren im Oktober 1936 in Sydney, Australien
+2 CONT - verheiratet mit Karl Müller Junior
+1 SEX F
+1 SUBM @SUBM2@
+1 _UID 638F6708221C473EA3D970C63104F1201CB2
+0 @I24@ INDI
+1 NAME Erika /Müller/
+2 GIVN Erika
+2 SURN Müller
+1 BIRT
+2 DATE 14 FEB 1960
+1 FAMC @F10@
+1 NOTE Schwester von Friedhelm Müller
+2 CONT - geboren am 14. Februar 1960
+1 SEX F
+1 SUBM @SUBM2@
+1 _UID D9D2635F6291455CA514F1033E74895E4709
+0 @I25@ INDI
+1 NAME Karl /Müller/
+2 GIVN Karl
+2 SURN Müller
+1 BIRT
+2 DATE BEF 1900
+1 FAMC @F12@
+1 FAMS @F11@
+1 NOTE Vater von Karl Müller Junior
+2 CONT - geboren vor 1900
+1 SEX M
+1 SUBM @SUBM2@
+1 _UID BBBC8543DE8E43359DF4F53CA22300B25C7F
+0 @I26@ INDI
+1 NAME Edwin /Müller/
+2 GIVN Edwin
+2 SURN Müller
+1 BIRT
+2 DATE ABT 1860
+1 FAMC @F13@
+1 FAMS @F12@
+1 NCHI 5
+1 NMR 2
+1 NOTE Vater von Karl Müller
+2 CONT - geboren um 1860
+2 CONT - war zweimal verheiratet
+2 CONT - hatte insgesamt 5 Kinder, davon 3 mit seiner ersten Frau
+1 SEX M
+1 SUBM @SUBM2@
+1 _UID D93117E75B96452E84900497E2110F011E67
+0 @I27@ INDI
+1 NAME Jacobus /Müller/
+2 GIVN Jacobus
+2 SURN Müller
+1 BIRT
+2 DATE EST 1833
+1 FAMC @F14@
+1 FAMS @F13@
+1 NOTE Vater von Edwin Müller
+2 CONT - geboren in 1833 (geschätzt)
+1 SEX M
+1 SUBM @SUBM2@
+1 _UID D9E224E36D2F4EC6A4801785574BDB2BDA51
+0 @I28@ INDI
+1 NAME Nikolaus /Müller/
+2 GIVN Nikolaus
+2 SURN Müller
+1 BIRT
+2 DATE 1810
+1 FAMC @F15@
+1 FAMS @F14@
+1 NOTE Vater von Jacobus Müller
+2 CONT - geboren in 1810
+1 SEX M
+1 SUBM @SUBM2@
+1 _UID 2A8473A71A9E461E84DB64504607A19A7FFB
+0 @I29@ INDI
+1 NAME Eva /Frantz/
+2 GIVN Eva
+2 SURN Frantz
+1 BIRT
+2 DATE INT 24 OCT 1794 (3. Brumaire III)
+2 PLAC Nohfelden, Sankt Wendel, Saarland, Deutschland
+1 BIRT
+2 DATE 24 OCT 1794
+2 NOTE umgerechnet auf den Gregorianischen Kalender
+1 FAMS @F15@
+1 NOTE Mutter von Nikolaus Müller
+2 CONT - geboren am 3 BRUM 3 (französischer Kalender) in Nohfelden
+2 CONT - geboren am 24. Oktober 1794 (umgerechnet auf den Gregorianischen Kalender)
+1 SEX F
+1 SUBM @SUBM2@
+1 _UID 562F4225A9644EAEAEA79C998F17EF35493A
+0 @I30@ INDI
+1 NAME Freiherr Erich Karl /von Stradonitz/
+2 GIVN Erich, Karl
+2 NPFX Freiherr
+2 SURN von Stradonitz
+2 TYPE birth
+1 NAME Erich Karl /Freiherr von Stradonitz/
+2 GIVN Erich, Karl
+2 NOTE Änderung des Namens durch die Abschaffung des Adelsstandes in der Weimarer Verfassung vom 11. August 1919.
+2 SURN Freiherr von Stradonitz
+1 BIRT
+2 DATE 23 DEC 1855
+1 FAMS @F16@
+1 NOTE Vater von Maria von Stradonitz
+2 CONT - geboren am 23. Dezember 1855
+2 CONT - mehrere Vornamen, durch Komma getrennt
+2 CONT - Besonderheiten: Adel
+2 CONT - Änderung des Nachnamens durch die Abschaffung des Adelsstandes
+2 CONT - Titel: Freiherr
+2 CONT - Beruf: kgl. preuß. & kaiserl. Generalfeldmarschall
+2 CONT - Quelle: Adelslexikon, Band 4, Seite 134
+2 CONT - Sortierung des Namens unter: (v)on Stradonitz
+2 CONT - zusätzliche Sortierung des Namens unter: (F)reiherr von Stradonitz
+1 OCCU kgl. preuß. & kaiserl. Generalfeldmarschall
+1 REFN 6
+1 SEX M
+1 SOUR @S3@
+2 PAGE Band 4, pp134
+2 QUAY 2
+1 TITL Freiherr
+1 _UID A8D8DF4D0C2E4598BE2C3B786F02A2BB2E76
+0 @I31@ INDI
+1 NAME Freifrau Charlotte /v. Musterow/
+2 GIVN Charlotte
+2 NPFX Freifrau
+2 SURN v. Musterow
+1 BIRT
+2 DATE 07 MAY 1877
+1 FAMS @F16@
+1 NOTE Mutter von Maria von Stradonitz
+2 CONT - geboren am 7. Mai 1877
+2 CONT - Besonderheiten: Adel
+2 CONT - Titel: Freifrau
+2 CONT - Besitztum: Schloss Harnekop bei Wriezen (Brandenburg)
+2 CONT - Sortierung des Namens unter: (v). Musterow
+1 PROP Schloss Harnekop bei Wriezen (Brandenburg)
+1 REFN 7
+1 SEX F
+1 TITL Freifrau
+1 _UID 78684900BD1B4525AD3370F4DF4057062BBB
+0 @I32@ INDI
+1 NAME Reginald Kenneth /Dwight/
+2 GIVN Reginald, Kenneth
+2 SURN Dwight
+2 TYPE birth
+1 NAME Elton /John/
+2 GIVN Elton
+2 NOTE zunächst Künstlername, ab 1969 auch amtlicher Name
+2 SURN John
+2 TYPE pseudonym
+1 NAME Sir Elton /John/
+2 GIVN Elton
+2 NOTE seit 24.2.1998
+2 NPFX Sir
+2 SOUR @S3@
+3 PAGE Nachtrag 1999
+2 SURN John
+2 TYPE pseudonym
+1 EVEN
+2 DATE 1976
+2 NOTE Interview in der Musikzeitschrift Rolling Stone
+2 TYPE Bekenntnis zur Bisexualität
+1 FAMS @F17@
+1 NOTE Bandleader und Weggefährte von Hans Mustermann
+2 CONT - Künstlername: Elton John
+2 CONT - 1976 Bekenntnis zu einer gleichgeschlechtlichen Beziehung
+2 CONT - seit 24. Februar 1998: Sir Elton John
+2 CONT - Titel: Commander of the Order of the British Empire
+2 CONT - Heirat: gleichgeschlechtlicher Lebenspartner David Furnish am 21. Mai 2005 in Windsor
+2 CONT - Besitztum: Updown Court, Windlesham in Surrey, England
+1 PROP Updown Court, Windlesham in Surrey, England
+1 SEX M
+1 TITL Sir
+2 DATE 24 FEB 1998
+1 TITL Commander of the Order of the British Empire
+2 DATE 1995
+1 _UID C71CAE2676674794A5DED2D85B5DE99AD7C2
+0 @I33@ INDI
+1 NAME David /Furnish/
+2 GIVN David
+2 SURN Furnish
+1 FAMS @F17@
+1 IDNO 43-456-1963
+2 TYPE Kanadische Krankenversicherung
+1 NATI Kanadier
+1 NOTE Lebenspartner von Elton John
+2 CONT - Nationalität: Kanadier
+2 CONT - Kanadische Krankenversicherungsnummer: 43-456-1963
+1 SEX M
+1 _UID E4AB94F3A39E4386A9DD29CAA6850FF5C8EB
+0 @I34@ INDI
+1 NAME Carla /Lopez/
+2 GIVN Carla
+2 SURN Lopez
+1 FAMS @F18@
+1 NOTE Ehefrau von Hans Mustermann
+1 REFN 2.2.a
+1 SEX F
+1 _UID D36445044CF247E3AB33BC95238FC2B03B38
+0 @I35@ INDI
+1 NAME Max Herbert /Mustermann/
+2 GIVN Max, Herbert
+2 SURN Mustermann
+1 ALIA @I36@
+1 CHAN
+2 DATE 29 SEP 2012
+3 TIME 20:46:42
+1 NOTE genannt als Pate des Karl Müller Junior
+2 CONT - Religion evangelisch
+2 CONT - möglicherweise identisch zu dem am 11.6.1905 geborenen Herbert Mustermann 
+1 OCCU Musiker
+1 RELI evangelisch
+1 RESI
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+1 SEX M
+1 _UID 5EDBFAC525F44AD9B9C30F135444447D2B16
+0 @I36@ INDI
+1 NAME Herbert /Mustermann/
+2 GIVN Herbert
+2 SURN Mustermann
+1 ALIA @I35@
+1 BIRT
+2 DATE 11 JUN 1905
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+1 CHAN
+2 DATE 29 SEP 2012
+3 TIME 20:49:24
+1 NOTE Musiker aus Hamburg
+2 CONT - geboren am 11.6.1905 in Hamburg
+1 OCCU Musiker
+1 RELI evangelisch
+1 RESI
+2 PLAC Hamburg, Hamburg, Hamburg, Deutschland
+1 SEX M
+1 _UID 33CCB2E302A54B0C93A5A1B9F6C1972193D8
+0 @I37@ INDI
+1 NAME Roswitha /Müller/
+2 GIVN Roswitha
+2 SURN Müller
+1 BIRT
+2 DATE 07 JUN 1935
+2 PLAC Wenningen, Hochsauerlandkreis, Nordrhein-Westfalen, Deutschland
+1 CHR
+2 ADDR Michaelikirche
+3 CONT Wenningen
+3 ADR1 Michaelikirche
+3 ADR2 Wenningen
+2 DATE 16 JUL 1935
+2 PLAC Wenningen, Hochsauerlandkreis, Nordrhein-Westfalen, Deutschland
+2 RELI evangelisch
+2 _GODP Max Herbert Mustermann, Musiker
+1 FAMC @F11@
+1 NOTE Schwester von Karl Müller Junior
+2 CONT - geboren am 7. Juni 1935 in Wenningen
+2 CONT - Taufe am 16. Juli 1933 in der Michaelikirche in Wenningen
+2 CONT - Taufpate: Max Herbert Mustermann (Verknüpfung über _GODP)
+2 CONT - Religion: evangelisch
+1 RELI evangelisch
+1 SEX F
+1 _UID 1CC1DB53A96649F4930FE9B01A8C2BDD4022
+0 @F1@ FAM
+1 CHAN
+2 DATE 31 MAY 2012
+3 TIME 15:07:42
+1 CHIL @I10@
+1 CHIL @I11@
+1 ENGA
+2 DATE 24 DEC 1966
+2 NOTE im Hause der Eltern von Erika Gabler
+2 PLAC Tempelhof, Berlin (West), Deutschland
+3 FORM Stadtbezirk, Stadt, Staat
+3 _LOC @P29@
+2 SOUR @S2@
+3 DATA
+4 TEXT F3 Ereignisse zu einer Familie
+5 CONT Die Verwendung aller im GEDCOM Standard explizit beschriebener Kennzeichen für Ereignisse zu einer Familie ist zulässig. Es wird auch empfohlen, diese Kennzeichen vorrangig vor einer ebenso möglichen Konstruktion mit EVEN plus TYPE einzusetzen, a
+5 CONC lso z.B. möglichst
+5 CONT n ENGA 
+5 CONT und nicht:
+5 CONT n EVEN
+5 CONT n+1 TYPE Verlobung
+3 PAGE Vereinbarung F3
+1 HUSB @I1@
+1 MARR
+2 ADDR Standesamt II
+2 DATE 12 SEP 1968
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+2 SOUR @S2@
+3 DATA
+4 TEXT F4 Standesamtliche und kirchliche Trauung
+5 CONT Das Ereignis MARR beschreibt die Heirat zwischen den (Ehe-) Partnern. Läßt das Programm dem Anwender die Möglichkeit, zu MARR selbst die Art der Heirat bzw. Trauung einzugeben, dann wird diese Angabe mit dem untergeordneten Kennzeichen TYPE wie v
+5 CONC om Anwender eingegeben exportiert.
+5 CONT Hat dagegen das Programm feste Datenfelder für standesamtliche und kirchliche Trauungen, wird empfohlen, die standesamtliche Trauung als
+5 CONT n MARR
+5 CONT n+1 TYPE CIVIL
+5 CONT und die kirchliche Trauung als
+5 CONT n MARR
+5 CONT n+1 TYPE RELI  zu exportieren.
+5 CONT Programme mit nur einem festen Datenfeld für Heirat exportieren dieses als 
+5 CONT n MARR
+5 CONT und können dem Anwender die Möglichkeit einräumen, über selbst eingegebene Beschreibungen weitere Trauungen zu beschreiben, was z.B. bei einer kirchlichen Trauung nach einer standesamtlichen Heirat in der Form
+5 CONT n EVEN
+5 CONT n+1 TYPE kirchliche Trauung
+5 CONT exportiert werden kann. 
+3 PAGE Vereinbarung F4
+2 TYPE CIVIL
+2 _ASSO @I4@
+3 RELA Witness_of_Marriage
+2 _ASSO @I12@
+3 RELA Witness_of_Marriage
+2 _WITN Otto Mustermann, Franz-Xaver Gabler
+1 MARR
+2 ADDR Kölner Dom
+2 DATE 14 SEP 1968
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+2 SOUR @S2@
+3 DATA
+4 TEXT F4 Standesamtliche und kirchliche Trauung
+5 CONT Das Ereignis MARR beschreibt die Heirat zwischen den (Ehe-) Partnern. Läßt das Programm dem Anwender die Möglichkeit, zu MARR selbst die Art der Heirat bzw. Trauung einzugeben, dann wird diese Angabe mit dem untergeordneten Kennzeichen TYPE wie v
+5 CONC om Anwender eingegeben exportiert.
+5 CONT Hat dagegen das Programm feste Datenfelder für standesamtliche und kirchliche Trauungen, wird empfohlen, die standesamtliche Trauung als
+5 CONT n MARR
+5 CONT n+1 TYPE CIVIL
+5 CONT und die kirchliche Trauung als
+5 CONT n MARR
+5 CONT n+1 TYPE RELI  zu exportieren.
+5 CONT Programme mit nur einem festen Datenfeld für Heirat exportieren dieses als 
+5 CONT n MARR
+5 CONT und können dem Anwender die Möglichkeit einräumen, über selbst eingegebene Beschreibungen weitere Trauungen zu beschreiben, was z.B. bei einer kirchlichen Trauung nach einer standesamtlichen Heirat in der Form
+5 CONT n EVEN
+5 CONT n+1 TYPE kirchliche Trauung
+5 CONT exportiert werden kann. 
+3 PAGE Vereinbarung F4
+2 TYPE RELI
+2 _ASSO @I14@
+3 RELA Witness_of_Marriage
+2 _ASSO @I13@
+3 RELA Witness_of_Marriage
+2 _WITN Maria von Stradonitz, Franziska Friedrich
+1 SOUR @S2@
+2 DATA
+3 TEXT F2 Zusammensetzung der Familie
+4 CONT In einem Familiendatensatz dürfen Mann (HUSB) und Frau (WIFE) maximal je einmal vorhanden sein. Der Export von Familiendatensätzen ohne Mann oder Frau (auch ohne Mann und Frau, also nur mit Kindern) ist zulässig. Der Familie können beliebig viele
+4 CONC  Kinder zugeordnet sein.  
+2 PAGE Vereinbarung F2
+1 WIFE @I2@
+1 _UID 4CE2210C1D564356AE171893EABE1120B0BE
+0 @F2@ FAM
+1 CHIL @I2@
+1 CHIL @I5@
+1 HUSB @I4@
+1 MARR Y
+1 WIFE @I14@
+1 _UID D6BAE5E02A464849A3916EA560BB436A6504
+0 @F3@ FAM
+1 CHIL @I3@
+1 HUSB @I11@
+1 WIFE @I15@
+1 _UID 00AEBBA7CA474F1A88B7CDD65E83289D1297
+0 @F4@ FAM
+1 CHIL @I7@
+1 CHIL @I8@
+1 DIV
+2 ADDR Familiengericht IV
+2 DATE 15 OCT 2003
+2 NOTE Erwin Mustermann wurde als schuldig für die Scheidung gesprochen, das Sorgerecht für die beiden Kinder wurde Brigitte Gutedel zugesprochen.
+2 PLAC Tempelhof, Berlin, Deutschland
+3 FORM Stadtbezirk, Bundesland, Staat
+3 _LOC @P29@
+1 DIVF
+2 ADDR Familiengericht IV
+2 DATE 29 SEP 2002
+2 PLAC Tempelhof, Berlin, Deutschland
+3 FORM Stadtbezirk, Bundesland, Staat
+3 _LOC @P29@
+1 EVEN Pilgerreise nach Rom
+2 DATE JUL 1997
+2 NOTE Bei der gemeinsamen Pilgerreise nach Rom war Brigitte Guteledel im 3. Monat schwanger. 
+1 HUSB @I11@
+1 MARR
+2 DATE 3 JUN 1996
+1 RESI
+2 ADDR Gedcom Gasse 551
+3 CITY Tempelhof
+3 CTRY Deutschland
+3 POST 12345
+3 STAE Berlin
+2 DATE AFT MAY 1996
+2 EMAIL fam@mustermann.name
+2 FAX +49-(0)9876-543210
+2 PHON +49-(0)1234-56789
+2 TYPE Wohnort der Familie
+2 WWW www.mustermann.name
+1 WIFE @I16@
+1 _UID A9584AD2693B419C9C5D8F0B1169B5AC0C7A
+0 @F5@ FAM
+1 CHIL @I17@
+1 CHIL @I9@
+1 CHIL @I1@
+1 HUSB @I12@
+1 WIFE @I13@
+1 _UID 79DC89EE8FF54AD5803ECDE763B36BE64808
+0 @F6@ FAM
+1 CHIL @I6@
+1 HUSB @I18@
+1 MARR
+2 DATE 9 AUG 1962
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 WIFE @I17@
+1 _UID 8ECE20C106D64E7E815848DA145F3284092A
+0 @F7@ FAM
+1 CHIL @I6@
+1 HUSB @I19@
+1 MARR
+2 DATE 19 FEB 1966
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 WIFE @I17@
+1 _UID 381CC22E2C164931BEFDB09046A3851D869E
+0 @F8@ FAM
+1 CHIL @I6@
+1 HUSB @I19@
+1 MARR
+2 DATE 10 OCT 1972
+2 PLAC Köln, Köln, Nordrhein-Westfalen, Deutschland
+1 WIFE @I20@
+1 _UID 41637D572C744EADB5ACBFB24432874A2C99
+0 @F9@ FAM
+1 HUSB @I21@
+1 MARR Y
+1 WIFE @I10@
+1 _UID CCFC2B1BD6644AE7BCDD2FB60B6EDDAFFC06
+0 @F10@ FAM
+1 CHIL @I21@
+1 CHIL @I24@
+1 HUSB @I22@
+1 MARR
+2 ADDR St John’s Church
+3 CONT 1 Takari Avenue, Point Clare
+2 DATE 05 JUL 1958
+2 PLAC Sydney, , , Australien
+2 RELI evangelisch
+2 TYPE RELI
+1 MARR
+2 ADDR 35 Regent Street, Chippendale, Sydney
+2 DATE 04 JUL 1958
+2 PLAC Sydney, , , Australien
+2 TYPE CIVIL
+1 SUBM @SUBM2@
+1 WIFE @I23@
+1 _UID 1E86F380627E479891AB2A813E196BBC3B2F
+0 @F11@ FAM
+1 CHIL @I22@
+1 CHIL @I37@
+1 HUSB @I25@
+1 SUBM @SUBM2@
+1 _UID A1E97E6A9B584BA1B7841C6FD7083FE61B9F
+0 @F12@ FAM
+1 CHIL @I25@
+1 HUSB @I26@
+1 NCHI 3
+1 NOTE 1. Ehe von Edwin Müller
+2 CONT * 3 Kinder, davon 1 bekannt
+1 SUBM @SUBM2@
+1 _UID 78F239992F3545FF83AEA04FB210D73DDABD
+0 @F13@ FAM
+1 CHIL @I26@
+1 HUSB @I27@
+1 SUBM @SUBM2@
+1 _UID C29D866B5F864278B0257481DEFDBBA3F260
+0 @F14@ FAM
+1 CHIL @I27@
+1 HUSB @I28@
+1 SUBM @SUBM2@
+1 _UID F2588ABD62FC4B6BA23A290BC902DC379376
+0 @F15@ FAM
+1 CHIL @I28@
+1 SUBM @SUBM2@
+1 WIFE @I29@
+1 _UID 030E644F97D743BAB8B76A9E7204E09D997A
+0 @F16@ FAM
+1 CHIL @I13@
+1 HUSB @I30@
+1 MARR
+2 DATE 28 JUN 1892
+2 PLAC Wriezen,, Brandenburg, Deutschland
+2 SOUR @S4@
+3 DATA
+4 TEXT Wriezen am 28 Juni 1892. Vor dem unter
+5 CONC zeichneten Standesbeamten erschienen heute zum Zweck der Eheschließung: .....
+3 PAGE 37
+2 SOUR @S5@
+3 PAGE Batch #: M983231, Sheet #: , Source Call #: 0995312
+2 TYPE CIVIL
+1 WIFE @I31@
+1 _UID 6566252F40614F3E8FA6E0077A15DB03D667
+0 @F17@ FAM
+1 HUSB @I32@
+1 MARR
+2 DATE 21 MAY 2005
+2 PLAC Windsor, Berkshire, , England
+2 TYPE CIVIL
+1 WIFE @I33@
+1 _UID 2D9B347BD52044568232FFC1BF92495F73D6
+0 @F18@ FAM
+1 HUSB @I9@
+1 MARR
+2 DATE 1965
+2 PLAC Grabow, , Mecklenburg-Vorpommern, Deutschland
+1 WIFE @I34@
+1 _UID 77023F1BA2A04AF5A8706917A1FA85FF0B0C
+0 @S1@ SOUR
+1 ABBR Eheschließungen
+1 CHAN
+2 DATE 26 MAR 2012
+3 TIME 21:21:11
+1 TITL Eheschließungen des Ortes Grabow 1960-1970
+1 _UID 32731892D2FF44D582A95E3F3BBB79900046
+0 @S2@ SOUR
+1 ABBR GenWiki FAM
+1 AUTH Gedcom-L Liste der deutschsprachigen Genealogieprogrammersteller
+1 CHAN
+2 DATE 31 MAY 2012
+3 TIME 15:01:15
+1 PUBL http://wiki-de.genealogy.net/GEDCOM/FAM-Tag
+1 TITL GenWiki: GEDCOM Kennzeichen FAM
+1 _UID 3E057556595D4024B0AD753D06955A75A108
+0 @S3@ SOUR
+1 AUTH Kneschke, Ernst Heinrich
+1 PUBL Leipzig (1863)
+1 TITL Neues allgemeines deutsches Adels-Lexicon
+1 _UID 4051C692756E4208B6D47BD291892498C346
+0 @source_185945@ SOUR
+1 TITL Gemeindelexikon Königreich Preußen II
+1 _UID 8E47F29172B145AD8ABC54AD6E4F3227CA59
+0 @source_217916@ SOUR
+1 TITL Grundriß zur deutschen Verwaltungsgeschichte 1815-1945 (1)
+1 _UID DAC74045F2384C33892D3B91C297F620C060
+0 @source_265044@ SOUR
+1 TITL Gemeindeverzeichnis 1900
+1 _UID 99A3F335793F418694DBC77E9AF3D5645DC5
+0 @source_319222@ SOUR
+1 TITL Meyers Konversationslexikon 5. Auflage 1893-1898
+1 _UID 91B2AF326F7E464F97C091C2D5E17A4CCC1A
+0 @source_386793@ SOUR
+1 TITL Verzeichnis der Ortschaften mit deutscher Bevölkerung auf dem Gebiete des polnischen Staates
+1 _UID 9DE5F815AEFC43E68D8D9CEDE99AE5A00DF4
+0 @S4@ SOUR
+1 AUTH The Church of Jesus Christ of Latter-day Saints
+1 PUBL Copyright (c) 1980, 2000, data as of January 2000
+1 REPO @REPO1@
+1 TITL International Genealogical Index ®
+1 _UID EE408CAA44114417BCDD4B80BEEABD512EFA
+0 @S5@ SOUR
+1 REPO @REPO1@
+2 CALN 13B-1234.01
+3 MEDI film
+1 _UID F4A022D3FC1F49528152666DC6F6B96DC7B8
+0 @S6@ SOUR
+1 PUBL www.geonames.org
+1 TITL geonames
+1 _UID FC9D59A4AA994CB7AA39AC5CD90B46CEBFA9
+0 @O1@ OBJE
+1 FILE Bild.jpg
+2 FORM jpg
+3 TYPE photo
+1 _UID 5AE3C585DDDA4B55B745296562671A67B2FB
+0 @P18@ _LOC
+1 NAME Deutschland
+2 ABBR DE
+3 TYPE ISO 3166-1
+2 LANG German
+1 NAME Germany
+2 LANG English
+1 SOUR @S6@
+2 PAGE geonames:2921044
+1 TYPE Staat
+1 _GOV object_149273
+0 @P29@ _LOC
+1 NAME Tempelhof
+1 TYPE Stadtbezirk
+1 _LOC @P30@
+2 DATE 1945
+2 TYPE POLI
+1 _LOC @P31@
+2 DATE FROM 1948 TO 2 OCT 1990
+2 TYPE POLI
+1 _LOC @P32@
+2 DATE FROM 3 OCT 1990
+2 TYPE POLI
+0 @P30@ _LOC
+1 NAME amerikanischer Sektor
+1 TYPE Stadtteil
+1 _LOC @P31@
+2 TYPE POLI
+0 @P31@ _LOC
+1 NAME Berlin (West)
+1 TYPE Stadt
+1 _LOC @P18@
+2 TYPE POLI
+0 @P32@ _LOC
+1 NAME Berlin
+2 ABBR BE
+3 TYPE ISO 3166-2
+1 TYPE Bundesland
+1 _LOC @P18@
+2 TYPE POLI
+0 @P_BROOWOJO93FH@ _LOC
+1 NAME Brosowo
+2 LANG German
+1 NAME Brzozowo
+2 LANG Polish
+1 MAP
+2 LATI N53.320000
+2 LONG E18.420000
+1 TYPE 39 Ort
+1 _DMGD 657
+2 DATE 1905
+2 SOUR @source_185945@
+2 TYPE Einwohner
+1 _FPOST 63132
+1 _GOV BROOWOJO93FH
+1 _LOC @P_object_214333@
+2 SOUR @source_185945@
+2 TYPE POLI
+1 _MAIDENHEAD JO93FH
+1 _POST PL-86-200
+0 @P_object_214333@ _LOC
+1 NAME Culm
+2 LANG German
+2 SOUR @source_386793@
+3 PAGE S. 3
+1 NAME Chełmno
+2 LANG Polish
+1 NAME Kulm
+2 LANG German
+1 TYPE 36 Landkreis
+1 _DMGD 45711
+2 DATE 1890
+2 SOUR @source_319222@
+3 PAGE Bd 11 S.933
+2 TYPE Einwohner
+1 _DMGD 48014
+2 DATE 1900
+2 SOUR @source_265044@
+2 TYPE Einwohner
+1 _DMGD 725.0
+2 DATE 1900
+2 SOUR @source_319222@
+3 PAGE Bd 11 S.933
+2 TYPE Fläche
+1 _DMGD 50069
+2 DATE 1910
+2 SOUR @source_265044@
+2 TYPE Einwohner
+1 _FPOST 63132
+1 _GOV object_214333
+1 _LOC @P_object_218094@
+2 DATE FROM 1818 TO 1920
+2 SOUR @source_217916@
+3 PAGE S. 210 ff.
+2 TYPE POLI
+1 _LOC @P_object_256463@
+2 DATE FROM 1920 TO 1939
+2 SOUR @source_217916@
+3 PAGE S. 169 f.
+2 TYPE POLI
+1 _LOC @P_adm_368369@
+2 DATE FROM 1939 TO 1945
+2 SOUR @source_217916@
+3 PAGE S. 226
+2 TYPE POLI
+0 @P_adm_368369@ _LOC
+1 NAME Bromberg
+1 TYPE 46 Regierungsbezirk
+1 _GOV adm_368369
+0 @P_object_256463@ _LOC
+1 NAME Pomerellen
+2 LANG German
+1 NAME Pomerelian Voivodeship
+2 LANG English
+1 NAME Województwo Pomorze
+2 LANG Polish
+1 TYPE 59 Wojewodschaft
+1 _GOV object_256463
+0 @P_object_218094@ _LOC
+1 NAME Marienwerder
+2 DATE FROM 1815 TO 1920
+1 TYPE 46 Regierungsbezirk
+2 DATE FROM 1818 TO 1920
+2 SOUR @source_217916@
+3 PAGE S. 209
+1 _GOV object_218094
+1 _LOC @P_object_213750@
+2 DATE FROM 1815 TO 1920
+2 TYPE POLI
+0 @P_object_213750@ _LOC
+1 NAME Westpreußen
+1 TYPE 45 Provinz
+1 _GOV object_213750
+0 @N1@ NOTE 1980 ernannte ihn sein Abt Johannes Maler zum Prior der Abtei. Am 13. Septe
+1 CONC mber 1987 wurde er vom Klosterkonvent zum Abt gewählt.
+1 CONT Am 11. Oktober 1987 empfing er durch Georg Mauser die Benediktion.
+1 _UID F0E0328AD9FF4755A9D36BC7C9AD2C60B017
+0 @REPO1@ REPO
+1 NAME Family History Library
+1 ADDR 35 N West Temple Street
+2 CONT Salt Lake City, Utah 
+2 CONT UT 84150
+1 _UID 012D9DB0C9F44391A54A3495F949895BEA53
+0 TRLR
