@@ -107,8 +107,10 @@ stored as extensions and errors.
 the model using a Visitor pattern. This function was written in just a few lines due to the other
 classes in this project.
 
-The tools can be run using
-`mvn exec:java -Dexec.mainClass=org.folg.gedcom.tools.<tool name> -Dexec.args="<args>"`
+The tools can be run using the `gedcom.jar` archive from the `target` directory:
+`java -cp target/gedcom.jar org.folg.gedcom.tools.<tool name> <args>`
+
+For example: `java -cp target/gedcom.jar org.folg.gedcom.tools.Gedcom2Json -i mytree.ged -o mytree.json`
 
 Roadmap
 -------
