@@ -17,9 +17,9 @@
   </properties>
 
   <scm>
-    <connection>scm:git:git@github.com:FamilySearch/Gedcom.git</connection>
-    <developerConnection>scm:git:git@github.com:FamilySearch/Gedcom.git</developerConnection>
-    <url>https://github.com/FamilySearch/Gedcom</url>
+    <connection>scm:git:git@github.com:FamilySearch/gedcom5-java.git</connection>
+    <developerConnection>scm:git:git@github.com:FamilySearch/gedcom5-java.git</developerConnection>
+    <url>https://github.com/FamilySearch/gedcom5-java</url>
     <tag>1.12.0</tag>
   </scm>
 
