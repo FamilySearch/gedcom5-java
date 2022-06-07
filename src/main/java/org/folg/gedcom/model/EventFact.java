@@ -50,7 +50,7 @@ public class EventFact extends SourceCitationContainer {
            "WILL"
   ));
    public static final Set<String> FAMILY_EVENT_FACT_TAGS = new HashSet<String>(Arrays.asList(
-      "ANUL",
+      "ANUL", "ANNULMENT",
       "CENS", "CLAW",
       "_DEATH_OF_SPOUSE", "DIV", "DIVF", "DIVORCE", "_DIV",
       "EMIG", "ENGA", "EVEN", "EVENT",
@@ -62,130 +62,128 @@ public class EventFact extends SourceCitationContainer {
    ));
 
    public static final Map<String,String> DISPLAY_TYPE;
-   // note: some of these tags aren't in the personal/family_event_fact_tags sets because they appear only in the type field
-   // others need to be added to the appropriate tag sets
    static {
       Map<String, String> m = new HashMap<String, String>();
-      m.put("ADOP", "Adoption");
-      m.put("ADOPTION", "Adoption");
-      m.put("AFN", "Ancestral file number");
-      m.put("ANUL","Annulment");
-      m.put("ANNULMENT", "Annulment");
-      m.put("ARRIVAL", "Arrival");
-      m.put("ARRI", "Arrival");
-      m.put("ARVL", "Arrival");
-      m.put("_ATTR","Attribute");
-      m.put("BAP","Baptism");
-      m.put("BAPM", "Baptism");
-      m.put("BAPT", "Baptism");
-      m.put("BAPTISM", "Baptism");
-      m.put("BARM", "Bar mitzvah");
-      m.put("BATM", "Bat mitzvah");
-      m.put("BAR_MITZVAH", "Bar mitzvah");
-      m.put("BIRT","Birth");
-      m.put("BIRTH","Birth");
-      m.put("BLES", "Blessing");
-      m.put("BURI", "Burial");
-      m.put("BURIAL", "Burial");
-      m.put("CAST", "Caste");
-      m.put("CAUS", "Cause of death");
-      m.put("CAUSE", "Cause of death");
-      m.put("CENS","Census");
-      m.put("CHR", "Christening");
-      m.put("CHRISTENING","Christening");
-      m.put("CLAW","Common law marriage");
-      m.put("_COLOR","Color");
-      m.put("CONF", "Confirmation");
-      m.put("CREM","Cremation");
-      m.put("_DCAUSE","Cause of death");
-      m.put("DEAT","Death");
-      m.put("DEATH", "Death");
-      m.put("_DEATH_OF_SPOUSE","Death of spouse");
-      m.put("DEED","Deed");
-      m.put("_DEG","Degree");
-      m.put("_DEGREE","Degree");
-      m.put("DEPA","Departure");
-      m.put("DPRT","Departure");
-      m.put("DIV","Divorce");
-      m.put("DIVF","Divorce filing");
-      m.put("DIVORCE","Divorce");
-      m.put("_DIV","Divorce");
-      m.put("DSCR","Physical description");
-      m.put("EDUC","Education");
-      m.put("EDUCATION","Education");
-      m.put("_ELEC","Elected");
-      m.put("EMAIL","Email");
-      m.put("EMIG","Emigration");
-      m.put("EMIGRATION", "Emigration");
-      m.put("EMPL","Employment");
-      m.put("_EMPLOY","Employment");
-      m.put("ENGA","Engagement");
-      m.put("ENLIST","Military");
-      m.put("EVEN","Event");
-      m.put("EVENT","Event");
-      m.put("EYES","Eyes");
-      m.put("_EXCM","Excommunication");
-      m.put("FCOM","First communion");
-      m.put("_FNRL","Funeral");
-      m.put("_FUN","Funeral");
-      m.put("GRAD","Graduation");
-      m.put("GRADUATION","Graduation");
-      m.put("HAIR","Hair");
-      m.put("HEIG","Height");
-      m.put("_HEIG","Height");
-      m.put("_HEIGHT","Height");
-      m.put("ILL","Illness");
-      m.put("IMMI","Immigration");
-      m.put("IMMIGRATION","Immigration");
-      m.put("MARB","Marriage banns");
-      m.put("MARC","Marriage contract");
-      m.put("MARL","Marriage license");
-      m.put("MARR","Marriage");
-      m.put("MARRIAGE","Marriage");
-      m.put("MARS","Marriage settlement");
-      m.put("_MBON","Marriage banns");
-      m.put("_MDCL","Medical");
-      m.put("_MEDICAL","Medical");
-      m.put("MIL","Military");
-      m.put("_MIL","Military");
-      m.put("MILI","Military");
-      m.put("_MILI","Military");
-      m.put("_MILT","Military");
-      m.put("_MILTID","Military");
-      m.put("_MILITARY_SERVICE","Military");
-      m.put("MISE","Military");
-      m.put("_MISN","Mission");
-      m.put("_NAMS","Namesake");
-      m.put("NATI","Nationality");
-      m.put("NATU","Naturalization");
-      m.put("NATURALIZATION","Naturalization");
-      m.put("NCHI","Number of children");
-      m.put("OCCU","Occupation");
-      m.put("OCCUPATION","Occupation");
-      m.put("ORDI","Ordination");
-      m.put("ORDN","Ordination");
-      m.put("PHON","Phone");
-      m.put("PROB","Probate");
-      m.put("PROP","Property");
-      m.put("RELI","Religion");
-      m.put("RELIGION","Religion");
-      m.put("RESI","Residence");
-      m.put("RESIDENCE","Residence");
-      m.put("RETI","Retirement");
-      m.put("SEPA","Separated");
-      m.put("_SEPARATED","Separated");
-      m.put("_SEPR","Separated");
-      m.put("SEX","Sex");
-      m.put("SSN","Social security number");
-      m.put("SOC_","Social security number");
-      m.put("SOC_SEC_NUMBER","Social security number");
-      m.put("TITL","Title");
-      m.put("TITLE","Title");
-      m.put("_WEIG","Weight");
-      m.put("_WEIGHT","Weight");
-      m.put("WILL","Will");
+      m.put("ADOP", "adop");
+      m.put("ADOPTION", "adop");
+      m.put("AFN", "afn");
+      m.put("ANUL", "anul");
+      m.put("ANNULMENT", "anul");
+      m.put("ARRIVAL", "arvl");
+      m.put("ARRI", "arvl");
+      m.put("ARVL", "arvl");
+      m.put("_ATTR", "attr");
+      m.put("BAP", "bapm");
+      m.put("BAPM", "bapm");
+      m.put("BAPT", "bapm");
+      m.put("BAPTISM", "bapm");
+      m.put("BARM", "barm");
+      m.put("BAR_MITZVAH", "barm");
+      m.put("BATM", "batm");
+      m.put("BIRT", "birt");
+      m.put("BIRTH", "birt");
+      m.put("BLES", "bles");
+      m.put("BURI", "buri");
+      m.put("BURIAL", "buri");
+      m.put("CAST", "cast");
+      m.put("CAUS", "caus");
+      m.put("CAUSE", "caus");
+      m.put("CENS", "cens");
+      m.put("CHR", "chr");
+      m.put("CHRISTENING", "chr");
+      m.put("CLAW", "claw");
+      m.put("_COLOR", "color");
+      m.put("CONF", "conf");
+      m.put("CREM", "crem");
+      m.put("_DCAUSE", "caus");
+      m.put("DEAT", "deat");
+      m.put("DEATH", "deat");
+      m.put("_DEATH_OF_SPOUSE", "death_of_spouse");
+      m.put("DEED", "deed");
+      m.put("_DEG", "deg");
+      m.put("_DEGREE", "deg");
+      m.put("DEPA", "dprt");
+      m.put("DPRT", "dprt");
+      m.put("DIV", "div");
+      m.put("DIVF", "divf");
+      m.put("DIVORCE", "div");
+      m.put("_DIV", "div");
+      m.put("DSCR", "dscr");
+      m.put("EDUC", "educ");
+      m.put("EDUCATION", "educ");
+      m.put("_ELEC", "elec");
+      m.put("EMAIL", "email");
+      m.put("EMIG", "emig");
+      m.put("EMIGRATION", "emig");
+      m.put("EMPL", "empl");
+      m.put("_EMPLOY", "empl");
+      m.put("ENGA", "enga");
+      m.put("ENLIST", "milt");
+      m.put("EVEN", "even");
+      m.put("EVENT", "even");
+      m.put("_EXCM", "excm");
+      m.put("EYES", "eyes");
+      m.put("FCOM", "fcom");
+      m.put("_FNRL", "fnrl");
+      m.put("_FUN", "fnrl");
+      m.put("GRAD", "grad");
+      m.put("GRADUATION", "grad");
+      m.put("HAIR", "hair");
+      m.put("HEIG", "heig");
+      m.put("_HEIG", "heig");
+      m.put("_HEIGHT", "heig");
+      m.put("ILL", "ill");
+      m.put("IMMI", "immi");
+      m.put("IMMIGRATION", "immi");
+      m.put("MARB", "marb");
+      m.put("MARC", "marc");
+      m.put("MARL", "marl");
+      m.put("MARR", "marr");
+      m.put("MARRIAGE", "marr");
+      m.put("MARS", "mars");
+      m.put("_MBON", "marb");
+      m.put("_MDCL", "mdcl");
+      m.put("_MEDICAL", "mdcl");
+      m.put("MIL", "milt");
+      m.put("_MIL", "milt");
+      m.put("MILI", "milt");
+      m.put("_MILI", "milt");
+      m.put("_MILT", "milt");
+      m.put("_MILTID", "milt");
+      m.put("_MILITARY_SERVICE", "milt");
+      m.put("MISE", "milt");
+      m.put("_MISN", "misn");
+      m.put("_NAMS", "nams");
+      m.put("NATI", "nati");
+      m.put("NATU", "natu");
+      m.put("NATURALIZATION", "natu");
+      m.put("NCHI", "nchi");
+      m.put("OCCU", "occu");
+      m.put("OCCUPATION", "occu");
+      m.put("ORDI", "ordn");
+      m.put("ORDN", "ordn");
+      m.put("PHON", "phon");
+      m.put("PROB", "prob");
+      m.put("PROP", "prop");
+      m.put("RELI", "reli");
+      m.put("RELIGION", "reli");
+      m.put("RESI", "resi");
+      m.put("RESIDENCE", "resi");
+      m.put("RETI", "reti");
+      m.put("SEPA", "sepa");
+      m.put("_SEPARATED", "sepa");
+      m.put("_SEPR", "sepa");
+      m.put("SEX", "sex");
+      m.put("SSN", "ssn");
+      m.put("SOC_SEC_NUMBER", "ssn");
+      m.put("TITL", "titl");
+      m.put("TITLE", "titl");
+      m.put("_WEIG", "weig");
+      m.put("_WEIGHT", "weig");
+      m.put("WILL", "will");
       DISPLAY_TYPE = Collections.unmodifiableMap(m);
    }
+   @Deprecated
    public static final String OTHER_TYPE = "Other";
 
    private String value = null;
@@ -218,13 +216,14 @@ public class EventFact extends SourceCitationContainer {
     * @return human-friendly event type
     */
    public String getDisplayType() {
+      ResourceBundle resourceBundle = ResourceBundle.getBundle("EventFact", Locale.getDefault());
       if (tag != null) {
-         String displayType = DISPLAY_TYPE.get(tag.toUpperCase());
-         if (displayType != null) {
-            return displayType;
+         String key = DISPLAY_TYPE.get(tag.toUpperCase());
+         if (key != null) {
+            return resourceBundle.getString(key);
          }
       }
-      return OTHER_TYPE;
+      return resourceBundle.getString("other");
    }
 
    public String getTag() {
