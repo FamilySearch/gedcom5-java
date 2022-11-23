@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.familysearch.gedcom</groupId>
   <artifactId>gedcom</artifactId>
-  <version>1.14.0-SNAPSHOT</version>
+  <version>1.14.0</version>
   <packaging>jar</packaging>
   <name>GEDCOM 5.x Reader/Writer</name>
   <description>GEDCOM 5.x Reader/Writer</description>
@@ -20,7 +20,7 @@
     <connection>scm:git:git@github.com:FamilySearch/gedcom5-java.git</connection>
     <developerConnection>scm:git:git@github.com:FamilySearch/gedcom5-java.git</developerConnection>
     <url>https://github.com/FamilySearch/gedcom5-java</url>
-    <tag>1.12.0</tag>
+    <tag>1.14.0</tag>
   </scm>
 
   <contributors>
