@@ -1,5 +1,5 @@
 ## Examples
-See all parsers in [main/java/org/folg/gedcom/parser](../main/java/org/folg/gedcom/parser) directory.
+See all parsers in [main/java/org/folg/gedcom/parser](../src/main/java/org/folg/gedcom/parser) directory.
 
 ### 1. Parse gedcom and print all people names
 
