@@ -1,4 +1,10 @@
+
+Project forked from [github.com/FamilySearch/gedcom5-java](https://github.com/FamilySearch/gedcom5-java/tree/master).
+---------------------
+
 Here is a parser that converts GEDCOM files to a _de facto_ object model.
+
+See examples in [src/examples](src/examples/EXAMPLES.md).
 
 De Facto object model
 ---------------------
