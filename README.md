@@ -1,5 +1,7 @@
 Here is a parser that converts GEDCOM files to a _de facto_ object model.
 
+See examples in [examples](examples/EXAMPLES.md) directory.
+
 De Facto object model
 ---------------------
 
