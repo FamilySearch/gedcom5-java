@@ -51,6 +51,7 @@ public class Visitor {
    public boolean visit(RepositoryRef repositoryRef) {return true;}
    public boolean visit(Source source) {return true;}
    public boolean visit(SourceCitation sourceCitation) {return true;}
+   public boolean visit(Spouse spouse, boolean isHusband) {return true;}
    public boolean visit(SpouseRef spouseRef, boolean isHusband) {return true;}
    public boolean visit(SpouseFamilyRef spouseFamilyRef) {return true;}
    public boolean visit(Submission submission) {return true;}

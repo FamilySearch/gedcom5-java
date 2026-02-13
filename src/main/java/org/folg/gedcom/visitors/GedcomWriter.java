@@ -226,6 +226,7 @@ public class GedcomWriter extends Visitor {
       writeString("DATE", eventFact, eventFact.getDate());
       writeString("PLAC", eventFact, eventFact.getPlace());
       writeString("CAUS", eventFact, eventFact.getCause());
+      writeString("AGE", eventFact, eventFact.getAge());
       writeString("RIN", eventFact, eventFact.getRin());
       writeString(eventFact.getUidTag(), eventFact, eventFact.getUid());
    }
@@ -549,6 +550,14 @@ public class GedcomWriter extends Visitor {
          writeString("DATE", sourceCitation, sourceCitation.getDate());
          writeString("TEXT", sourceCitation, sourceCitation.getText());
       }
+      return true;
+   }
+
+   @Override
+   public boolean visit(Spouse spouse, boolean isHusband) {
+      write(isHusband ? "HUSB" : "WIFE");
+      stack.push(spouse);
+      writeString("AGE", spouse, spouse.getAge());
       return true;
    }
 

@@ -82,7 +82,7 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
    
    public static enum Tag {
-      ABBR, ADDR, ADR1, ADR2, ADR3, _AKA, ALIA, ANCI, ASSO, AUTH,
+      ABBR, ADDR, ADR1, ADR2, ADR3, AGE, _AKA, ALIA, ANCI, ASSO, AUTH,
       BLOB,
       CALN, CAUS, CHAN, CHAR, CHIL, CITY, CONC, CONT, COPR, CORP, CTRY,
       DATA, DATE, DESC, DESI, DEST,
@@ -134,6 +134,9 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
                break;
             case ADR3:
                obj = handleAdr3(tos);
+               break;
+            case AGE:
+               obj = handleAge(tos);
                break;
            case _AKA:
                obj = handleAka(tos, tagName);
@@ -506,6 +509,14 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    private Object handleAdr3(Object tos) {
       if (tos instanceof Address && ((Address)tos).getAddressLine3() == null) {
          return new FieldRef(tos, "AddressLine3");
+      }
+      return null;
+   }
+
+   private Object handleAge(Object tos) {
+      if (tos instanceof EventFact && ((EventFact)tos).getAge() == null ||
+          tos instanceof Spouse && ((Spouse)tos).getAge() == null) {
+         return new FieldRef(tos, "Age");
       }
       return null;
    }
@@ -915,6 +926,11 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          spouseRef.setRef(ref);
          ((Family)tos).addHusband(spouseRef);
          return spouseRef;
+      }
+      else if (tos instanceof EventFact) {
+         Spouse spouse = new Spouse();
+         ((EventFact)tos).setHusband(spouse);
+         return spouse;
       }
       return null;
    }
@@ -1445,6 +1461,11 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
          spouseRef.setRef(ref);
          ((Family)tos).addWife(spouseRef);
          return spouseRef;
+      }
+      else if (tos instanceof EventFact) {
+         Spouse spouse = new Spouse();
+         ((EventFact)tos).setWife(spouse);
+         return spouse;
       }
       return null;
    }

@@ -22,7 +22,7 @@ import java.util.*;
  * User: Dallan
  * Date: 12/25/11
  * 
- * omit: Phone, Age, Agency, Cause (except for death events)
+ * omit: Phone, Agency, Cause (except for death events)
  * add: Rin, Uid
  */
 public class EventFact extends SourceCitationContainer {
@@ -192,6 +192,9 @@ public class EventFact extends SourceCitationContainer {
    private String date = null;
    private String place = null;
    private Address addr = null;
+   private String age = null;
+   private Spouse husb = null;
+   private Spouse wife = null;
    private String phon = null;
    private String fax = null;
    private String rin = null;
@@ -264,6 +267,30 @@ public class EventFact extends SourceCitationContainer {
 
    public void setAddress(Address addr) {
       this.addr = addr;
+   }
+
+   public String getAge() {
+      return age;
+   }
+
+   public void setAge(String age) {
+      this.age = age;
+   }
+
+   public Spouse getHusband() {
+      return husb;
+   }
+
+   public void setHusband(Spouse husb) {
+      this.husb = husb;
+   }
+
+   public Spouse getWife() {
+      return wife;
+   }
+
+   public void setWife(Spouse wife) {
+      this.wife = wife;
    }
 
    public String getPhone() {
@@ -350,6 +377,12 @@ public class EventFact extends SourceCitationContainer {
    public void visitContainedObjects(Visitor visitor) {
       if (addr != null) {
          addr.accept(visitor);
+      }
+      if (husb != null) {
+         husb.accept(visitor, true);
+      }
+      if (wife != null) {
+         wife.accept(visitor, false);
       }
       super.visitContainedObjects(visitor);
    }
