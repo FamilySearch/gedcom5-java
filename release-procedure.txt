@@ -1,5 +1,6 @@
 To cut a new version:
 
 1. export PGP_SECRET_KEYFILE=~/.ssh/gedcomx/gedcomx-pgp-key.asc
-2. mvn -B -Prelease clean release:clean release:prepare -Dtag=$THIS_RELEASE_VERSION -DreleaseVersion=$THIS_RELEASE_VERSION -DdevelopmentVersion=$NEXT_SNAPSHOT_VERSION release:perform
-3. mvn release:clean
+2. mvn -B -Prelease clean release:clean release:prepare -Dtag=$THIS_RELEASE_VERSION -DreleaseVersion=$THIS_RELEASE_VERSION -DdevelopmentVersion=$NEXT_SNAPSHOT_VERSION -DpushChanges=false -DlocalCheckout=true release:perform
+3. git push && git push --tags
+4. mvn release:clean
