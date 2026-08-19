@@ -194,7 +194,7 @@
         <configuration>
           <publishingServerId>ossrh</publishingServerId>
           <autoPublish>true</autoPublish>
-          <waitUntilPublished>true</waitUntilPublished>
+          <waitUntil>PUBLISHED</waitUntil>
         </configuration>
       </plugin>
       <plugin>
