@@ -67,6 +67,35 @@ public class GedcomWriterTest {
     assertTrue(output.contains("1 FAX 555-9999\n"), output);
   }
 
+  @Test
+  public void testFoneAndRomnRoundTrip() throws Exception {
+    String input = "0 HEAD\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME 山田 /太郎/\n2 FONE Yamada /Taro/\n2 ROMN Yamada /Taro/\n0 TRLR\n";
+    Gedcom gedcom = new ModelParser().parseGedcom(new java.io.ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)));
+    String output = write(gedcom);
+    assertTrue(output.contains("1 NAME 山田 /太郎/\n2 FONE Yamada /Taro/\n2 ROMN Yamada /Taro/\n"), output);
+
+    Gedcom reparsed = new ModelParser().parseGedcom(new java.io.ByteArrayInputStream(output.getBytes(StandardCharsets.UTF_8)));
+    Name name = reparsed.getPeople().get(0).getNames().get(0);
+    assertEquals(name.getFone(), "Yamada /Taro/");
+    assertEquals(name.getRomn(), "Yamada /Taro/");
+  }
+
+  @Test
+  public void testFoneAndRomnWithoutTags() throws Exception {
+    Name name = new Name();
+    name.setValue("John /Doe/");
+    name.setFone("Jon /Doh/");
+    name.setRomn("John /Doe/");
+    Person person = new Person();
+    person.setId("I1");
+    person.addName(name);
+    Gedcom gedcom = new Gedcom();
+    gedcom.addPerson(person);
+
+    String output = write(gedcom);
+    assertTrue(output.contains("1 NAME John /Doe/\n2 FONE Jon /Doh/\n2 ROMN John /Doe/\n"), output);
+  }
+
   private static String write(Gedcom gedcom) throws Exception {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     new GedcomWriter().write(gedcom, out);
