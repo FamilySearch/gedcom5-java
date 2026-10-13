@@ -424,6 +424,8 @@ public class GedcomWriter extends Visitor {
       writeString("SPFX", name, name.getSurnamePrefix());
       writeString("NICK", name, name.getNickname());
       writeString(name.getTypeTag(), name, type);
+      writeString(name.getFoneTag() != null ? name.getFoneTag() : "FONE", name, name.getFone());
+      writeString(name.getRomnTag() != null ? name.getRomnTag() : "ROMN", name, name.getRomn());
       writeString(name.getAkaTag(), name, name.getAka());
       writeString(name.getMarriedNameTag(), name, name.getMarriedName());
       return true;
