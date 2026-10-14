@@ -2,6 +2,7 @@ package org.folg.gedcom.visitors;
 
 import org.folg.gedcom.model.*;
 import org.folg.gedcom.parser.ModelParser;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -9,8 +10,7 @@ import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 
 public class GedcomWriterTest {
@@ -94,6 +94,57 @@ public class GedcomWriterTest {
 
     String output = write(gedcom);
     assertTrue(output.contains("1 NAME John /Doe/\n2 FONE Jon /Doh/\n2 ROMN John /Doe/\n"), output);
+  }
+
+  @Test
+  public void testRepositoryRefsRoundTrip() throws Exception {
+    URL gedcomUrl = this.getClass().getClassLoader().getResource("Case003-RepositoryRefs.ged");
+    Assert.assertNotNull(gedcomUrl);
+    Gedcom gedcom = new ModelParser().parseGedcom(new File(gedcomUrl.toURI()));
+
+    String output = write(gedcom);
+    assertTrue(output.contains("1 REPO @R1@\n2 CALN Call-number 123\n3 MEDI Media type\n2 NOTE @T1@\n2 NOTE A repo citation.\n3 CONT Second line.\n"), output);
+    assertTrue(output.contains("1 REPO @R2@\n2 NOTE Another repo citation.\n"), output);
+    assertTrue(output.contains("1 REPO @R3@\n2 CALN CN-456\n3 MEDI Article\n2 NOTE @T1@\n2 NOTE Third repo citation.\n"), output);
+
+    Gedcom reparsed = new ModelParser().parseGedcom(new java.io.ByteArrayInputStream(output.getBytes(StandardCharsets.UTF_8)));
+    assertEquals(reparsed.getSources().size(), 1);
+    Source source = reparsed.getSources().get(0);
+    assertNotNull(source);
+    assertEquals(source.getTitle(), "Source title");
+    assertEquals(source.getRepositoryRefs().size(), 3);
+
+    RepositoryRef repositoryRef1 = source.getRepositoryRefs().get(0);
+    assertNotNull(repositoryRef1);
+    assertEquals(repositoryRef1.getRef(), "R1");
+    assertEquals(repositoryRef1.getCallNumber(), "Call-number 123");
+    assertEquals(repositoryRef1.getMediaType(), "Media type");
+    assertEquals(repositoryRef1.getNoteRefs().size(), 1);
+    NoteRef noteRef = repositoryRef1.getNoteRefs().get(0);
+    assertNotNull(noteRef);
+    assertEquals(noteRef.getRef(), "T1");
+    assertEquals(repositoryRef1.getNotes().size(), 1);
+    Note note1 = repositoryRef1.getNotes().get(0);
+    assertNotNull(note1);
+    assertEquals(note1.getValue(), "A repo citation.\nSecond line.");
+
+    RepositoryRef repositoryRef2 = source.getRepositoryRefs().get(1);
+    assertNotNull(repositoryRef2);
+    assertEquals(repositoryRef2.getRef(), "R2");
+    assertEquals(repositoryRef2.getNotes().size(), 1);
+    Note note2 = repositoryRef2.getNotes().get(0);
+    assertNotNull(note2);
+    assertEquals(note2.getValue(), "Another repo citation.");
+
+    RepositoryRef repositoryRef3 = source.getRepositoryRefs().get(2);
+    assertNotNull(repositoryRef3);
+    assertEquals(repositoryRef3.getRef(), "R3");
+    assertEquals(repositoryRef3.getCallNumber(), "CN-456");
+    assertEquals(repositoryRef3.getMediaType(), "Article");
+    assertEquals(repositoryRef3.getNotes().size(), 1);
+    Note note3 = repositoryRef3.getNotes().get(0);
+    assertNotNull(note3);
+    assertEquals(note3.getValue(), "Third repo citation.");
   }
 
   private static String write(Gedcom gedcom) throws Exception {

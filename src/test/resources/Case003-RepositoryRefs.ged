@@ -1,0 +1,28 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @T1@ NOTE Shared note text.
+0 @S1@ SOUR
+1 TITL Source title
+1 REPO @R1@
+2 CALN Call-number 123
+3 MEDI Media type
+2 NOTE @T1@
+2 NOTE A repo citation.
+3 CONT Second line.
+1 REPO @R2@
+2 NOTE Another repo citation.
+1 REPO @R3@
+2 CALN CN-456
+3 MEDI Article
+2 NOTE @T1@
+2 NOTE Third repo citation.
+0 @R1@ REPO
+1 NAME Repository 1
+0 @R2@ REPO
+1 NAME Repository 2
+0 @R3@ REPO
+1 NAME Repository 3
+0 TRLR
