@@ -201,6 +201,27 @@ public class JsonParserTest {
     }
 
     @Test
+    public void testFromJson_legacyRepoFieldReserializedWithoutAccess() {
+        String legacyJson = """
+            {
+              "sources": [
+                {
+                  "id": "S1",
+                  "repo": {
+                    "ref": "R1"
+                  }
+                }
+              ]
+            }
+            """;
+
+        JsonParser jsonParser = new JsonParser();
+        String serializedJson = jsonParser.toJson(jsonParser.fromJson(legacyJson));
+        assertTrue(serializedJson.contains("\"repos\":"), serializedJson);
+        assertFalse(serializedJson.contains("\"repo\":"), serializedJson);
+    }
+
+    @Test
     public void testWrite_withGedcomAndWriter() {
         Header header = new Header();
         header.setLanguage("English");
