@@ -1192,12 +1192,12 @@ public class ModelParser implements ContentHandler, org.xml.sax.ErrorHandler {
    }
 
    private Object handleRepo(Object tos, String id, String ref) {
-      if (tos instanceof Source && ((Source)tos).getRepositoryRef() == null) {
+      if (tos instanceof Source) {
          RepositoryRef repositoryRef = new RepositoryRef();
          if (ref != null) {
             repositoryRef.setRef(ref);
          }
-         ((Source)tos).setRepositoryRef(repositoryRef);
+         ((Source)tos).addRepositoryRef(repositoryRef);
          return repositoryRef;
       }
       else if (tos instanceof Gedcom) {

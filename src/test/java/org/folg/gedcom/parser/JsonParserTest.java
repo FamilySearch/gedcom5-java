@@ -162,6 +162,66 @@ public class JsonParserTest {
     }
 
     @Test
+    public void testFromJson_legacyRepoField() {
+        String legacyJson = """
+            {
+              "sources": [
+                {
+                  "id": "S1",
+                  "titl": "Test Source",
+                  "repo": {
+                    "ref": "R1",
+                    "caln": "CALL-123",
+                    "medi": "Book"
+                  }
+                }
+              ]
+            }
+            """;
+
+        JsonParser jsonParser = new JsonParser();
+        Gedcom gedcom = jsonParser.fromJson(legacyJson);
+        assertNotNull(gedcom);
+
+        assertEquals(gedcom.getSources().size(), 1);
+        Source source = gedcom.getSources().get(0);
+
+        assertEquals(source.getRepositoryRefs().size(), 1);
+        RepositoryRef repoRef = source.getRepositoryRefs().get(0);
+        assertEquals(repoRef.getRef(), "R1");
+        assertEquals(repoRef.getCallNumber(), "CALL-123");
+        assertEquals(repoRef.getMediaType(), "Book");
+
+        assertNotNull(source.getRepositoryRef());
+        assertEquals(source.getRepositoryRef().getRef(), "R1");
+
+        String serializedJson = jsonParser.toJson(gedcom);
+        assertTrue(serializedJson.contains("\"repos\":"));
+        assertFalse(serializedJson.contains("\"repo\":"));
+    }
+
+    @Test
+    public void testFromJson_legacyRepoFieldReserializedWithoutAccess() {
+        String legacyJson = """
+            {
+              "sources": [
+                {
+                  "id": "S1",
+                  "repo": {
+                    "ref": "R1"
+                  }
+                }
+              ]
+            }
+            """;
+
+        JsonParser jsonParser = new JsonParser();
+        String serializedJson = jsonParser.toJson(jsonParser.fromJson(legacyJson));
+        assertTrue(serializedJson.contains("\"repos\":"), serializedJson);
+        assertFalse(serializedJson.contains("\"repo\":"), serializedJson);
+    }
+
+    @Test
     public void testWrite_withGedcomAndWriter() {
         Header header = new Header();
         header.setLanguage("English");

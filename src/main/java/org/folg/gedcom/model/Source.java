@@ -16,6 +16,10 @@
 
 package org.folg.gedcom.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * User: Dallan
  * Date: 12/29/11
@@ -31,6 +35,7 @@ public class Source extends MediaContainer {
    private String publ = null;
    private String text = null;
    private RepositoryRef repo = null;
+   private List<RepositoryRef> repos = null;
    private String refn = null;
    private String rin = null;
    private Change chan = null;
@@ -92,16 +97,81 @@ public class Source extends MediaContainer {
       this.text = text;
    }
 
+   /**
+    * @deprecated Use {@link #getRepositoryRefs()} instead.
+    */
+   @Deprecated
    public RepositoryRef getRepositoryRef() {
-      return repo;
+      List<RepositoryRef> list = getRepositoryRefs();
+      return !list.isEmpty() ? list.get(0) : null;
    }
 
+   /**
+    * @deprecated Use {@link #addRepositoryRef(RepositoryRef)} or {@link #setRepositoryRefs(List)} instead.
+    */
+   @Deprecated
    public void setRepositoryRef(RepositoryRef repo) {
-      this.repo = repo;
+      this.repo = null;
+      if (repo != null) {
+         this.repos = new ArrayList<>(Collections.singletonList(repo));
+      }
+      else {
+         this.repos = null;
+      }
    }
-   
+
+   /**
+    * @deprecated Use {@link #getRepositories(Gedcom)} instead.
+    */
+   @Deprecated
    public Repository getRepository(Gedcom gedcom) {
-      return repo != null ? repo.getRepository(gedcom) : null;
+      RepositoryRef ref = getRepositoryRef();
+      return ref != null ? ref.getRepository(gedcom) : null;
+   }
+
+   /**
+    * If an old JSON populated 'repo', it migrates it to the 'repos' list
+    * and clears 'repo' to avoid duplication.
+    */
+   private void migrateRepo() {
+      if (repo != null) {
+         if (repos == null) {
+            repos = new ArrayList<>();
+         }
+         if (!repos.contains(repo)) {
+            repos.add(repo);
+         }
+         repo = null;
+      }
+   }
+
+   public List<RepositoryRef> getRepositoryRefs() {
+      migrateRepo();
+      return repos != null ? repos : Collections.emptyList();
+   }
+
+   public void setRepositoryRefs(List<RepositoryRef> repos) {
+      this.repo = null;
+      this.repos = repos;
+   }
+
+   public void addRepositoryRef(RepositoryRef repo) {
+      migrateRepo();
+      if (repos == null) {
+         repos = new ArrayList<>();
+      }
+      repos.add(repo);
+   }
+
+   public List<Repository> getRepositories(Gedcom gedcom) {
+      List<Repository> repositories = new ArrayList<>();
+      for (RepositoryRef repositoryRef : getRepositoryRefs()) {
+         Repository repository = repositoryRef.getRepository(gedcom);
+         if (repository != null) {
+            repositories.add(repository);
+         }
+      }
+      return repositories;
    }
 
    public String getReferenceNumber() {
@@ -202,8 +272,8 @@ public class Source extends MediaContainer {
 
    public void accept(Visitor visitor) {
       if (visitor.visit(this)) {
-         if (repo != null) {
-            repo.accept(visitor);
+         for (RepositoryRef repositoryRef : getRepositoryRefs()) {
+            repositoryRef.accept(visitor);
          }
          if (chan != null) {
             chan.accept(visitor);

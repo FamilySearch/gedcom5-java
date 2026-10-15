@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import org.folg.gedcom.model.Extensions;
 import org.folg.gedcom.model.Gedcom;
 import org.folg.gedcom.model.GedcomTag;
+import org.folg.gedcom.model.Source;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -57,6 +58,10 @@ public class GedcomTypeAdapter implements JsonSerializer<Gedcom>, JsonDeserializ
 
    public Gedcom deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
       Gedcom gedcom = gson.fromJson(json, Gedcom.class);
+      for (Source source : gedcom.getSources()) {
+         // migrates a legacy single 'repo' into 'repos' so it is re-serialized in the current form
+         source.getRepositoryRefs();
+      }
       gedcom.createIndexes();
       return gedcom;
    }
